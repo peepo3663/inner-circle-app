@@ -13,3 +13,8 @@ My name is Peter. I do not have software development experience outside of actin
 ### Raef Youssef
 
 My name is Raef. I like to identify myself as a data scientist and a tech enthusiast. I do not come from software development background, but was always interested in the subject. I first learned coding when I was 12 and it was Visual Basic. I know a bit about CGI, data and coding, and I hope that someday to combine all three in a project. Something like a digital twin for a smart city.
+
+### Michael Ranasinghe
+
+My name is Michael Ranasinghe. I did my bachelor's in biomedical engineering, and for about the past 2 years have worked as a programmer at Mass Gen. I'm pretty familiar in C++, Python, and MATLAB (it would be a cardinal sin to be unfamiliar with the language, since it is heavily used in the biomedical community). I have a golden retriever, whose name is Henry :). In my free time, I enjoy to run and develop new apps!
+
