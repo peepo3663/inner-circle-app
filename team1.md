@@ -20,4 +20,8 @@ My name is Michael Ranasinghe. I did my bachelor's in biomedical engineering, an
 
 ### Ananya Sharma
 
-I am Ananya Sharma, this is my second year of MS in Computer Science with concentration in Data Analytics. I was previously working as a Product Specialist at S&P Global before joining school full-time. I love working/learning Machine Learning concepts. I am looking forward on building an application and I think this experience will provide us with the exposure to real-world software engineering process.# CS673F20T1
+I am Ananya Sharma, this is my second year of MS in Computer Science with concentration in Data Analytics. I was previously working as a Product Specialist at S&P Global before joining school full-time. I love working/learning Machine Learning concepts. I am looking forward on building an application and I think this experience will provide us with the exposure to real-world software engineering process.
+
+### Jian Ma
+
+My name is Jian Ma and I was born and raised in China. I am a graduate student in computer science. The only large collaborative software projects that I have worked on was an Android application called MusicMoji. Basically, it search the lyrics of the song you are playing and translates the lyrics to emoji. It is a fun, entertaining, and pretty useful application. I am looking forward to working closely with my group to produce a high-quality software system. I am a great communicator and I enjoys working with others to solve problems.
