@@ -18,3 +18,6 @@ My name is Raef. I like to identify myself as a data scientist and a tech enthus
 
 My name is Michael Ranasinghe. I did my bachelor's in biomedical engineering, and for about the past 2 years have worked as a programmer at Mass Gen. I'm pretty familiar in C++, Python, and MATLAB (it would be a cardinal sin to be unfamiliar with the language, since it is heavily used in the biomedical community). I have a golden retriever, whose name is Henry :). In my free time, I enjoy to run and develop new apps!
 
+### Ananya Sharma
+
+I am Ananya Sharma, this is my second year of MS in Computer Science with concentration in Data Analytics. I was previously working as a Product Specialist at S&P Global before joining school full-time. I love working/learning Machine Learning concepts. I am looking forward on building an application and I think this experience will provide us with the exposure to real-world software engineering process.# CS673F20T1
