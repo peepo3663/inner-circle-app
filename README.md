@@ -6,8 +6,8 @@ Social and relationship have never been overemphasized. The Internet is supposed
 
 ### Code Style
 
-Implementation Kotiln base on standards by [JetBrain Kotlin Code Standard](https://kotlinlang.org/docs/reference/coding-conventions.html)
-Implementation Java base on standards by [Oracle](https://www.oracle.com/java/technologies/javase/codeconventions-contents.html)
+- Implementation Kotiln base on standards by [JetBrain Kotlin Code Standard](https://kotlinlang.org/docs/reference/coding-conventions.html)
+- Implementation Java base on standards by [Oracle](https://www.oracle.com/java/technologies/javase/codeconventions-contents.html)
 
 ### Feature
 
