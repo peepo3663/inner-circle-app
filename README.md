@@ -2,7 +2,7 @@
 
 ### Project Description
 
-Social and relationship have never been overemphasized. The Internet is supposed to increase social interaction and strengthen social connections. Unexpectedly, it greatly weakens the ability of interpersonal communication in real life. We have lost the confidence to build a loving relationship. Although the existing social media is designed to help individuals build open and diverse relationships, we still feel lonely, and we still long for intimacy, privacy, and communication in an inner circle. Who didn’t refuse the Facebook invitation from parents? Who doesn't have some ideas which they only want to share with their close friends? This app is intended to help improve the bridge between  The intended audience for this system is catered to high school students, university students, and young professionals.
+Social and relationship have never been overemphasized. The Internet is supposed to increase social interaction and strengthen connections. Unexpectedly, it greatly weakens the ability of our interpersonal communication in real life. We have lost the confidence to build a loving relationship and lost the incentive to connect with individuals and nature.   Although the existing social media is designed to help individuals building open and diverse relationships, we still feel lonely, and we still long for intimacy, privacy, and communication with our inner circles such as our close friends and loved ones.
 
 ### Code Style
 
