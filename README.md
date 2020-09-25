@@ -37,5 +37,6 @@ Social and relationship have never been overemphasized. The Internet is supposed
 - Google API (Login): Authentication for application with Google Account.
 
 ### Setup and running
+*It is coming in later iterations*
 
 #### Here is the team introduction [team 1 members](https://github.com/BUMETCS673/CS673F20T1/blob/master/team1.md)
