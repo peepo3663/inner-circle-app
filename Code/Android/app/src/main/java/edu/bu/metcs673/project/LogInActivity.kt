@@ -117,7 +117,7 @@ class LogInActivity : AppCompatActivity() {
         )
         if (isFirstTime) {
             userToAdd["createdAt"] = FieldValue.serverTimestamp()
-            userToAdd["profile_picture"] to user.photoUrl?.toString()
+            userToAdd["profile_picture"] = if (user.photoUrl != null) user.photoUrl.toString() else ""
         }
         userDocumentRef.document(user.uid).set(userToAdd).addOnSuccessListener {
         }.addOnFailureListener {
