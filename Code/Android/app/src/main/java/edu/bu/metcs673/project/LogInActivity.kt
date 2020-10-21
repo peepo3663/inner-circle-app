@@ -28,8 +28,6 @@ class LogInActivity : AppCompatActivity() {
         private const val TAG = "LogInActivity"
     }
 
-    lateinit var gso: GoogleSignInOptions
-
     lateinit var signIn: SignInButton
 
     lateinit var googleSignInClient: GoogleSignInClient
@@ -50,7 +48,7 @@ class LogInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_log_in)
 
         // Configure Google Sign In
-        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
@@ -84,14 +82,15 @@ class LogInActivity : AppCompatActivity() {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)?.let { account ->
-                    Log.d("TAG", "firebaseAuthWithGoogle:" + account.id)
+                task.addOnSuccessListener {account ->
+                    Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
                     firebaseAuthWithGoogle(account.idToken!!)
+                }.addOnFailureListener {
+                    Log.e(TAG, "failed to sign in", it)
                 }
-
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
-                Log.e("TAG", "Google sign in failed", e)
+                Log.e(TAG, "Google sign in failed", e)
             }
         }
     }
