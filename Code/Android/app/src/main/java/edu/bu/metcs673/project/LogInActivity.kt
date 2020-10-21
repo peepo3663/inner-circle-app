@@ -19,7 +19,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 // import com.google.firebase.auth.ktx.auth
 //import com.google.firebase.ktx.Firebase
 
-class LogIn : AppCompatActivity() {
+class LogInActivity : AppCompatActivity() {
 
 
     // Global Variable Namespace

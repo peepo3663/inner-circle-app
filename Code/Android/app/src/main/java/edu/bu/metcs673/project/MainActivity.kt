@@ -17,11 +17,11 @@ import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
-    // Global Variable Namespace
-    // ********************************
+    private companion object {
+        private const val TAG = "MainActivity"
+    }
 
     lateinit var googleSignInClient: GoogleSignInClient
-
     lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.SignOut, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
             )
         )
 
@@ -43,11 +43,6 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         auth = FirebaseAuth.getInstance()
-    }
-
-    private companion object {
-        private const val TAG = "MainActivity"
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -63,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             auth.signOut()
 
             //Navigate Back to Sign In Screen
-            val logoutIntent = Intent(this, LogIn::class.java)
+            val logoutIntent = Intent(this, LogInActivity::class.java)
             logoutIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(logoutIntent)
 
