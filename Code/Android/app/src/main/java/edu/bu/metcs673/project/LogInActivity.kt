@@ -15,15 +15,18 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 // import com.google.firebase.auth.ktx.auth
 //import com.google.firebase.ktx.Firebase
 
 class LogInActivity : AppCompatActivity() {
 
-
-    // Global Variable Namespace
-    // ********************************
+    companion object {
+        private const val TAG = "LogInActivity"
+    }
 
     lateinit var gso: GoogleSignInOptions
 
@@ -38,6 +41,8 @@ class LogInActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
 
     lateinit var mAuthListener: FirebaseAuth.AuthStateListener
+
+    val userDocumentRef = Firebase.firestore.collection("users")
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -56,9 +61,12 @@ class LogInActivity : AppCompatActivity() {
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
-
         signIn.setOnClickListener { signIn() }
 
+        if (auth.currentUser != null) {
+            updateUI(auth.currentUser, false)
+            return
+        }
     }
 
     private fun signIn() {
@@ -88,14 +96,34 @@ class LogInActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUI(user: FirebaseUser?) {
+    private fun updateUI(user: FirebaseUser?, isFirstTime: Boolean) {
         if (user == null) {
             Log.e("TAG", "User not signed in.")
             return
         }
+        updateUserDataToFirestore(user, isFirstTime)
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         //finish()
+    }
+
+    private fun updateUserDataToFirestore(user: FirebaseUser?, isFirstTime: Boolean = false) {
+        if (user == null || user.displayName == null) {
+            return
+        }
+        val userToAdd = hashMapOf(
+            "name" to user.displayName,
+            "email" to user.email,
+            "updatedAt" to FieldValue.serverTimestamp()
+        )
+        if (isFirstTime) {
+            userToAdd["createdAt"] = FieldValue.serverTimestamp()
+            userToAdd["profile_picture"] to user.photoUrl?.toString()
+        }
+        userDocumentRef.document(user.uid).set(userToAdd).addOnSuccessListener {
+        }.addOnFailureListener {
+            Log.e(TAG, "can not add this user", it)
+        }
     }
 
 
@@ -107,11 +135,11 @@ class LogInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("TAG", "signInWithCredential:success")
                     val user = auth.currentUser
-                    updateUI(user)
+                    updateUI(user, true)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("TAG", "signInWithCredential:failure", task.exception)
-                    updateUI(null)
+                    updateUI(null, false)
                 }
             }
     }

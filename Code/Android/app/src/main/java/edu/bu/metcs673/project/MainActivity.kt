@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_chat, R.id.navigation_notifications
             )
         )
 
@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity() {
             val logoutIntent = Intent(this, LogInActivity::class.java)
             logoutIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(logoutIntent)
-
         }
         return super.onOptionsItemSelected(item)
     }

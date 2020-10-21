@@ -13,6 +13,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -60,7 +61,7 @@ dependencies {
 
     // Declare the dependency for the Cloud Firestore library
     // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation "com.google.firebase:firebase-firestore-ktx$rootProject.ext.firebaseFirestoreVersion"
+    implementation "com.google.firebase:firebase-firestore-ktx:$rootProject.ext.firebaseFirestoreVersion"
 
     // Also declare the dependency for the Google Play services library and specify its version
     implementation "com.google.android.gms:play-services-auth:$rootProject.ext.firebaseAuthVersion"

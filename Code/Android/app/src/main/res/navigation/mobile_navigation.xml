@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_chat"
         android:name="edu.bu.metcs673.project.ui.chat.ChatFragment"
         android:label="@string/title_messages"
         tools:layout="@layout/fragment_chat" />
