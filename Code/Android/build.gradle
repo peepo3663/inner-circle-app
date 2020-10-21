@@ -9,7 +9,6 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:4.3.4'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -29,6 +28,8 @@ ext {
     buildToolsVersion = "30.0.2"
     minSdkVersion = 19
     targetSdkVersion = 30
+    firebaseCoreVersion = "17.5.1"
+    firebaseAuthVersion = "18.1.0"
 }
 
 task clean(type: Delete) {
