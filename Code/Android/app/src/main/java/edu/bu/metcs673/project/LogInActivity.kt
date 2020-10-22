@@ -20,6 +20,9 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 
 // import com.google.firebase.auth.ktx.auth
 //import com.google.firebase.ktx.Firebase
@@ -45,9 +48,10 @@ class LogInActivity : AppCompatActivity() {
     val userDocumentRef = Firebase.firestore.collection("users")
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
+
+        AppCenter.start(application, "b9dec75a-1701-4887-aa32-fde1d91eb744", Analytics::class.java, Crashes::class.java)
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

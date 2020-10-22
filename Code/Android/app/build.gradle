@@ -7,11 +7,23 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
+    signingConfigs {
+        releaseSigningConfig {
+            storeFile rootProject.file("app/inner_circle.jks")
+            storePassword System.getenv("APPCENTER_KEYSTORE_PASSWORD")
+            //storePassword "123451"
+            keyAlias System.getenv("APPCENTER_KEY_ALIAS")
+            // keyAlias "inner_circle"
+            keyPassword System.getenv("APPCENTER_KEY_PASSWORD")
+            // keyPassword "123451"
+        }
+    }
+
     defaultConfig {
         applicationId "edu.bu.metcs673.project"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        versionCode 2
         versionName "1.0"
         multiDexEnabled true
 
@@ -20,10 +32,13 @@ android {
 
     buildTypes {
         release {
+            debuggable false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseSigningConfig
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -66,7 +81,9 @@ dependencies {
     // Also declare the dependency for the Google Play services library and specify its version
     implementation "com.google.android.gms:play-services-auth:$rootProject.ext.firebaseAuthVersion"
 
-    implementation "com.github.bumptech.glide:glide:$glideVersion"
-    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glideVersion"
 
+    implementation "com.microsoft.appcenter:appcenter-analytics:$rootProject.ext.appCenterSdkVersion"
+    implementation "com.microsoft.appcenter:appcenter-crashes:$rootProject.ext.appCenterSdkVersion"
 }
