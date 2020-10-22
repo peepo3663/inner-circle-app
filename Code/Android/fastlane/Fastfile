@@ -21,6 +21,18 @@ platform :android do
     gradle(task: "test")
   end
 
+  desc "Build and complie the application"
+  lane :compile_app do |options|
+    should_clean = options.fetch(:clean, false)
+    if should_clean
+      command_task = "clean"
+    else
+      command_task = ""
+    end
+    command_task += " build"
+    gradle(task: command_task.strip)
+  end
+
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
     gradle(task: "clean assembleRelease")
