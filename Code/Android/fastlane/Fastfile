@@ -29,13 +29,13 @@ platform :android do
     else
       command_task = ""
     end
-    command_task += " build"
+    command_task += " assembleDebug"
     gradle(task: command_task.strip)
   end
 
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
-    gradle(task: "clean assembleRelease")
+    build_release_apk
     appcenter_upload(api_token: "#{ENV['APP_CENTER_API_TOKEN']}", 
     owner_name: "#{ENV['APP_CENTER_ACCOUNT_NAME']}",
     app_name: "Inner-Circle",
@@ -48,7 +48,10 @@ platform :android do
 
   desc "Deploy a new version to the Google Play"
   lane :deploy do
-    gradle(task: "clean assembleRelease")
     upload_to_play_store
+  end
+
+  lane :build_release_apk do
+    gradle(task: "clean assembleRelease")
   end
 end
