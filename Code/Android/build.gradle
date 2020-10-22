@@ -31,6 +31,7 @@ ext {
     firebaseCoreVersion = "17.5.1"
     firebaseAuthVersion = "18.1.0"
     firebaseFirestoreVersion = "21.7.1"
+    glideVersion = "4.11.0"
 }
 
 task clean(type: Delete) {

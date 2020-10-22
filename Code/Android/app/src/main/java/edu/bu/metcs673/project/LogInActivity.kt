@@ -12,10 +12,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -113,13 +115,13 @@ class LogInActivity : AppCompatActivity() {
         val userToAdd = hashMapOf(
             "name" to user.displayName,
             "email" to user.email,
-            "updatedAt" to FieldValue.serverTimestamp()
+            "updatedAt" to Timestamp.now()
         )
         if (isFirstTime) {
-            userToAdd["createdAt"] = FieldValue.serverTimestamp()
+            userToAdd["createdAt"] = Timestamp.now()
             userToAdd["profile_picture"] = if (user.photoUrl != null) user.photoUrl.toString() else ""
         }
-        userDocumentRef.document(user.uid).set(userToAdd).addOnSuccessListener {
+        userDocumentRef.document(user.uid).set(userToAdd, SetOptions.merge()).addOnSuccessListener {
         }.addOnFailureListener {
             Log.e(TAG, "can not add this user", it)
         }

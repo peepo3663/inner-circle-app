@@ -13,14 +13,19 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.tasks.Tasks
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
 
-    private companion object {
+    companion object {
         private const val TAG = "MainActivity"
+        var currentUser: DocumentSnapshot? = null
     }
 
     lateinit var googleSignInClient: GoogleSignInClient
@@ -53,6 +58,12 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         auth = FirebaseAuth.getInstance()
+        val userId = auth.uid
+        userId?.let { userId ->
+            Firebase.firestore.collection("users").document(userId).get().addOnSuccessListener {
+                currentUser = it
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
