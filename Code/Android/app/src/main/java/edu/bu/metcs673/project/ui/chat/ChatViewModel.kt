@@ -25,6 +25,7 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
     private var currentChatId: String? = null
 
     private var snapshotListener: ListenerRegistration? = null
+    private var messageListener: ListenerRegistration? = null
     private val messagesList = mutableListOf<MessageModel>()
 
     init {
@@ -37,7 +38,7 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
             if (querySnapshot != null && !querySnapshot.isEmpty) {
                 for (document in querySnapshot.documents) {
                     currentChatId = document.id
-                    document.reference.collection("messages").orderBy("createdAt").addSnapshotListener { messages, _ ->
+                    messageListener = document.reference.collection("messages").orderBy("createdAt").addSnapshotListener { messages, _ ->
                         messagesList.clear()
                         if (messages != null && !messages.isEmpty) {
                             for (message in messages.documents) {
@@ -63,5 +64,10 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
         if (currentChatId == null) return
         val messageInChat = hashMapOf("text" to userMessage.text, "profile_picture" to userMessage.profile_picture, "userId" to userMessage.userId, "createdAt" to FieldValue.serverTimestamp())
         chatsRef.document(currentChatId!!).collection("messages").add(messageInChat)
+    }
+
+    fun unobserve() {
+        snapshotListener?.remove()
+        messageListener?.remove()
     }
 }
