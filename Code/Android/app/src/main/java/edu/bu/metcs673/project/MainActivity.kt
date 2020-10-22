@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         val userId = auth.uid
-        userId?.let { userId ->
-            Firebase.firestore.collection("users").document(userId).get().addOnSuccessListener {
+        userId?.let { currentUserId ->
+            Firebase.firestore.collection("users").document(currentUserId).get().addOnSuccessListener {
                 currentUser = User(it)
             }
         }
