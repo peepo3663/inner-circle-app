@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Inner Circle</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Feed</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_messages">Messages</string>
     <string name="title_notifications">Notifications</string>
+    <string name="chat_hint">Enter message</string>
+    <string name="chat_send_button">SEND</string>
 </resources>

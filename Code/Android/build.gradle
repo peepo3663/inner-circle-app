@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.1"
+        classpath 'com.android.tools.build:gradle:4.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -28,6 +28,10 @@ ext {
     buildToolsVersion = "30.0.2"
     minSdkVersion = 19
     targetSdkVersion = 30
+    firebaseCoreVersion = "17.5.1"
+    firebaseAuthVersion = "18.1.0"
+    firebaseFirestoreVersion = "21.7.1"
+    glideVersion = "4.11.0"
 }
 
 task clean(type: Delete) {
