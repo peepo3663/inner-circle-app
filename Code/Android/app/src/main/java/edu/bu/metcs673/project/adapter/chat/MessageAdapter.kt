@@ -1,6 +1,5 @@
 package edu.bu.metcs673.project.adapter.chat
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +10,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-public class MessageAdapter : RecyclerView.Adapter<MessageViewHolder>() {
+class MessageAdapter : RecyclerView.Adapter<MessageViewHolder>() {
 
     private var responseMessages: List<MessageModel> = ArrayList()
 

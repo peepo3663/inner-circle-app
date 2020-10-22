@@ -19,13 +19,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import edu.bu.metcs673.project.model.user.User
 
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "MainActivity"
-        var currentUser: DocumentSnapshot? = null
+        lateinit var currentUser: User
     }
 
     lateinit var googleSignInClient: GoogleSignInClient
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         val userId = auth.uid
         userId?.let { userId ->
             Firebase.firestore.collection("users").document(userId).get().addOnSuccessListener {
-                currentUser = it
+                currentUser = User(it)
             }
         }
     }

@@ -16,6 +16,7 @@ import edu.bu.metcs673.project.MainActivity
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.adapter.chat.MessageAdapter
 import edu.bu.metcs673.project.model.chat.MessageModel
+import java.net.URL
 
 class ChatFragment : Fragment() {
     companion object {
@@ -27,7 +28,7 @@ class ChatFragment : Fragment() {
     private lateinit var viewModel: ChatViewModel
 
     private val userId = FirebaseAuth.getInstance().currentUser?.uid
-
+    
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,15 +50,15 @@ class ChatFragment : Fragment() {
         val sendButton = view.findViewById<Button>(R.id.button_chatbox_send)
         val userInput = view.findViewById<EditText>(R.id.user_text_chatbox)
         sendButton.setOnClickListener {
-            sendMessage(userInput.text.toString(), viewModel, userId as String, MainActivity.currentUser?.data?.get("profile_picture") as String, userInput)
+            sendMessage(userInput.text.toString(), viewModel, userId as String, MainActivity.currentUser.profilePicture, userInput)
         }
 
         return view
     }
 
-    private fun sendMessage(text: String, viewModel: ChatViewModel, userId: String, profilePicture: String, userInput: EditText) {
+    private fun sendMessage(text: String, viewModel: ChatViewModel, userId: String, profilePicture: URL?, userInput: EditText) {
         // generate the user message
-        val userMessage = MessageModel(text, true, userId, profilePicture)
+        val userMessage = MessageModel(text, true, userId, profilePicture?.toString())
         viewModel.insert(userMessage)
         // notify observers data has changed
         mMessageAdapter.notifyDataSetChanged()
