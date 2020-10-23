@@ -1,11 +1,14 @@
 package edu.bu.metcs673.project.ui.chat
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -17,6 +20,7 @@ import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.adapter.chat.MessageAdapter
 import edu.bu.metcs673.project.model.chat.MessageModel
 import java.net.URL
+import kotlin.math.max
 
 class ChatFragment : Fragment() {
     companion object {
@@ -43,9 +47,15 @@ class ChatFragment : Fragment() {
         viewModel.getAllMessages()?.observe(this, Observer {
             mMessageAdapter.setMessages(it)
             mMessageAdapter.notifyDataSetChanged()
+            recyclerView.scrollToPosition(max(it.size - 1, 0))
         })
         recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         recyclerView.adapter = mMessageAdapter
+        recyclerView.setOnTouchListener { view, event ->
+            val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+            inputManager?.hideSoftInputFromWindow(view.windowToken, 0)
+            false
+        }
 
         val sendButton = view.findViewById<Button>(R.id.button_chatbox_send)
         val userInput = view.findViewById<EditText>(R.id.user_text_chatbox)
@@ -56,6 +66,11 @@ class ChatFragment : Fragment() {
         return view
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        // viewModel.unobserve()
+    }
+
     private fun sendMessage(text: String, viewModel: ChatViewModel, userId: String, profilePicture: URL?, userInput: EditText) {
         // generate the user message
         val userMessage = MessageModel(text, true, userId, profilePicture?.toString())
@@ -64,7 +79,7 @@ class ChatFragment : Fragment() {
         mMessageAdapter.notifyDataSetChanged()
         // add scrollable effect
         if (!isTextVisible()) {
-            recyclerView.smoothScrollToPosition(mMessageAdapter.itemCount - 1)
+            recyclerView.smoothScrollToPosition(max(0, mMessageAdapter.itemCount - 1))
         }
         // clear the user input
         userInput.setText("")
