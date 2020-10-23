@@ -37,6 +37,28 @@ Social and relationship have never been overemphasized. The Internet is supposed
 - Google API (Login): Authentication for application with Google Account.
 
 ### Setup and running
-*It is coming in later iterations*
+#### Running and Building Android Application
+1. Install [Android Studio](https://developer.android.com/studio) and All SDKs.
+2. Clone this repo.
+3. run 
+```sh
+./gradlew build
+```
+
+#### Distribute the APKs for the application
+1. Install [bundler](https://bundler.io/) and [fastlane](https://fastlane.tools/) build tools.
+2. install all bundler dependencies by execute the command.
+```sh
+bundle install
+```
+3. to create debuggable APK, run this command.
+```sh
+bundle exec fastlane compile_app
+```
+4. to create signed apk, run this command
+```sh
+bundle exec fastlane build_release_apk
+```
+5. install to your device, you need `adb` which is bundled in Android SDK platform or [download here](https://developer.android.com/studio)
 
 #### Here is the team introduction [team 1 members](https://github.com/BUMETCS673/CS673F20T1/blob/master/team1.md)

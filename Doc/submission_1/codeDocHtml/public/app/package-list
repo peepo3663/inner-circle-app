@@ -1,0 +1,12 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+
+edu.bu.metcs673.project
+edu.bu.metcs673.project.adapter.chat
+edu.bu.metcs673.project.model.chat
+edu.bu.metcs673.project.model.user
+edu.bu.metcs673.project.ui.chat
+edu.bu.metcs673.project.ui.dashboard
+edu.bu.metcs673.project.ui.home
+edu.bu.metcs673.project.ui.notifications
+
