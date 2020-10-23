@@ -1,0 +1,502 @@
+ID,Type,Message,Performed By,Occurred At
+175402807,pull_request_update_activity,"Wasupol Tungsakultong updated pull request: ""BUMETCS673/CS673F20T1 PR 20""",Wasupol Tungsakultong,2020-10-22T19:17:18Z
+175402807,story_update_activity,Wasupol Tungsakultong accepted this chore,Wasupol Tungsakultong,2020-10-22T18:35:12Z
+175402807,story_update_activity,Wasupol Tungsakultong started this chore,Wasupol Tungsakultong,2020-10-22T18:35:04Z
+175402807,story_create_activity,Wasupol Tungsakultong added this chore,Wasupol Tungsakultong,2020-10-22T18:35:03Z
+22706514,label_create_activity,"Wasupol Tungsakultong created labels: ""ci"", ""cd"", ""fastlane"", ""devops""",Wasupol Tungsakultong,2020-10-22T18:35:02Z
+22706515,label_create_activity,"Wasupol Tungsakultong created labels: ""ci"", ""cd"", ""fastlane"", ""devops""",Wasupol Tungsakultong,2020-10-22T18:35:02Z
+22706516,label_create_activity,"Wasupol Tungsakultong created labels: ""ci"", ""cd"", ""fastlane"", ""devops""",Wasupol Tungsakultong,2020-10-22T18:35:02Z
+22706517,label_create_activity,"Wasupol Tungsakultong created labels: ""ci"", ""cd"", ""fastlane"", ""devops""",Wasupol Tungsakultong,2020-10-22T18:35:02Z
+175214282,story_update_activity,Wasupol Tungsakultong started this feature,Wasupol Tungsakultong,2020-10-22T18:23:15Z
+175087233,story_update_activity,Wasupol Tungsakultong started this feature,Wasupol Tungsakultong,2020-10-22T18:23:14Z
+175110035,task_update_activity,"Wasupol Tungsakultong completed task: ""Implement backend logic to handle message request from the Android application - 4hr""",Wasupol Tungsakultong,2020-10-22T18:23:07Z
+175110035,task_update_activity,"Wasupol Tungsakultong completed task: ""Implement core logic of sending, receiving messages (Both in Android and Backend) - 5hr""",Wasupol Tungsakultong,2020-10-22T18:23:04Z
+175110035,task_update_activity,"Wasupol Tungsakultong completed task: ""Design data schema for supporting chat room, messages, user's profile picture - 6hr""",Wasupol Tungsakultong,2020-10-22T18:23:01Z
+175110035,task_update_activity,"Wasupol Tungsakultong uncompleted task: ""Implement a new chat button - 1hr""",Wasupol Tungsakultong,2020-10-22T18:22:57Z
+175110035,task_update_activity,"Wasupol Tungsakultong completed task: ""Implement a new chat button - 1hr""",Wasupol Tungsakultong,2020-10-22T18:22:56Z
+175110035,review_update_activity,"Wasupol Tungsakultong updated a ""Code"" review",Wasupol Tungsakultong,2020-10-22T18:22:53Z
+175110035,review_update_activity,"Wasupol Tungsakultong updated a ""Code"" review",Wasupol Tungsakultong,2020-10-22T18:22:49Z
+175110035,review_create_activity,Wasupol Tungsakultong created a review: Code,Wasupol Tungsakultong,2020-10-22T18:22:43Z
+175214302,story_update_activity,Wasupol Tungsakultong started this feature,Wasupol Tungsakultong,2020-10-22T18:22:36Z
+175110035,story_update_activity,Wasupol Tungsakultong started this feature,Wasupol Tungsakultong,2020-10-22T18:22:25Z
+2465407,project_update_activity,"Wasupol Tungsakultong updated the settings for ""CS673F20T1""",Wasupol Tungsakultong,2020-10-22T18:22:07Z
+174871989,task_update_activity,"Wasupol Tungsakultong completed task: ""Implement Login logic for android application - 5hr - Wasupol""",Wasupol Tungsakultong,2020-10-22T18:21:26Z
+174871989,task_update_activity,"Wasupol Tungsakultong completed task: ""Design data schema for storing user information - 4hr - Peter, Ananya""",Wasupol Tungsakultong,2020-10-22T18:21:25Z
+174871989,review_update_activity,"Wasupol Tungsakultong updated a ""Code"" review",Wasupol Tungsakultong,2020-10-22T18:20:30Z
+174871989,comment_create_activity,"Wasupol Tungsakultong added comment: ""**Code** review set to **pass**""",Wasupol Tungsakultong,2020-10-22T18:20:30Z
+174871989,story_update_activity,Wasupol Tungsakultong finished this feature,Wasupol Tungsakultong,2020-10-22T18:20:23Z
+174871989,review_update_activity,"Wasupol Tungsakultong updated a ""Code"" review",Wasupol Tungsakultong,2020-10-22T18:20:22Z
+174871989,comment_create_activity,"Wasupol Tungsakultong added comment: ""**Code** review set to **pass**""",Wasupol Tungsakultong,2020-10-22T18:20:22Z
+174871989,story_update_activity,Wasupol Tungsakultong started this feature,Wasupol Tungsakultong,2020-10-22T18:20:05Z
+174871989,story_move_activity,Wasupol Tungsakultong moved this story before 'Add/Edit Profile Picture (only from photo library)',Wasupol Tungsakultong,2020-10-22T18:19:52Z
+174871989,task_update_activity,"Michael Ranasinghe completed task: ""Learn about Google Login API - 2 hr""",Michael Ranasinghe,2020-10-22T18:08:58Z
+174871989,task_update_activity,"Michael Ranasinghe completed task: ""Setup Google API for login - 2hr - Michael""",Michael Ranasinghe,2020-10-22T18:08:56Z
+174871989,task_update_activity,"Michael Ranasinghe uncompleted task: ""Implement Login logic for android application - 5hr - Wasupol""",Michael Ranasinghe,2020-10-22T18:08:51Z
+174871989,task_update_activity,"Michael Ranasinghe uncompleted task: ""Design data schema for storing user information - 4hr - Peter, Ananya""",Michael Ranasinghe,2020-10-22T18:08:49Z
+174871989,task_update_activity,"Michael Ranasinghe completed task: ""Design data schema for storing user information - 4hr - Peter, Ananya""",Michael Ranasinghe,2020-10-22T18:08:38Z
+174871989,task_update_activity,"Michael Ranasinghe completed task: ""Implement Login logic for android application - 5hr - Wasupol""",Michael Ranasinghe,2020-10-22T18:08:34Z
+174871989,task_update_activity,"Michael Ranasinghe completed task: ""Implement backend logic for handling token from Google API - 3hr""",Michael Ranasinghe,2020-10-22T18:08:33Z
+175087233,story_move_activity,Michael Ranasinghe moved and scheduled this story before 'Starting a new chat with a friend (one-to-one chat room) only text message.',Michael Ranasinghe,2020-10-22T03:43:44Z
+175214282,story_move_activity,Michael Ranasinghe moved and scheduled this story before 'Authorization (Login)',Michael Ranasinghe,2020-10-22T03:43:32Z
+174871989,story_move_activity,"Michael Ranasinghe moved and scheduled this story before 'Friend chats to you, you receive notification. '",Michael Ranasinghe,2020-10-22T03:43:23Z
+175110035,story_move_activity,"Michael Ranasinghe moved and scheduled this story before 'Friend chats to you, you receive notification. '",Michael Ranasinghe,2020-10-22T03:43:05Z
+175214302,story_move_activity,Michael Ranasinghe moved and scheduled this story before 'Screen sharing',Michael Ranasinghe,2020-10-22T03:42:42Z
+175214302,story_move_activity,Michael Ranasinghe moved this story before 'Follow and unfollow other users',Michael Ranasinghe,2020-10-22T03:40:30Z
+175087233,story_move_activity,Michael Ranasinghe moved this story before 'User Generated Content (Feeds and Stories)',Michael Ranasinghe,2020-10-22T03:40:28Z
+175214282,story_move_activity,Michael Ranasinghe moved this story before 'User Generated Content (Feeds and Stories)',Michael Ranasinghe,2020-10-22T03:40:25Z
+174871989,story_move_activity,Michael Ranasinghe moved this story before 'Starting a new chat with a friend (one-to-one chat room) only text message.',Michael Ranasinghe,2020-10-22T03:40:22Z
+175110035,story_move_activity,Michael Ranasinghe moved this story before 'SMS Authorization',Michael Ranasinghe,2020-10-22T03:40:09Z
+175110035,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-13T02:14:10Z
+175214282,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-13T02:10:31Z
+175214282,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-13T01:22:22Z
+175214282,comment_create_activity,"lakep1 added comment: ""**Given**: that the user has accessed an interface to invite invite or a friend
+**When**: the user enters an invalid email address
+**Then**:  the inner circle UI will display a message announcing that the email is invalid.""",lakep1,2020-10-13T01:22:06Z
+175214282,comment_create_activity,"lakep1 added comment: ""**Given**: that the user has accessed an interface to invite (no user account with that email exists) or add (user account exists) a friend
+**When**: the user enters a valid email address
+**Then**: an email invitation will be sent to invitee and the inner circle UI will display a message confirming the successful invitation.""",lakep1,2020-10-13T01:20:10Z
+175214282,story_update_activity,lakep1 edited this feature,lakep1,2020-10-11T22:28:07Z
+175087184,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-11T21:42:12Z
+175087184,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-11T21:27:13Z
+175087184,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-11T21:26:45Z
+175087184,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-11T21:21:27Z
+175086277,comment_create_activity,"lakep1 added comment: ""**Given** : that a user (user1) has chosen to unfriend another user (user2)
+**When**: when the user2  attempts to send a friend request to user1
+**Then**: a message will display notifying user2 that their request has been blocked and the request will not be sent to user1. """,lakep1,2020-10-11T21:13:28Z
+2465407,project_update_activity,"Wasupol Tungsakultong updated the settings for ""CS673F20T1""",Wasupol Tungsakultong,2020-10-10T03:43:20Z
+175214302,task_create_activity,"Wasupol Tungsakultong added task: ""Implement logic in the backend to sending notification to Android - 3hr""",Wasupol Tungsakultong,2020-10-10T03:40:46Z
+175214302,story_update_activity,Wasupol Tungsakultong estimated this feature as 2 points,Wasupol Tungsakultong,2020-10-10T03:40:15Z
+175214282,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-10T03:38:22Z
+175214282,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-10T03:35:47Z
+175214282,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement email transferring from the backend to friends' email (POP3 protocol) - 3hr""",Wasupol Tungsakultong,2020-10-10T03:35:37Z
+175214282,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement the logic in application to request email post from the backend - 3hr""",Wasupol Tungsakultong,2020-10-10T03:35:27Z
+175214282,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Design the UI for failed sending the invitation email - 1hr""",Wasupol Tungsakultong,2020-10-10T03:35:20Z
+175214282,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Design the UI for successfully send the invitation email - 1hr""",Wasupol Tungsakultong,2020-10-10T03:35:16Z
+175214282,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Design a page from invite friends with link and email - 2hr""",Wasupol Tungsakultong,2020-10-10T03:35:14Z
+175214282,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-10T03:35:04Z
+22680026,label_create_activity,"Wasupol Tungsakultong created labels: ""user invitation""",Wasupol Tungsakultong,2020-10-10T03:35:03Z
+175214282,task_update_activity,"Wasupol Tungsakultong moved task: ""Design the UI for failed sending the invitation email - 1hr""",Wasupol Tungsakultong,2020-10-10T03:34:27Z
+175214282,task_update_activity,"Wasupol Tungsakultong moved task: ""Design the UI for successfully send the invitation email - 1hr""",Wasupol Tungsakultong,2020-10-10T03:34:24Z
+175214282,task_create_activity,"Wasupol Tungsakultong added task: ""Design the UI for failed sending the invitation email - 1hr""",Wasupol Tungsakultong,2020-10-10T03:34:21Z
+175214282,task_create_activity,"Wasupol Tungsakultong added task: ""Design the UI for successfully send the invitation email - 1hr""",Wasupol Tungsakultong,2020-10-10T03:34:05Z
+175214282,task_create_activity,"Wasupol Tungsakultong added task: ""Implement email transferring from the backend to friends' email (POP3 protocol) - 3hr""",Wasupol Tungsakultong,2020-10-10T03:33:48Z
+175214282,task_create_activity,"Wasupol Tungsakultong added task: ""Implement the logic in application to request email post from the backend - 3hr""",Wasupol Tungsakultong,2020-10-10T03:33:06Z
+175214282,task_create_activity,"Wasupol Tungsakultong added task: ""Design a page from invite friends with link and email - 2hr""",Wasupol Tungsakultong,2020-10-10T03:32:36Z
+175214282,story_update_activity,Wasupol Tungsakultong estimated this feature as 2 points,Wasupol Tungsakultong,2020-10-10T03:32:13Z
+175110035,story_move_activity,Wasupol Tungsakultong moved this story before 'Authorization (Login)',Wasupol Tungsakultong,2020-10-10T03:32:02Z
+175087233,story_move_activity,Wasupol Tungsakultong moved this story before 'Starting a new chat with a friend (one-to-one chat room) only text message.',Wasupol Tungsakultong,2020-10-10T03:32:00Z
+175087233,story_move_activity,"Wasupol Tungsakultong moved this story before 'Friend chats to you, you receive notification. '",Wasupol Tungsakultong,2020-10-10T03:31:56Z
+175110035,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-10T03:31:35Z
+22680025,label_create_activity,"Wasupol Tungsakultong created labels: ""chat""",Wasupol Tungsakultong,2020-10-10T03:31:35Z
+175110035,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement backend logic to handle message request from the Android application - 4hr""",Wasupol Tungsakultong,2020-10-10T03:31:25Z
+175110035,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement errors handling when the connection drop - 3hr""",Wasupol Tungsakultong,2020-10-10T03:31:01Z
+175110035,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement errors handling when the messages fail - 3hr""",Wasupol Tungsakultong,2020-10-10T03:30:57Z
+175110035,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement backend logic to handle messge request from the Android application - 4hr""",Wasupol Tungsakultong,2020-10-10T03:30:53Z
+175110035,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement core logic of sending, receiving messages (Both in Android and Backend) - 5hr""",Wasupol Tungsakultong,2020-10-10T03:30:46Z
+175110035,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Design data schema for supporting chat room, messages, user's profile picture - 6hr""",Wasupol Tungsakultong,2020-10-10T03:28:25Z
+175110035,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement a confirmation button to start a new chat - 2hr""",Wasupol Tungsakultong,2020-10-10T03:25:34Z
+175110035,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement a  option choose a friend from the contact list - 3hr""",Wasupol Tungsakultong,2020-10-10T03:25:31Z
+175110035,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement a new chat button - 1hr""",Wasupol Tungsakultong,2020-10-10T03:25:27Z
+175110035,task_create_activity,"Wasupol Tungsakultong added task: ""Implement errors handling when the connection drop - 3hr""",Wasupol Tungsakultong,2020-10-10T03:20:26Z
+175110035,task_create_activity,"Wasupol Tungsakultong added task: ""Implement errors handling when the messages fail - 3hr""",Wasupol Tungsakultong,2020-10-10T03:19:44Z
+175110035,task_create_activity,"Wasupol Tungsakultong added task: ""Implement backend logic to handle message request from the Android application - 4hr""",Wasupol Tungsakultong,2020-10-10T03:19:19Z
+175110035,task_create_activity,"Wasupol Tungsakultong added task: ""Implement core logic of sending, receiving messages (Both in Android and Backend) - 5hr""",Wasupol Tungsakultong,2020-10-10T03:18:51Z
+175110035,task_create_activity,"Wasupol Tungsakultong added task: ""Design data schema for supporting chat room, messages, user's profile picture - 6hr""",Wasupol Tungsakultong,2020-10-10T03:18:25Z
+175110035,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-10T03:17:24Z
+175110035,story_update_activity,Wasupol Tungsakultong estimated this feature as 5 points,Wasupol Tungsakultong,2020-10-10T03:17:04Z
+175214302,story_move_activity,Wasupol Tungsakultong moved this story before 'Add/Edit Profile Picture (only from photo library)',Wasupol Tungsakultong,2020-10-10T03:06:25Z
+175214282,story_move_activity,Wasupol Tungsakultong moved this story before 'Starting a new chat with a friend (one-to-one chat room) only text message.',Wasupol Tungsakultong,2020-10-10T03:06:21Z
+175087233,story_move_activity,Wasupol Tungsakultong moved this story before 'Invite/Add friend with friend's email ',Wasupol Tungsakultong,2020-10-10T03:06:16Z
+175110035,story_move_activity,Wasupol Tungsakultong moved this story before 'Invite/Add friend with friend's email ',Wasupol Tungsakultong,2020-10-10T03:06:14Z
+174871989,story_move_activity,Wasupol Tungsakultong moved this story before 'Invite/Add friend with friend's email ',Wasupol Tungsakultong,2020-10-10T03:06:08Z
+175110035,story_move_activity,Wasupol Tungsakultong moved this story before 'Add/Edit Profile Picture (only from photo library)',Wasupol Tungsakultong,2020-10-10T03:06:03Z
+174871989,story_move_activity,Wasupol Tungsakultong moved and scheduled this story before 'Starting a new chat with a friend (one-to-one chat room) only text message.',Wasupol Tungsakultong,2020-10-10T03:05:00Z
+174871989,story_move_activity,Wasupol Tungsakultong moved this story before 'End-to-end message encryption',Wasupol Tungsakultong,2020-10-10T03:04:58Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement image transferring logic between Android and backend - 5hr""",Wasupol Tungsakultong,2020-10-10T03:00:23Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""implement storing image and make new url to the profile - 2hr""",Wasupol Tungsakultong,2020-10-10T02:59:37Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement image chunking in backend - 2hr""",Wasupol Tungsakultong,2020-10-10T02:59:31Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement image transferring logic from Android - 5hr""",Wasupol Tungsakultong,2020-10-10T02:59:11Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement Ok button to confirm changes - 1hr""",Wasupol Tungsakultong,2020-10-10T02:58:51Z
+175087233,task_create_activity,"Wasupol Tungsakultong added task: ""implement storing image and make new url to the profile - 2hr""",Wasupol Tungsakultong,2020-10-10T02:58:29Z
+175087233,task_create_activity,"Wasupol Tungsakultong added task: ""Implement image chunking in backend - 2hr""",Wasupol Tungsakultong,2020-10-10T02:58:13Z
+175087233,task_create_activity,"Wasupol Tungsakultong added task: ""Implement image transferring logic between Android and backend - 5hr""",Wasupol Tungsakultong,2020-10-10T02:58:00Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement Ok button to confirm changes """,Wasupol Tungsakultong,2020-10-10T02:57:16Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement interface to choose a profile picture - 1.5hr""",Wasupol Tungsakultong,2020-10-10T02:56:56Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement remove/change profile picture button - 1hr""",Wasupol Tungsakultong,2020-10-10T02:55:53Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement option to Edit profile picture - 1.5hr""",Wasupol Tungsakultong,2020-10-10T02:55:33Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement option to add a profile picture - 1.5hr""",Wasupol Tungsakultong,2020-10-10T02:55:28Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement remove/change profile picture button """,Wasupol Tungsakultong,2020-10-10T02:54:37Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement option to add a profile picture """,Wasupol Tungsakultong,2020-10-10T02:54:13Z
+175087233,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Design UI for edit profile's picture - 2hr - Raef""",Wasupol Tungsakultong,2020-10-10T02:53:34Z
+175087233,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-10T02:51:44Z
+175087233,task_update_activity,"Wasupol Tungsakultong moved task: ""Design UI for edit profile's picture - 2hr - Raef""",Wasupol Tungsakultong,2020-10-10T02:49:40Z
+175087233,task_create_activity,"Wasupol Tungsakultong added task: ""Design UI for edit profile's picture - 2hr - Raef""",Wasupol Tungsakultong,2020-10-10T02:49:36Z
+175087233,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-10T02:49:21Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Design data schema for storing user information - 4hr - Peter, Ananya""",Wasupol Tungsakultong,2020-10-10T02:45:20Z
+174871989,comment_create_activity,"Wasupol Tungsakultong added comment: ""NOTE:: update this
+1 login successfully, see some detail like a profile picture
+2 if the user refuses login, what will show in the application
+3 if the login fails, what will show in the application """,Wasupol Tungsakultong,2020-10-10T02:44:21Z
+174871989,comment_update_activity,Wasupol Tungsakultong edited this comment,Wasupol Tungsakultong,2020-10-10T02:38:54Z
+174871989,comment_update_activity,Wasupol Tungsakultong edited this comment,Wasupol Tungsakultong,2020-10-10T02:38:48Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Design data schema for storing user information - 4hr - Peter """,Wasupol Tungsakultong,2020-10-10T02:37:52Z
+174871989,task_update_activity,"Wasupol Tungsakultong moved task: ""Design data schema for storing user information - 4hr - Peter, Ananya""",Wasupol Tungsakultong,2020-10-10T02:37:09Z
+174871989,task_create_activity,"Wasupol Tungsakultong added task: ""Design data schema for storing user information - 4hr - Peter, Ananya""",Wasupol Tungsakultong,2020-10-10T02:37:05Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement Login logic for android application - 5hr - Wasupol""",Wasupol Tungsakultong,2020-10-10T02:36:29Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Setup Google API for login - 2hr - Michael""",Wasupol Tungsakultong,2020-10-10T02:36:23Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Design Login/Register application page - 4hr - Raef""",Wasupol Tungsakultong,2020-10-10T02:35:31Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement backend logic for handling token from Google API - 3hr""",Wasupol Tungsakultong,2020-10-10T02:34:01Z
+174871989,task_update_activity,"Wasupol Tungsakultong moved task: ""Implement backend logic for handling token from Google API - 3hr""",Wasupol Tungsakultong,2020-10-10T02:33:53Z
+174871989,task_create_activity,"Wasupol Tungsakultong added task: ""Implement backend logic for handling token from Google API - 3hr""",Wasupol Tungsakultong,2020-10-10T02:33:49Z
+174871989,task_delete_activity,Wasupol Tungsakultong deleted a task on this story,Wasupol Tungsakultong,2020-10-10T02:33:04Z
+174871989,task_update_activity,"Wasupol Tungsakultong moved task: ""Design Login/Register application page - 4hr - Raef""",Wasupol Tungsakultong,2020-10-10T02:32:16Z
+174871989,task_delete_activity,Wasupol Tungsakultong deleted a task on this story,Wasupol Tungsakultong,2020-10-10T02:31:48Z
+174871989,task_update_activity,"Wasupol Tungsakultong completed task: ""Setup Firebase Authorization - 1hr""",Wasupol Tungsakultong,2020-10-10T02:31:26Z
+174871989,task_update_activity,"Wasupol Tungsakultong moved task: ""Learn about Google Login API - 2 hr""",Wasupol Tungsakultong,2020-10-10T02:31:13Z
+174871989,story_update_activity,Wasupol Tungsakultong estimated this feature as 5 points,Wasupol Tungsakultong,2020-10-10T02:30:56Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Learn about Google Login API - 2 hr""",Wasupol Tungsakultong,2020-10-10T02:28:37Z
+174871989,task_create_activity,"Wasupol Tungsakultong added task: ""Learn about Google Login API - 2 hr""",Wasupol Tungsakultong,2020-10-10T02:28:32Z
+175110035,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-10T02:26:14Z
+175214302,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-10T02:25:43Z
+175136449,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-10T02:25:39Z
+22679990,label_create_activity,"Wasupol Tungsakultong created labels: ""notification""",Wasupol Tungsakultong,2020-10-10T02:25:39Z
+175214302,story_move_activity,Wasupol Tungsakultong moved and scheduled this story after 'Starting a new chat with a friend (one-to-one chat room) only text message.',Wasupol Tungsakultong,2020-10-10T02:25:02Z
+175214302,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-10T02:24:42Z
+175214282,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-10T02:16:41Z
+175087376,story_move_activity,Wasupol Tungsakultong moved this story after 'Unfriend User (PL)',Wasupol Tungsakultong,2020-10-10T02:15:03Z
+175214282,story_move_activity,Wasupol Tungsakultong moved and scheduled this story before 'Add friends with QR code',Wasupol Tungsakultong,2020-10-10T02:14:54Z
+175214282,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-10T02:14:47Z
+175086277,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-10T02:03:09Z
+175086277,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-10T02:02:47Z
+175086277,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-10T02:00:11Z
+175086277,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-10T01:55:07Z
+175136492,comment_create_activity,"lakep1 added comment: ""**Given**: the user is viewing their content feed
+**When**: the user navigates through the content on the feed
+**Then**: the content will be displayed in chronological order based on when the followed users shared the content. """,lakep1,2020-10-10T01:42:26Z
+175136492,comment_create_activity,"lakep1 added comment: ""**Given**: the user specifies that they wish to follow another user through a UI for their feed.
+**When**: the user navigates back to their feed
+**Then**: the content in their feed will refresh so that it includes content from the newly followed user""",lakep1,2020-10-10T01:39:43Z
+175136492,review_update_activity,"lakep1 updated a ""Security"" review",lakep1,2020-10-10T01:36:51Z
+175136492,review_create_activity,lakep1 created a review: Security,lakep1,2020-10-10T01:36:32Z
+175136492,review_update_activity,"lakep1 updated a ""Test (QA)"" review",lakep1,2020-10-10T01:36:29Z
+175136492,review_create_activity,lakep1 created a review: Test (QA),lakep1,2020-10-10T01:36:24Z
+175136492,review_update_activity,"lakep1 updated a ""Code"" review",lakep1,2020-10-10T01:36:19Z
+175136492,review_create_activity,lakep1 created a review: Code,lakep1,2020-10-10T01:36:15Z
+175136492,review_update_activity,"lakep1 updated a ""Code"" review",lakep1,2020-10-10T01:36:10Z
+175136492,review_create_activity,lakep1 created a review: Code,lakep1,2020-10-10T01:36:05Z
+175136492,review_update_activity,"lakep1 updated a ""Design"" review",lakep1,2020-10-10T01:36:01Z
+175136492,review_update_activity,"lakep1 updated a ""Design"" review",lakep1,2020-10-10T01:35:40Z
+175136492,review_create_activity,lakep1 created a review: Design,lakep1,2020-10-10T01:35:30Z
+175136492,task_create_activity,"lakep1 added task: ""Design and implement logic to specify the order in which content is displayed on a user's feed - 4hr""",lakep1,2020-10-10T01:35:17Z
+175136492,comment_create_activity,"lakep1 added comment: ""**Given**: the user has not followed another user
+**When**: users who have not been followed share new content with their followers
+**Then**: that content will not displayed on the user's feed""",lakep1,2020-10-10T01:34:21Z
+175136492,task_create_activity,"lakep1 added task: ""Add button to UI to follow a user - 2hr""",lakep1,2020-10-10T01:33:28Z
+175136492,comment_create_activity,"lakep1 added comment: ""**Given**: the user specifies that they wish to follow another user through a UI for their feed. 
+**When**: followed users share new content with their followers
+**Then**:  that content will be displayed on the user's feed""",lakep1,2020-10-10T01:28:42Z
+175136492,story_update_activity,lakep1 edited this feature,lakep1,2020-10-10T01:24:22Z
+175136492,story_update_activity,lakep1 edited this feature,lakep1,2020-10-10T01:24:19Z
+175136492,story_update_activity,lakep1 edited this feature,lakep1,2020-10-10T01:24:16Z
+175136492,story_update_activity,lakep1 edited this feature,lakep1,2020-10-10T01:23:37Z
+175136492,task_create_activity,"lakep1 added task: ""Implement database updates to record users followed - 2hr""",lakep1,2020-10-10T01:22:13Z
+175136492,task_create_activity,"lakep1 added task: ""Implement logic for displaying followed users feed -5hr""",lakep1,2020-10-10T01:21:36Z
+175136492,task_update_activity,"lakep1 rewrote task: ""Design UI  to display user's feed -4hr""",lakep1,2020-10-10T01:19:41Z
+175136492,task_create_activity,"lakep1 added task: ""Design UI for following users -4hr""",lakep1,2020-10-10T01:19:21Z
+175136492,task_create_activity,"lakep1 added task: ""Design UI  to display user's feed -4hr""",lakep1,2020-10-10T01:17:29Z
+175136492,story_update_activity,lakep1 edited this feature,lakep1,2020-10-10T01:15:28Z
+175086277,review_update_activity,"lakep1 updated a ""Code"" review",lakep1,2020-10-10T01:12:10Z
+175086277,review_create_activity,lakep1 created a review: Code,lakep1,2020-10-10T01:12:07Z
+175086277,review_update_activity,"lakep1 updated a ""Design"" review",lakep1,2020-10-10T01:12:04Z
+175086277,review_create_activity,lakep1 created a review: Design,lakep1,2020-10-10T01:12:01Z
+175086277,review_update_activity,"lakep1 updated a ""Security"" review",lakep1,2020-10-10T01:11:49Z
+175086277,review_create_activity,lakep1 created a review: Security,lakep1,2020-10-10T01:11:42Z
+175086277,review_update_activity,"lakep1 updated a ""Test (QA)"" review",lakep1,2020-10-10T01:11:38Z
+175086277,review_create_activity,lakep1 created a review: Test (QA),lakep1,2020-10-10T01:11:34Z
+175086277,task_update_activity,"lakep1 rewrote task: ""Test UI, integration and performance -2hr""",lakep1,2020-10-10T01:11:25Z
+175086277,task_update_activity,"lakep1 rewrote task: ""Write unit tests -2hr""",lakep1,2020-10-10T01:11:21Z
+175086277,task_update_activity,"lakep1 rewrote task: ""Code logic to update database and update relevant UI information -4hr""",lakep1,2020-10-10T01:11:15Z
+175086277,task_update_activity,"lakep1 rewrote task: ""Incorporate into existing database tables OR create new tables -3hr""",lakep1,2020-10-10T01:11:09Z
+175086277,task_update_activity,"lakep1 rewrote task: ""Add a UI confirmation step before the action is completed -2hr""",lakep1,2020-10-10T01:10:58Z
+175086277,task_update_activity,"lakep1 rewrote task: ""Add ""Unfriend"" button to the UI - 2hr""",lakep1,2020-10-10T01:10:43Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Add display of current availability status to the UI- 2hr""",lakep1,2020-10-10T01:10:18Z
+175087184,review_update_activity,"lakep1 updated a ""Security"" review",lakep1,2020-10-10T01:10:10Z
+175087184,review_create_activity,lakep1 created a review: Security,lakep1,2020-10-10T01:10:04Z
+175087184,review_update_activity,"lakep1 updated a ""Test (QA)"" review",lakep1,2020-10-10T01:10:00Z
+175087184,review_update_activity,"lakep1 updated a ""Test (QA)"" review",lakep1,2020-10-10T01:09:52Z
+175087184,review_create_activity,lakep1 created a review: Test (QA),lakep1,2020-10-10T01:09:47Z
+175087184,review_update_activity,"lakep1 updated a ""Code"" review",lakep1,2020-10-10T01:09:40Z
+175087184,review_create_activity,lakep1 created a review: Code,lakep1,2020-10-10T01:09:36Z
+175087184,review_update_activity,"lakep1 updated a ""Code"" review",lakep1,2020-10-10T01:09:31Z
+175087184,review_update_activity,"lakep1 updated a ""Code"" review",lakep1,2020-10-10T01:09:20Z
+175087184,review_create_activity,lakep1 created a review: Code,lakep1,2020-10-10T01:09:11Z
+175087184,review_delete_activity,lakep1 deleted a review: Design,lakep1,2020-10-10T01:09:06Z
+175087184,review_create_activity,lakep1 created a review: Design,lakep1,2020-10-10T01:08:43Z
+175087184,review_update_activity,"lakep1 updated a ""Design"" review",lakep1,2020-10-10T01:08:35Z
+175087184,review_create_activity,lakep1 created a review: Design,lakep1,2020-10-10T01:08:27Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Add color coded icon to textual display of status -1hr""",lakep1,2020-10-10T01:07:53Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Add button to change availability status - 1hr""",lakep1,2020-10-10T01:07:50Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Create database table and values for status - 1hr""",lakep1,2020-10-10T01:07:46Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Code logic to update displayed status for the user and the user's friends  - 4hr""",lakep1,2020-10-10T01:07:40Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Write unit tests - 2hr""",lakep1,2020-10-10T01:07:34Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Test UI and integration -2hr""",lakep1,2020-10-10T01:07:28Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Test UI and integration (PL) -2hr""",lakep1,2020-10-10T01:07:23Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Write unit tests (PL) - 2hr""",lakep1,2020-10-10T01:07:13Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Code logic to update displayed status for the user and the user's friends (PL) - 4hr""",lakep1,2020-10-10T01:07:06Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Create database table and values for status (PL) - 1hr""",lakep1,2020-10-10T01:07:01Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Add button to change availability status (PL) - 1hr""",lakep1,2020-10-10T01:06:41Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Add display of current availability status to the UI (PL) - 2hr""",lakep1,2020-10-10T01:06:33Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Add color coded icon to textual display of status (PL) -1hr""",lakep1,2020-10-10T01:06:28Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Add display of current availability status to the UI (PL) - 2ht""",lakep1,2020-10-10T01:06:21Z
+175136425,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-07T10:53:23Z
+175136425,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-07T10:53:10Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Add ""Location Services"" UI button to chat application and provide backend code logic.  - 1 hr""",Michael Ranasinghe,2020-10-07T10:52:24Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Add ""Upload Files"" UI button to chat application and provide backend code logic. - 4hrs""",Michael Ranasinghe,2020-10-07T10:52:10Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Add ""Add Camera Image"" UI button to chat application and provide backend logic. - 4 hrs""",Michael Ranasinghe,2020-10-07T10:52:05Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Add ""Upload Image"" button to chat application and provide backend code logic.  - 4 hrs""",Michael Ranasinghe,2020-10-07T10:51:56Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Allow user's to upload images via phone camera. - 1 hr""",Michael Ranasinghe,2020-10-07T10:51:44Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Add ""Upload Image"" button to chat application and provide backend code logic.  """,Michael Ranasinghe,2020-10-07T10:51:28Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Allow user's to upload images via phone camera. - 2 hr""",Michael Ranasinghe,2020-10-07T10:51:24Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Request permission to access location services. -1hr""",Michael Ranasinghe,2020-10-07T10:51:11Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Request permission to be able to upload images from user's phone photo library. - .1hr""",Michael Ranasinghe,2020-10-07T10:51:06Z
+175136425,comment_create_activity,"Michael Ranasinghe added comment: ""Given that a ""Upload Files"" UI button is available, when the user clicks the button, a UI dialog will appear to allow the user to select files they would like to upload. The application will send the  selected files within the current chat. """,Michael Ranasinghe,2020-10-07T10:50:38Z
+175136425,comment_create_activity,"Michael Ranasinghe added comment: ""Given that a ""Location Services"" UI button is available within an opened chat, when the user clicks on the button a prompt opens to request permission to access location services. If the user accepts the prompt, then the application will send the user's location within the current chat.  """,Michael Ranasinghe,2020-10-07T10:47:01Z
+175136425,task_update_activity,"Michael Ranasinghe moved task: ""Add ""Upload Image"" button to chat application and provide backend code logic.  - 4 hrs""",Michael Ranasinghe,2020-10-07T10:39:38Z
+175136425,task_create_activity,"Michael Ranasinghe added task: ""Add ""Upload Image"" button to chat application and provide backend code logic.  - 4 hrs""",Michael Ranasinghe,2020-10-07T10:39:33Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Add ""Add Camera Image"" UI button to chat application and provide backend logic. """,Michael Ranasinghe,2020-10-07T10:39:03Z
+175136425,task_delete_activity,Michael Ranasinghe deleted a task on this story,Michael Ranasinghe,2020-10-07T10:38:52Z
+175136425,comment_create_activity,"Michael Ranasinghe added comment: ""Given that an ""Add Camera Image"" button is available, when the user clicks the button, the application will open the phone camera. Upon taking a photo, the application will upload the new image to the current chat.""",Michael Ranasinghe,2020-10-07T10:38:38Z
+175136425,task_update_activity,"Michael Ranasinghe moved task: ""Add ""Add Camera Image"" UI button to chat application and provide backend logic. - 4 hrs""",Michael Ranasinghe,2020-10-07T10:35:37Z
+175136425,task_create_activity,"Michael Ranasinghe added task: ""Add ""Add Camera Image"" UI button to chat application and provide backend logic. - 4 hrs""",Michael Ranasinghe,2020-10-07T10:35:32Z
+175136425,comment_create_activity,"Michael Ranasinghe added comment: ""Given that an ""Upload Image"" button is available, when the user clicks the button, the application will request permission to view the phone' photo library. After granting privilege, the user can select a single photo to send within the current chat. """,Michael Ranasinghe,2020-10-07T10:34:02Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Add ""Location Services"" UI button to chat application and provide backend code logic. """,Michael Ranasinghe,2020-10-07T10:26:35Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Add ""Upload Files"" UI button to chat application and provide backend code logic.""",Michael Ranasinghe,2020-10-07T10:26:25Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Add ""Upload Image"" UI button to chat application and provide backend code logic. """,Michael Ranasinghe,2020-10-07T10:26:13Z
+175136425,task_delete_activity,Michael Ranasinghe deleted a task on this story,Michael Ranasinghe,2020-10-07T10:24:07Z
+175136425,task_create_activity,"Michael Ranasinghe added task: ""Provide reactive logic for each UI butt""",Michael Ranasinghe,2020-10-07T10:24:05Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Add ""Upload Files"" UI button to chat application.""",Michael Ranasinghe,2020-10-07T10:23:29Z
+175136425,task_create_activity,"Michael Ranasinghe added task: ""Add ""Location Services"" UI button to chat application and provide backend code logic.  - 1 hr""",Michael Ranasinghe,2020-10-07T10:23:26Z
+175136425,task_create_activity,"Michael Ranasinghe added task: ""Add ""Upload Files"" UI button to chat application and provide backend code logic. - 4hrs""",Michael Ranasinghe,2020-10-07T10:22:24Z
+175136425,task_create_activity,"Michael Ranasinghe added task: ""Add ""Upload Image"" UI button to chat application and provide backend code logic. """,Michael Ranasinghe,2020-10-07T10:21:32Z
+175136425,comment_delete_activity,"Michael Ranasinghe removed comment: ""Add ""Upload Image"" UI button to chat application.""",Michael Ranasinghe,2020-10-07T10:21:13Z
+175136425,comment_create_activity,"Michael Ranasinghe added comment: ""Add ""Upload Image"" UI button to chat application.""",Michael Ranasinghe,2020-10-07T10:21:06Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Request permission to access location services.""",Michael Ranasinghe,2020-10-07T10:18:49Z
+175136425,task_update_activity,"Michael Ranasinghe moved task: ""Request permission to access location services. -1hr""",Michael Ranasinghe,2020-10-07T10:18:32Z
+175136425,task_update_activity,"Michael Ranasinghe rewrote task: ""Request permission to be able to upload images from user's phone photo library.""",Michael Ranasinghe,2020-10-07T10:18:30Z
+175136425,task_create_activity,"Michael Ranasinghe added task: ""Request permission to access location services. -1hr""",Michael Ranasinghe,2020-10-07T10:18:24Z
+175136425,task_create_activity,"Michael Ranasinghe added task: ""Allow user's to upload images via phone camera. - 1 hr""",Michael Ranasinghe,2020-10-07T10:17:47Z
+175136425,task_create_activity,"Michael Ranasinghe added task: ""Request permission to be able to upload images from user's phone photo library. - .1hr""",Michael Ranasinghe,2020-10-07T10:16:31Z
+175136425,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-07T09:56:03Z
+175136425,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-07T09:55:58Z
+175136425,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-07T09:51:05Z
+175136449,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-07T09:41:42Z
+175136449,comment_update_activity,Michael Ranasinghe edited this comment,Michael Ranasinghe,2020-10-07T09:40:16Z
+175136449,comment_create_activity,"Michael Ranasinghe added comment: ""Given that a user has received a notification, when the user views the newly received message, the prompt will disappear. """,Michael Ranasinghe,2020-10-07T09:39:17Z
+175136449,comment_create_activity,"Michael Ranasinghe added comment: ""Given that a user has received a new chat message from a friend, a notification prompt will automatically be generated to alert the user of the received message. """,Michael Ranasinghe,2020-10-07T01:12:38Z
+175136449,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-07T00:17:19Z
+175136449,task_update_activity,"Michael Ranasinghe rewrote task: ""Implement application logic to successfully receive messages from sender. - 5 hr""",Michael Ranasinghe,2020-10-07T00:15:39Z
+175136449,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-07T00:15:17Z
+175136449,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-07T00:15:15Z
+175136449,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-07T00:15:12Z
+175136449,task_update_activity,"Michael Ranasinghe rewrote task: ""Ability to close out of  any app generated notification message. - 1hr""",Michael Ranasinghe,2020-10-07T00:10:28Z
+175136449,task_update_activity,"Michael Ranasinghe rewrote task: ""Generate a notification message to user mobile device given a newly received message.  -4 hr""",Michael Ranasinghe,2020-10-07T00:10:22Z
+175136449,task_update_activity,"Michael Ranasinghe rewrote task: ""Implement application logic to successfully receive messages from sender. -4 hr""",Michael Ranasinghe,2020-10-07T00:10:17Z
+175136449,task_create_activity,"Michael Ranasinghe added task: ""Ability to close out of  any app generated notification message. - 1hr""",Michael Ranasinghe,2020-10-07T00:09:43Z
+175136449,task_create_activity,"Michael Ranasinghe added task: ""Generate a notification message to user mobile device given a newly received message.  -4 hr""",Michael Ranasinghe,2020-10-07T00:05:30Z
+175136449,task_update_activity,"Michael Ranasinghe rewrote task: ""Implement application logic to successfully receive messages from sender.""",Michael Ranasinghe,2020-10-07T00:03:30Z
+175136449,task_create_activity,"Michael Ranasinghe added task: ""Implement application logic to successfully receive messages from sender. - 5 hr""",Michael Ranasinghe,2020-10-07T00:03:05Z
+175136449,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-06T23:49:53Z
+175136449,story_update_activity,Michael Ranasinghe edited this feature,Michael Ranasinghe,2020-10-06T23:46:17Z
+174871989,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-06T02:21:33Z
+174871989,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-06T02:21:30Z
+175087376,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-06T02:13:13Z
+175087376,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-06T02:10:08Z
+175136497,story_update_activity,Wasupol Tungsakultong estimated this feature as 5 points,Wasupol Tungsakultong,2020-10-06T02:06:58Z
+175136497,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-06T02:06:03Z
+175136493,story_update_activity,Wasupol Tungsakultong estimated this feature as 5 points,Wasupol Tungsakultong,2020-10-06T02:05:26Z
+175136493,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-06T02:05:25Z
+175136492,story_update_activity,Wasupol Tungsakultong estimated this feature as 5 points,Wasupol Tungsakultong,2020-10-06T02:04:57Z
+175136492,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-06T02:04:55Z
+175136477,story_update_activity,Wasupol Tungsakultong estimated this feature as 5 points,Wasupol Tungsakultong,2020-10-06T02:03:34Z
+175136477,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-06T02:03:32Z
+175136472,story_update_activity,Wasupol Tungsakultong estimated this feature as 3 points,Wasupol Tungsakultong,2020-10-06T02:03:06Z
+175136472,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-06T02:03:05Z
+175136468,story_update_activity,Wasupol Tungsakultong estimated this feature as 5 points,Wasupol Tungsakultong,2020-10-06T02:02:38Z
+175136468,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-06T02:02:36Z
+175136449,story_update_activity,Wasupol Tungsakultong estimated this feature as 3 points,Wasupol Tungsakultong,2020-10-06T01:59:48Z
+175136449,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-06T01:59:43Z
+175136425,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-06T01:59:15Z
+175136444,story_update_activity,Wasupol Tungsakultong estimated this feature as 5 points,Wasupol Tungsakultong,2020-10-06T01:58:45Z
+175136444,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-06T01:58:43Z
+175110035,story_move_activity,"Wasupol Tungsakultong moved and scheduled this story before 'Send images, locations or files in chat message.'",Wasupol Tungsakultong,2020-10-06T01:58:00Z
+175110035,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-06T01:57:55Z
+175087233,story_move_activity,Wasupol Tungsakultong moved and scheduled this story before 'Authorization (Login)',Wasupol Tungsakultong,2020-10-06T01:57:39Z
+175136425,story_update_activity,Wasupol Tungsakultong estimated this feature as 3 points,Wasupol Tungsakultong,2020-10-06T01:55:56Z
+175136425,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-06T01:55:53Z
+175136414,story_update_activity,Wasupol Tungsakultong estimated this feature as 5 points,Wasupol Tungsakultong,2020-10-06T01:54:47Z
+175136414,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-06T01:54:43Z
+175086277,story_update_activity,lakep1 edited this feature,lakep1,2020-10-05T03:57:38Z
+175087184,story_update_activity,lakep1 edited this feature,lakep1,2020-10-05T03:57:29Z
+175087184,story_update_activity,lakep1 edited this feature,lakep1,2020-10-05T03:57:23Z
+175086277,story_update_activity,lakep1 edited this feature,lakep1,2020-10-05T03:57:11Z
+175087184,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-04T22:57:50Z
+175087184,comment_create_activity,"lakep1 added comment: ""Given that there is both a textual and a color-coded icon to display a user's status, when the user has not made any change to their status then the status will default to available with a corresponding color of green for the icon display. """,lakep1,2020-10-04T22:57:39Z
+175087184,comment_create_activity,"lakep1 added comment: ""Given that there is both a textual and color-coded icon to display a user's status,  when a availability status is set, then the color of the icon and the text of the status will be in agreement according to definitions by the client.  """,lakep1,2020-10-04T22:55:25Z
+175087184,story_update_activity,lakep1 edited this feature,lakep1,2020-10-04T22:46:35Z
+175087184,story_update_activity,lakep1 edited this feature,lakep1,2020-10-04T22:33:47Z
+175087184,task_create_activity,"lakep1 added task: ""Test UI and integration -2hr""",lakep1,2020-10-04T22:27:02Z
+175087184,task_update_activity,"lakep1 moved task: ""Add color coded icon to textual display of status -1hr""",lakep1,2020-10-04T22:26:05Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Add color coded icon to textual display of status (PL)""",lakep1,2020-10-04T22:26:02Z
+175087184,task_create_activity,"lakep1 added task: ""Add color coded icon to textual display of status -1hr""",lakep1,2020-10-04T22:25:57Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Code logic to update displayed status for the user and the user's friends (PL)""",lakep1,2020-10-04T22:25:17Z
+175087184,task_create_activity,"lakep1 added task: ""Write unit tests - 2hr""",lakep1,2020-10-04T22:25:13Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Code logic to update displayed status for the user and the user's friends. (PL)""",lakep1,2020-10-04T22:23:18Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Create database table and values for status (PL)""",lakep1,2020-10-04T22:23:12Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Add button to change availability status (PL)""",lakep1,2020-10-04T22:23:07Z
+175087184,task_update_activity,"lakep1 rewrote task: ""Add display of current availability status to the UI (PL)""",lakep1,2020-10-04T22:23:03Z
+175087184,task_create_activity,"lakep1 added task: ""Code logic to update displayed status for the user and the user's friends  - 4hr""",lakep1,2020-10-04T22:22:54Z
+175087184,task_create_activity,"lakep1 added task: ""Create database table and values for status - 1hr""",lakep1,2020-10-04T22:21:47Z
+175087184,task_create_activity,"lakep1 added task: ""Add button to change availability status - 1hr""",lakep1,2020-10-04T22:20:29Z
+175087184,task_create_activity,"lakep1 added task: ""Add display of current availability status to the UI- 2hr""",lakep1,2020-10-04T22:19:27Z
+174871989,comment_create_activity,"Wasupol Tungsakultong added comment: ""**Given**: the user stays on the Login page with buttons of `Sign in with Google` or `Sign in with Facebook`.
+**When**: the user press either one of the button to authorize with third party social media applications.
+**Then**: the application process the action to third party social media in the user's mobile to authorize with social media account.""",Wasupol Tungsakultong,2020-10-04T19:11:13Z
+174871989,comment_create_activity,"Wasupol Tungsakultong added comment: ""**Given**: the user installs the application. 
+**When**: the user opens the application for the first time.
+**Then**: the login page prompts to the user with buttons of `Sign in with Google` or `Sign in with Facebook`""",Wasupol Tungsakultong,2020-10-04T19:08:12Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement register logic for android application - 4hr""",Wasupol Tungsakultong,2020-10-04T19:06:10Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement Login logic for android application - 5hr""",Wasupol Tungsakultong,2020-10-04T19:05:56Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Design Login/Register application page - 4hr""",Wasupol Tungsakultong,2020-10-04T19:05:47Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Setup Android Development project - 1hr""",Wasupol Tungsakultong,2020-10-04T19:05:43Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Setup Firebase Authorization - 1hr""",Wasupol Tungsakultong,2020-10-04T19:05:39Z
+174871989,task_update_activity,"Wasupol Tungsakultong completed task: ""Setup Android Development project - 1hr""",Wasupol Tungsakultong,2020-10-04T19:05:38Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Setup Google API for login - 2hr""",Wasupol Tungsakultong,2020-10-04T19:05:33Z
+174871989,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Setup facebook API for login - 2hr""",Wasupol Tungsakultong,2020-10-04T19:05:29Z
+175087376,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Design API for adding friends with QR - 2hr""",Wasupol Tungsakultong,2020-10-04T19:02:44Z
+175087376,task_create_activity,"Wasupol Tungsakultong added task: ""Design the data inside QR for requesting to API. - 3hr""",Wasupol Tungsakultong,2020-10-04T19:02:36Z
+175087376,task_create_activity,"Wasupol Tungsakultong added task: ""Design API for adding friends with QR - 2hr""",Wasupol Tungsakultong,2020-10-04T19:02:07Z
+175087376,task_update_activity,"Wasupol Tungsakultong rewrote task: ""implement creating personally QR for each users - 3hr""",Wasupol Tungsakultong,2020-10-04T19:01:53Z
+175087376,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Implement API for adding friends from mobile application. - 4hr""",Wasupol Tungsakultong,2020-10-04T19:01:49Z
+175087376,task_update_activity,"Wasupol Tungsakultong rewrote task: ""implement the application to scan others QR for adding as a friend - 4hr""",Wasupol Tungsakultong,2020-10-04T19:01:43Z
+175087376,task_update_activity,"Wasupol Tungsakultong rewrote task: ""Design data schema for supporting friends - 5hr""",Wasupol Tungsakultong,2020-10-04T19:01:37Z
+175087376,comment_create_activity,"Wasupol Tungsakultong added comment: ""**Scenario 2**
+**Given**: the user opened the application and the QR camera feature is ready for scanning other users' QR.
+**When**: the user points the camera to the QR.
+**Then**: the application will process QR by showing a loading indicator and the users can add a friend successfully.""",Wasupol Tungsakultong,2020-10-04T19:01:15Z
+175110035,story_create_activity,ansha1 added this feature,ansha1,2020-10-04T16:07:15Z
+175087233,task_create_activity,"ansha1 added task: ""Implement Ok button to confirm changes - 1hr""",ansha1,2020-10-04T15:55:20Z
+175087233,task_create_activity,"ansha1 added task: ""Implement interface to choose a profile picture - 1.5hr""",ansha1,2020-10-04T15:55:00Z
+175087233,task_create_activity,"ansha1 added task: ""Implement remove/change profile picture button - 1hr""",ansha1,2020-10-04T15:54:42Z
+175087233,task_create_activity,"ansha1 added task: ""Implement option to Edit profile picture - 1.5hr""",ansha1,2020-10-04T15:54:19Z
+175087233,task_create_activity,"ansha1 added task: ""Implement option to add a profile picture - 1.5hr""",ansha1,2020-10-04T15:54:05Z
+175086277,comment_update_activity,lakep1 edited this comment,lakep1,2020-10-02T00:16:59Z
+175087376,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-02T00:02:13Z
+175087376,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-02T00:02:10Z
+175087376,review_update_activity,"Wasupol Tungsakultong updated a ""Security"" review",Wasupol Tungsakultong,2020-10-02T00:02:04Z
+175087376,review_create_activity,Wasupol Tungsakultong created a review: Security,Wasupol Tungsakultong,2020-10-02T00:01:59Z
+175087376,review_update_activity,"Wasupol Tungsakultong updated a ""Code"" review",Wasupol Tungsakultong,2020-10-02T00:01:57Z
+175087376,review_create_activity,Wasupol Tungsakultong created a review: Code,Wasupol Tungsakultong,2020-10-02T00:01:53Z
+175087376,review_update_activity,"Wasupol Tungsakultong updated a ""Code"" review",Wasupol Tungsakultong,2020-10-02T00:01:51Z
+175087376,review_create_activity,Wasupol Tungsakultong created a review: Code,Wasupol Tungsakultong,2020-10-02T00:01:47Z
+175087376,review_update_activity,"Wasupol Tungsakultong updated a ""Design"" review",Wasupol Tungsakultong,2020-10-02T00:01:44Z
+175087376,review_create_activity,Wasupol Tungsakultong created a review: Design,Wasupol Tungsakultong,2020-10-02T00:01:40Z
+175087376,review_update_activity,"Wasupol Tungsakultong updated a ""Test (QA)"" review",Wasupol Tungsakultong,2020-10-02T00:01:37Z
+175087376,review_create_activity,Wasupol Tungsakultong created a review: Test (QA),Wasupol Tungsakultong,2020-10-02T00:01:29Z
+174982038,story_update_activity,Wasupol Tungsakultong accepted this chore,Wasupol Tungsakultong,2020-10-02T00:01:04Z
+174982038,task_update_activity,"Wasupol Tungsakultong completed task: ""Configurate Firebase instances""",Wasupol Tungsakultong,2020-10-02T00:00:54Z
+175087233,comment_create_activity,"lakep1 added comment: ""Given that the user has selected a picture to add, when a file is uploaded that is in the incorrect format or had incorrect dimensions, then a message will appear explaining the issue.""",lakep1,2020-10-02T00:00:53Z
+175087233,comment_create_activity,"lakep1 added comment: ""Given that the user has selected a new profile picture, when they click an ""OK"" button then a confirmation message will popup requesting confirmation of the change. """,lakep1,2020-10-01T23:59:22Z
+175087233,comment_create_activity,"lakep1 added comment: ""Given that the user is able to select their profile picture, when the user clicks on the profile photo then they are able to choose whether to add or remove a picture and in cases where a new file is needed they are able to access pictures stored on their device.""",lakep1,2020-10-01T23:56:50Z
+175087376,comment_create_activity,"Wasupol Tungsakultong added comment: ""**Scenario 1**
+**Given**: the user is logged in the inner circle application, and the user is in the friends' list page.
+**When**: the user presses the button adding friends icon.
+**Then**: the application will prompt the UI for the camera scanning feature, and it will detect QR code.""",Wasupol Tungsakultong,2020-10-01T23:54:31Z
+175087376,task_create_activity,"Wasupol Tungsakultong added task: ""implement the application to scan others QR for adding as a friend - 4hr""",Wasupol Tungsakultong,2020-10-01T23:49:43Z
+175087376,task_update_activity,"Wasupol Tungsakultong rewrote task: ""implement creating personally QR for each users""",Wasupol Tungsakultong,2020-10-01T23:49:16Z
+175087184,story_update_activity,lakep1 edited this feature,lakep1,2020-10-01T23:47:43Z
+175087184,comment_create_activity,"lakep1 added comment: ""Given that there is a menu from which the availability status can be selected, when the user selects a value, then the value is displayed both to the user and to the user's friends. """,lakep1,2020-10-01T23:47:26Z
+175087233,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T23:06:38Z
+175087233,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T23:06:35Z
+175087376,task_create_activity,"Wasupol Tungsakultong added task: ""Design data schema for supporting friends - 5hr""",Wasupol Tungsakultong,2020-10-01T22:58:31Z
+175087376,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T22:57:44Z
+175086277,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T22:57:38Z
+22663228,label_create_activity,"Wasupol Tungsakultong created labels: ""user management""",Wasupol Tungsakultong,2020-10-01T22:57:37Z
+175086277,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T22:57:25Z
+174871989,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T22:57:02Z
+175087376,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T22:56:53Z
+175087376,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T22:56:49Z
+22663227,label_create_activity,"Wasupol Tungsakultong created labels: ""users""",Wasupol Tungsakultong,2020-10-01T22:56:48Z
+175087376,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T22:56:33Z
+22663226,label_create_activity,"Wasupol Tungsakultong created labels: ""authorization""",Wasupol Tungsakultong,2020-10-01T22:56:33Z
+175087376,story_update_activity,Yuting Zhang unstarted this feature,Yuting Zhang,2020-10-01T22:49:56Z
+175087376,story_update_activity,Yuting Zhang started this feature,Yuting Zhang,2020-10-01T22:49:51Z
+2465407,project_update_activity,"Wasupol Tungsakultong updated the settings for ""CS673F20T1""",Wasupol Tungsakultong,2020-10-01T22:41:36Z
+2465407,project_update_activity,"Wasupol Tungsakultong updated the settings for ""CS673F20T1""",Wasupol Tungsakultong,2020-10-01T22:40:38Z
+2465407,project_update_activity,"Wasupol Tungsakultong updated the settings for ""CS673F20T1""",Wasupol Tungsakultong,2020-10-01T22:40:12Z
+175087219,story_delete_activity,Wasupol Tungsakultong deleted this feature,Wasupol Tungsakultong,2020-10-01T22:38:47Z
+174871989,story_move_activity,Wasupol Tungsakultong moved and scheduled this story before 'Add friends with QR code',Wasupol Tungsakultong,2020-10-01T22:38:37Z
+174871989,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T22:38:33Z
+175087219,story_move_activity,Wasupol Tungsakultong moved this story before 'Unfriend User (PL)',Wasupol Tungsakultong,2020-10-01T22:38:13Z
+175087219,story_update_activity,Wasupol Tungsakultong unstarted this feature,Wasupol Tungsakultong,2020-10-01T22:37:48Z
+175087219,story_update_activity,Wasupol Tungsakultong started this feature,Wasupol Tungsakultong,2020-10-01T22:37:30Z
+2465407,project_update_activity,"Wasupol Tungsakultong updated the settings for ""CS673F20T1""",Wasupol Tungsakultong,2020-10-01T22:35:43Z
+175087376,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-10-01T22:34:51Z
+2465407,project_membership_update_activity,Yuting Zhang updated the membership role for ansha1,Yuting Zhang,2020-10-01T22:31:45Z
+,iteration_update_activity,Wasupol Tungsakultong changed iteration 1's length from 1 week to 4 weeks,Wasupol Tungsakultong,2020-10-01T22:29:33Z
+,iteration_update_activity,Wasupol Tungsakultong changed iteration 1's length from 4 weeks to 1 week,Wasupol Tungsakultong,2020-10-01T22:29:26Z
+,iteration_update_activity,Wasupol Tungsakultong changed iteration 1's length from 3 weeks to 4 weeks,Wasupol Tungsakultong,2020-10-01T22:29:09Z
+174982038,task_update_activity,"Wasupol Tungsakultong completed task: ""Create Java Spring Boot Template""",Wasupol Tungsakultong,2020-10-01T22:28:40Z
+174982038,task_update_activity,"Wasupol Tungsakultong completed task: ""Create Android Project Template""",Wasupol Tungsakultong,2020-10-01T22:28:36Z
+174982038,story_update_activity,Wasupol Tungsakultong started this chore,Wasupol Tungsakultong,2020-10-01T22:28:31Z
+174982038,story_move_activity,Wasupol Tungsakultong moved and scheduled this story before 'Add/Edit Profile Picture (only from photo library)',Wasupol Tungsakultong,2020-10-01T22:28:29Z
+174871989,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T22:27:33Z
+174871989,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-10-01T22:27:27Z
+175087233,story_create_activity,ansha1 added this feature,ansha1,2020-10-01T22:20:11Z
+175087184,story_update_activity,lakep1 estimated this feature as 2 points,lakep1,2020-10-01T22:19:41Z
+175087219,story_create_activity,ansha1 added this feature,ansha1,2020-10-01T22:18:40Z
+175087184,story_update_activity,lakep1 edited this feature,lakep1,2020-10-01T22:15:41Z
+175087184,story_create_activity,lakep1 added this feature,lakep1,2020-10-01T22:14:41Z
+175086277,comment_create_activity,"lakep1 added comment: ""Given that a user has the popup confirmation of the unfriend action available, when the user confirms the action the former friend will no  longer appear in any part of the UI that displays a list of friends.""",lakep1,2020-10-01T21:22:21Z
+175086277,comment_create_activity,"lakep1 added comment: ""Given that a user has the popup confirmation of the unfriend action available, when the user confirms the action the former fiend will no longer be able to send messages to the user.  """,lakep1,2020-10-01T21:21:35Z
+175086277,story_update_activity,lakep1 edited this feature,lakep1,2020-10-01T21:14:53Z
+175086277,story_create_activity,lakep1 added this feature,lakep1,2020-10-01T21:14:45Z
+2465407,project_membership_update_activity,Yuting Zhang updated the membership role for Wasupol Tungsakultong,Yuting Zhang,2020-10-01T20:30:52Z
+174982038,task_create_activity,"Wasupol Tungsakultong added task: ""Configurate Firebase instances""",Wasupol Tungsakultong,2020-09-25T00:54:11Z
+174982038,task_create_activity,"Wasupol Tungsakultong added task: ""Create Java Spring Boot Template""",Wasupol Tungsakultong,2020-09-25T00:53:58Z
+174982038,task_create_activity,"Wasupol Tungsakultong added task: ""Create Android Project Template""",Wasupol Tungsakultong,2020-09-25T00:53:45Z
+174982038,pull_request_create_activity,"Wasupol Tungsakultong added pull request: ""BUMETCS673/CS673F20T1 PR 5""",Wasupol Tungsakultong,2020-09-25T00:53:25Z
+174982038,story_update_activity,Wasupol Tungsakultong edited this chore,Wasupol Tungsakultong,2020-09-25T00:52:06Z
+22649348,label_create_activity,"Wasupol Tungsakultong created labels: ""setup""",Wasupol Tungsakultong,2020-09-25T00:52:06Z
+174982038,story_update_activity,Wasupol Tungsakultong edited this chore,Wasupol Tungsakultong,2020-09-25T00:52:01Z
+22649347,label_create_activity,"Wasupol Tungsakultong created labels: ""development""",Wasupol Tungsakultong,2020-09-25T00:52:01Z
+174982038,story_update_activity,Wasupol Tungsakultong edited this chore,Wasupol Tungsakultong,2020-09-25T00:51:54Z
+,iteration_update_activity,Wasupol Tungsakultong changed iteration 1's length from default to 3 weeks,Wasupol Tungsakultong,2020-09-25T00:49:24Z
+2465407,project_membership_update_activity,Wasupol Tungsakultong updated their profile,Wasupol Tungsakultong,2020-09-25T00:44:44Z
+174982038,story_create_activity,Wasupol Tungsakultong added this chore,Wasupol Tungsakultong,2020-09-25T00:42:07Z
+174871989,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-09-25T00:39:41Z
+174871989,review_update_activity,"Wasupol Tungsakultong updated a ""Security"" review",Wasupol Tungsakultong,2020-09-25T00:39:27Z
+174871989,review_create_activity,Wasupol Tungsakultong created a review: Security,Wasupol Tungsakultong,2020-09-25T00:39:21Z
+174871989,review_update_activity,"Wasupol Tungsakultong updated a ""Design"" review",Wasupol Tungsakultong,2020-09-25T00:39:18Z
+174871989,review_create_activity,Wasupol Tungsakultong created a review: Design,Wasupol Tungsakultong,2020-09-25T00:39:11Z
+174871989,story_move_activity,Wasupol Tungsakultong moved this story,Wasupol Tungsakultong,2020-09-25T00:38:34Z
+174871989,review_update_activity,"Wasupol Tungsakultong updated a ""Code"" review",Wasupol Tungsakultong,2020-09-25T00:30:29Z
+174871989,review_create_activity,Wasupol Tungsakultong created a review: Code,Wasupol Tungsakultong,2020-09-25T00:30:18Z
+174871989,story_update_activity,Wasupol Tungsakultong edited this feature,Wasupol Tungsakultong,2020-09-25T00:29:44Z
+174871989,story_update_activity,Wasupol Tungsakultong estimated this feature as 2 points,Wasupol Tungsakultong,2020-09-17T22:19:46Z
+174871989,review_update_activity,"Wasupol Tungsakultong updated a ""Code"" review",Wasupol Tungsakultong,2020-09-17T22:19:36Z
+174871989,review_create_activity,Wasupol Tungsakultong created a review: Code,Wasupol Tungsakultong,2020-09-17T22:19:30Z
+174871989,story_update_activity,Wasupol Tungsakultong estimated this feature as 3 points,Wasupol Tungsakultong,2020-09-17T22:19:15Z
+174872017,story_delete_activity,Wasupol Tungsakultong deleted 2 stories,Wasupol Tungsakultong,2020-09-17T22:18:26Z
+174872016,story_delete_activity,Wasupol Tungsakultong deleted 2 stories,Wasupol Tungsakultong,2020-09-17T22:18:26Z
+174872017,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-09-17T22:18:10Z
+174872016,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-09-17T22:18:08Z
+174871989,review_update_activity,"Wasupol Tungsakultong updated a ""Test (QA)"" review",Wasupol Tungsakultong,2020-09-17T22:15:39Z
+174871989,review_create_activity,Wasupol Tungsakultong created a review: Test (QA),Wasupol Tungsakultong,2020-09-17T22:15:28Z
+174871989,story_create_activity,Wasupol Tungsakultong added this feature,Wasupol Tungsakultong,2020-09-17T22:15:18Z
+2465407,project_membership_update_activity,Raef updated their profile,Raef,2020-09-11T19:35:14Z
+,project_membership_create_activity,"Yuting Zhang added new members: Wasupol Tungsakultong, janeyma0, ansha1, Michael Ranasinghe, lakep1, Raef",Yuting Zhang,2020-09-11T03:56:32Z
+,project_membership_create_activity,"Yuting Zhang added new members: Wasupol Tungsakultong, janeyma0, ansha1, Michael Ranasinghe, lakep1, Raef",Yuting Zhang,2020-09-11T03:56:32Z
+,project_membership_create_activity,"Yuting Zhang added new members: Wasupol Tungsakultong, janeyma0, ansha1, Michael Ranasinghe, lakep1, Raef",Yuting Zhang,2020-09-11T03:56:32Z
+,project_membership_create_activity,"Yuting Zhang added new members: Wasupol Tungsakultong, janeyma0, ansha1, Michael Ranasinghe, lakep1, Raef",Yuting Zhang,2020-09-11T03:56:32Z
+,project_membership_create_activity,"Yuting Zhang added new members: Wasupol Tungsakultong, janeyma0, ansha1, Michael Ranasinghe, lakep1, Raef",Yuting Zhang,2020-09-11T03:56:32Z
+,project_membership_create_activity,"Yuting Zhang added new members: Wasupol Tungsakultong, janeyma0, ansha1, Michael Ranasinghe, lakep1, Raef",Yuting Zhang,2020-09-11T03:56:32Z
