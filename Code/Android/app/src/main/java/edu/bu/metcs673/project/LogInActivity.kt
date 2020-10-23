@@ -24,11 +24,14 @@ import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 
-// import com.google.firebase.auth.ktx.auth
-//import com.google.firebase.ktx.Firebase
+
+// @class MainActivity
+// @brief Class to handle log in page for UI.
+//      Instantiated upon application login.
 
 class LogInActivity : AppCompatActivity() {
 
+    // Global Variable namespace
     companion object {
         private const val TAG = "LogInActivity"
     }
@@ -47,6 +50,9 @@ class LogInActivity : AppCompatActivity() {
 
     val userDocumentRef = Firebase.firestore.collection("users")
 
+    // @function OnCreate
+    // @brief Default function called when class is instantiated.
+    //      Google sign in, and firebase instance created.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
@@ -73,12 +79,16 @@ class LogInActivity : AppCompatActivity() {
         }
     }
 
+    // @function signIn
+    // @brief Create intent that signs in user
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
 
+    // @function onActivityResult
+    // @brief Assess if log in was successful. If not, log the error.
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -101,6 +111,9 @@ class LogInActivity : AppCompatActivity() {
         }
     }
 
+    // @function updateUI
+    // @brief When user log in, navigate from log in screen to mainactivity screen.
+    //      Call updateUserDatatoFirebase to store user account info.
     private fun updateUI(user: FirebaseUser?, isFirstTime: Boolean) {
         if (user == null) {
             Log.e("TAG", "User not signed in.")
@@ -112,6 +125,8 @@ class LogInActivity : AppCompatActivity() {
         //finish()
     }
 
+    // @function updateUserDataToFirestore
+    // @brief Store user data as a child node in Firebase cloud database.
     private fun updateUserDataToFirestore(user: FirebaseUser?, isFirstTime: Boolean = false) {
         if (user == null || user.displayName == null) {
             return
@@ -132,6 +147,8 @@ class LogInActivity : AppCompatActivity() {
     }
 
 
+    // @function firebaseAuthWithGoogle
+    // @brief Assess if firebase authentication was sucessful. If so, update UI
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)

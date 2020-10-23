@@ -22,8 +22,13 @@ import com.google.firebase.ktx.Firebase
 import edu.bu.metcs673.project.model.user.User
 
 
+// @class MainActivity
+// @brief Class to handle main configurations for chat application.
+//      Instantiated upon application login.
+
 class MainActivity : AppCompatActivity() {
 
+    // Global variable namespace
     companion object {
         private const val TAG = "MainActivity"
         lateinit var currentUser: User
@@ -31,6 +36,13 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var googleSignInClient: GoogleSignInClient
     lateinit var auth: FirebaseAuth
+
+    // @function OnCreate
+    // @brief Default function called when class is instantiated.
+    //      Set up following instances:
+    //      1) navigation controller
+    //      2) google signin
+    //      3) firebase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,11 +79,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // @function OnCreateOptionsMenu
+    // @brief Create sign out option.
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.sign_out, menu)
         return true
     }
 
+    // @function onOptionsItemSelected
+    // @brief Called when user clicks sign out button.
+    //      Create Intent to send user back to log in page.
+    //      Sign out users from google and firebase accounts.
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.miSignOut) {
             Log.i(TAG, "Logout")
