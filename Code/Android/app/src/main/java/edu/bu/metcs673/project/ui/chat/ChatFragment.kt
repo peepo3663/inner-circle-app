@@ -1,5 +1,7 @@
+
 package edu.bu.metcs673.project.ui.chat
 
+//import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,7 +25,7 @@ import edu.bu.metcs673.project.util.UIUtil
 import java.net.URL
 import kotlin.math.max
 
-class ChatFragment : Fragment() {
+class ChatFragment : androidx.fragment.app.Fragment() {
     companion object {
         private const val TAG = "ChatFragment"
     }
@@ -44,9 +46,14 @@ class ChatFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerViewMessageList)
 
         mMessageAdapter = MessageAdapter()
+
+        //Every time user taps "Message" tab on controller, it will initiate the view
+        //Pass view, return viewModel
         viewModel = ViewModelProviders.of(this).get(ChatViewModel::class.java)
         viewModel.getAllMessages()?.observe(this, Observer {
             mMessageAdapter.setMessages(it)
+
+            // Update cycle view based on allMessages array
             mMessageAdapter.notifyDataSetChanged()
             recyclerView.scrollToPosition(max(it.size - 1, 0))
         })
@@ -58,6 +65,7 @@ class ChatFragment : Fragment() {
             false
         }
 
+        //When user hits send, give response action
         val sendButton = view.findViewById<Button>(R.id.button_chatbox_send)
         val userInput = view.findViewById<EditText>(R.id.user_text_chatbox)
         sendButton.setOnClickListener {
