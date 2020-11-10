@@ -28,7 +28,7 @@ import edu.bu.metcs673.project.model.chat.UserEmailModel
 
 class NotificationsFragment : Fragment() {
 
-    private var userAdpt: SearchAdapter?=null
+    private var searchadapter: SearchAdapter?=null
     private val mUsers = mutableListOf<UserEmailModel>()
     private val usersRef: CollectionReference = Firebase.firestore.collection("users")
     private var snapshotListener: ListenerRegistration? = null
@@ -82,8 +82,34 @@ class NotificationsFragment : Fragment() {
                         mUsers.add(eachuserObject)
                     }
                 }
+                searchadapter=SearchAdapter(context!!,mUsers!!)
             }
         }
+    }
+
+    private fun searchforUserEmail(str:String)
+    {
+        var myFirebaseID=FirebaseAuth.getInstance().currentUser!!.uid
+
+        val queryEmails= Firebase.firestore.collection("users").orderBy("email").startAt(str).endAt(str+"uf8ff")
+
+        queryEmails.addSnapshotListener { querySnapshot, _ ->
+            if (querySnapshot != null && !querySnapshot.isEmpty) {
+                //Iterate through all registered users in application
+                for (eachuser in querySnapshot.documents) {
+                    val eachuserObject = eachuser.toObject(UserEmailModel::class.java)
+                    if (eachuserObject != null) {
+                        mUsers.add(eachuserObject)
+                    }
+                }
+                searchadapter=SearchAdapter(context!!,mUsers!!)
+            }
+
+        }
+
+
+
+
     }
 
 
