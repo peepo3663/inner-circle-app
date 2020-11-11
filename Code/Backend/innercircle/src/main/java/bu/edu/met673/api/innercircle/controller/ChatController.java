@@ -16,14 +16,14 @@ public class ChatController {
 
   private CollectionReference chatsRef = FirestoreClient.getFirestore().collection("chats");
 
-  @PostMapping("/create")
-  public String createChatRoom(@RequestBody ChatRoom room) {
-    // check that the two user already have chat room
-
-    // add new chat room if need
-
-    
-    ApiFuture<DocumentReference> result = chatsRef.add({});
-    return result.get();
-  }
+//  @PostMapping("/create")
+//  public String createChatRoom(@RequestBody ChatRoom room) {
+//    // check that the two user already have chat room
+//
+//    // add new chat room if need
+//
+//
+//    ApiFuture<DocumentReference> result = chatsRef.add({});
+//    return result.get();
+//  }
 }
