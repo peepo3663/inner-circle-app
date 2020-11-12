@@ -19,7 +19,14 @@ public class User {
   @JsonProperty("devices")
   private List<UserDevice> devices;
 
-  public User() { }
+  public User(Map<String, Object> userNode) {
+    this.createdAt = Timestamp.parseTimestamp((String) userNode.get("createdAt"));
+    this.updatedAt = Timestamp.parseTimestamp((String) userNode.get("updatedAt"));
+    this.name = (String) userNode.get("name");
+    this.email = (String) userNode.get("email");
+    this.pictureUrl = (String) userNode.get("profile_picture");
+    this.devices = (List<UserDevice>) userNode.get("devices");
+  }
 
   public User(QueryDocumentSnapshot querySnapshot) {
     this.uid = querySnapshot.getId();
@@ -28,6 +35,7 @@ public class User {
     this.name = querySnapshot.get("name", String.class);
     this.email = querySnapshot.get("email", String.class);
     this.pictureUrl = querySnapshot.get("profile_picture", String.class);
+    this.devices = (List<UserDevice>) querySnapshot.get("devices");
   }
 
   public String getName() {
@@ -44,6 +52,11 @@ public class User {
 
   public void setUid(String uid) {
     this.uid = uid;
+  }
+
+  @JsonProperty("devices")
+  public List<UserDevice> getDevices() {
+    return devices;
   }
 
   public Map<String, Object> toMapData() {

@@ -10,4 +10,8 @@ public class UserDevice {
     this.model = model;
     this.osVersion = osVersion;
   }
+
+  public String getDeviceToken() {
+    return deviceToken;
+  }
 }

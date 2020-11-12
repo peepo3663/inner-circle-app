@@ -8,6 +8,7 @@ public class Message {
   private String messageId;
   private String text;
   private String userId;
+  private String userName;
 
   @JsonProperty("profile_picture")
   private String profilePicture;
@@ -28,5 +29,17 @@ public class Message {
 
   public void setMessageId(String messageId) {
     this.messageId = messageId;
+  }
+
+  public String getText() {
+    return text;
+  }
+
+  public String getUserId() {
+    return userId;
+  }
+
+  public String getUserName() {
+    return userName;
   }
 }
