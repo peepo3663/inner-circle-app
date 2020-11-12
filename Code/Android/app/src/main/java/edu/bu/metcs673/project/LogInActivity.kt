@@ -149,7 +149,7 @@ class LogInActivity : AppCompatActivity() {
 
 
     // @function firebaseAuthWithGoogle
-    // @brief Assess if firebase authentication was sucessful. If so, update UI
+    // @brief Assess if firebase authentication was successful. If so, update UI
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
