@@ -9,7 +9,6 @@ import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
-import java.util.concurrent.ExecutionException;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,9 +32,10 @@ public class UserController {
       throw new UserAlreadyExistedException(user);
     }
     // new user
-
-    ApiFuture<WriteResult> result = usersRef.document().set(user.toMapData());
+    DocumentReference userDocument = usersRef.document();
+    ApiFuture<WriteResult> result = userDocument.set(user.toMapData());
     if (result.get() != null) {
+      user.setUid(userDocument.getId());
       return user;
     } else {
       throw new UserNotFoundException(user);

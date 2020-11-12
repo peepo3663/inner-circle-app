@@ -42,6 +42,10 @@ public class User {
     return uid;
   }
 
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
+
   public Map<String, Object> toMapData() {
     HashMap<String, Object> userData = new HashMap<>();
     userData.put("name", this.name);
