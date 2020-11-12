@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.auth.User
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.model.chat.UserEmailModel
 
+//@brief Class implementation of adaptor used for notification fragment
+//  By default, we must override three functions: getItemCount, onCreateViewHolder, onBindHolder
 class SearchAdapter (mContext: Context, mUsers:List<UserEmailModel>): RecyclerView.Adapter<CustomViewHolder?>(){
 
     private val mContext:Context
@@ -25,16 +26,15 @@ class SearchAdapter (mContext: Context, mUsers:List<UserEmailModel>): RecyclerVi
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): CustomViewHolder {
-        val view: View= LayoutInflater.from(mContext).inflate(R.layout.user_search_display,viewGroup)
+        val view: View= LayoutInflater.from(mContext).inflate(R.layout.user_search_display,viewGroup,false)
+        //val cellforrow= LayoutInflater.from(mContext).inflate(R.layout.user_search_display,viewGroup,false)
         return CustomViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        val userprofile = mUsers[position]
-        holder.useremail.text=userprofile.email
+       val userprofile = mUsers[position]
+       holder.useremail.text=userprofile.email
     }
-
-
 }
 
 class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view){
@@ -43,5 +43,6 @@ class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view){
     init {
         useremail=itemView.findViewById(R.id.useremail)
     }
+
 
 }
