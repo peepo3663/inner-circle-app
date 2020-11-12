@@ -1,5 +1,6 @@
 package bu.edu.met673.api.innercircle.util;
 
+import bu.edu.met673.api.innercircle.exception.ChatRoomAlreadyExistedException;
 import bu.edu.met673.api.innercircle.exception.UserAlreadyExistedException;
 import bu.edu.met673.api.innercircle.exception.UserNotFoundException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler(UserAlreadyExistedException.class)
   public ResponseEntity<Object> handleUserAlreadyExistedException(HttpServletRequest request, Exception ex) {
+    return ResponseUtil.buildErrorResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
+  }
+
+  @ExceptionHandler(ChatRoomAlreadyExistedException.class)
+  public ResponseEntity<Object> handleChatRoomAlreadyExistedException(HttpServletRequest request, Exception ex) {
     return ResponseUtil.buildErrorResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
   }
 }

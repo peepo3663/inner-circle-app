@@ -1,5 +1,6 @@
 package bu.edu.met673.api.innercircle.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import java.util.HashMap;
@@ -14,6 +15,8 @@ public class User {
   private Timestamp createdAt;
   private Timestamp updatedAt;
   private boolean isUserOnline = false;
+
+  @JsonProperty("devices")
   private List<UserDevice> devices;
 
   public User() { }

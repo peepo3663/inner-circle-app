@@ -1,16 +1,29 @@
 package bu.edu.met673.api.innercircle.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ChatRoom {
   private String chatRoomId;
-  private List<User> allUsers;
 
-  public ChatRoom() {
+  @JsonProperty("users")
+  private User[] users;
 
+  public ChatRoom() { }
+
+  public ChatRoom(User[] users) {
+    this.users = users;
   }
 
-  public ChatRoom(List<User> users) {
-    this.allUsers = users;
+  public String getChatRoomId() {
+    return chatRoomId;
+  }
+
+  public void setChatRoomId(String chatRoomId) {
+    this.chatRoomId = chatRoomId;
+  }
+
+  @JsonProperty("users")
+  public User[] getAllUsers() {
+    return users;
   }
 }

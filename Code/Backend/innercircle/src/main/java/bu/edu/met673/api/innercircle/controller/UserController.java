@@ -34,7 +34,7 @@ public class UserController {
     }
     // new user
 
-    ApiFuture<WriteResult> result = usersRef.document(user.getUid()).set(user.toMapData());
+    ApiFuture<WriteResult> result = usersRef.document().set(user.toMapData());
     if (result.get() != null) {
       return user;
     } else {
