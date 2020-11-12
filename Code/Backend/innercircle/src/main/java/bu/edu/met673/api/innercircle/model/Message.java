@@ -2,6 +2,8 @@ package bu.edu.met673.api.innercircle.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.cloud.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Message {
   private String chatRoomId;
@@ -41,5 +43,18 @@ public class Message {
 
   public String getUserName() {
     return userName;
+  }
+
+  public Map<String, Object> toData() {
+    Map<String, Object> mapData = new HashMap<>();
+    mapData.put("text", text);
+    mapData.put("userId", userId);
+    mapData.put("userName", userName);
+    mapData.put("profile_picture", getProfilePicture());
+    if (createdAt == null) {
+      createdAt = Timestamp.now();
+    }
+    mapData.put("createdAt", createdAt);
+    return mapData;
   }
 }

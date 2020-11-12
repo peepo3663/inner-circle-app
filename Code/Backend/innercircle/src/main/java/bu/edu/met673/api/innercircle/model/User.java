@@ -20,8 +20,8 @@ public class User {
   private List<UserDevice> devices;
 
   public User(Map<String, Object> userNode) {
-    this.createdAt = Timestamp.parseTimestamp((String) userNode.get("createdAt"));
-    this.updatedAt = Timestamp.parseTimestamp((String) userNode.get("updatedAt"));
+    this.createdAt = (Timestamp) userNode.get("createdAt");
+    this.updatedAt = (Timestamp) userNode.get("updatedAt");
     this.name = (String) userNode.get("name");
     this.email = (String) userNode.get("email");
     this.pictureUrl = (String) userNode.get("profile_picture");
