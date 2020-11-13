@@ -1,3 +1,4 @@
+
 package edu.bu.metcs673.project.ui.chat
 
 import android.content.Context
@@ -8,7 +9,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -44,9 +44,14 @@ class ChatFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerViewMessageList)
 
         mMessageAdapter = MessageAdapter()
+
+        //Every time user taps "Message" tab on controller, it will initiate the view
+        //Pass view, return viewModel
         viewModel = ViewModelProviders.of(this).get(ChatViewModel::class.java)
         viewModel.getAllMessages()?.observe(this, Observer {
             mMessageAdapter.setMessages(it)
+
+            // Update cycle view based on allMessages array
             mMessageAdapter.notifyDataSetChanged()
             recyclerView.scrollToPosition(max(it.size - 1, 0))
         })
@@ -58,6 +63,7 @@ class ChatFragment : Fragment() {
             false
         }
 
+        //When user hits send, give response action
         val sendButton = view.findViewById<Button>(R.id.button_chatbox_send)
         val userInput = view.findViewById<EditText>(R.id.user_text_chatbox)
         sendButton.setOnClickListener {

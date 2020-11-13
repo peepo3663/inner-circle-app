@@ -54,6 +54,7 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
         return allMessages
     }
 
+    //hashmap
     fun insert(userMessage: MessageModel) {
         val messageInChat = hashMapOf(
             "text" to userMessage.text,

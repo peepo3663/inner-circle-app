@@ -28,6 +28,7 @@ import com.microsoft.appcenter.crashes.Crashes
 // @class MainActivity
 // @brief Class to handle log in page for UI.
 //      Instantiated upon application login.
+//      Implement Google Login
 
 class LogInActivity : AppCompatActivity() {
 
