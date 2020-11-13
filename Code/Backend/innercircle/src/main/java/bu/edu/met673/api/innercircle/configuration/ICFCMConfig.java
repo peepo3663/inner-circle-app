@@ -3,11 +3,12 @@ package bu.edu.met673.api.innercircle.configuration;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import javax.annotation.PostConstruct;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 
 @Configuration
 public class ICFCMConfig {
@@ -16,9 +17,9 @@ public class ICFCMConfig {
 
   @PostConstruct
   public void initFCM() {
-    FileInputStream inputStream;
+    InputStream inputStream;
     try {
-      inputStream = new FileInputStream("inner-circle-firebase-adminsdk.json");
+      inputStream = new ClassPathResource("/inner-circle-firebase-adminsdk.json").getInputStream();
       FirebaseOptions firebaseOptions =
           FirebaseOptions.builder().setCredentials(GoogleCredentials.fromStream(inputStream))
               .setDatabaseUrl("https://inner-circle-fdd5f.firebaseio.com").build();
