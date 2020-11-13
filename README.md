@@ -45,6 +45,25 @@ Social and relationship have never been overemphasized. The Internet is supposed
 ./gradlew build
 ```
 
+#### Running and Building Java Spring Boot Application
+1. Install Java JDK8
+2. Clone this repo.
+3. Go to `/Code/Backend/innerCircle`
+4. Run
+```sh
+mvn clean install
+```
+and
+5. Run
+```sh
+mvn spring-boot:run
+```
+6. If you would like to build as executable JAR file.
+```sh
+mvn clean package spring-boot:repackage
+java -jar target/innerCircle-0.0.1-SNAPSHOT.jar
+```
+
 #### Distribute the APKs for the application
 1. Install [bundler](https://bundler.io/) and [fastlane](https://fastlane.tools/) build tools.
 2. install all bundler dependencies by execute the command.
