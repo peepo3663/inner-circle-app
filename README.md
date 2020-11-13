@@ -46,7 +46,7 @@ Social and relationship have never been overemphasized. The Internet is supposed
 ```
 
 #### Running and Building Java Spring Boot Application
-1. Install Java JDK8
+1. Install Java JDK8 and Maven
 2. Clone this repo.
 3. Go to `/Code/Backend/innerCircle`
 4. Run
