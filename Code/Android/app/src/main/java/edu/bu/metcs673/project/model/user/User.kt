@@ -5,26 +5,25 @@ import com.google.firebase.firestore.DocumentSnapshot
 import java.net.MalformedURLException
 import java.net.URL
 
-class User(documentSnapshot: DocumentSnapshot) {
-    private val documentSnapshotData: Map<String, Any>
-    val email: String
-    val name: String
+class User(userId: String, map: MutableMap<String, Any>?) {
+    var userId: String
+    var email: String
+    var name: String
     var profilePicture: URL? = null
     var createdAt: Timestamp? = null
     var updatedAt: Timestamp? = null
 
     init {
-        if (documentSnapshot.data == null) {
-            throw NullPointerException()
-        }
-        documentSnapshotData = documentSnapshot.data as Map<String, Any>
-        email = documentSnapshotData["email"] as String
-        name = documentSnapshotData["name"] as String
-        createdAt = documentSnapshotData["createdAt"] as Timestamp
-        updatedAt = documentSnapshotData["updatedAt"] as Timestamp
-        val profilePictureString = documentSnapshot["profile_picture"] as String?
+        this.userId = userId
+        this.email = map?.get("email") as String
+        this.name = map["name"] as String
+        this.createdAt = map.get("createdAt") as Timestamp?
+        this.updatedAt = map.get("updatedAt") as Timestamp?
+        val profilePictureString = map["profile_picture"] as String?
         profilePictureString?.let {
             profilePicture = try { URL(it) } catch (e: MalformedURLException) { null }
         }
     }
+
+    constructor(documentSnapshot: DocumentSnapshot): this(documentSnapshot.id, documentSnapshot.data)
 }
