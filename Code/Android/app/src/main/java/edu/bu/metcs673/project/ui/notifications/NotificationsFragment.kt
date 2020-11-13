@@ -25,34 +25,27 @@ import edu.bu.metcs673.project.model.chat.UserEmailModel
 class NotificationsFragment : Fragment() {
     private lateinit var notificationsViewModel: NotificationsViewModel
     private lateinit var recyclerView: RecyclerView
-    private var searchadapter: SearchAdapter?=null
+    private var searchadapter: SearchAdapter? = null
     private val mUsers = mutableListOf<UserEmailModel>()
     private val usersRef: CollectionReference = Firebase.firestore.collection("users")
     private var snapshotListener: ListenerRegistration? = null
-    private var searchEmailText: EditText?=null
+    private var searchEmailText: EditText? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         val view = inflater.inflate(R.layout.fragment_notifications, container, false)
-
         recyclerView = view.findViewById(R.id.recycleviewtest)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        recyclerView.layoutManager=LinearLayoutManager(activity)
-
-        searchEmailText=view.findViewById(R.id.searchuseremail)
-
+        searchEmailText = view.findViewById(R.id.searchuseremail)
         mUsers.clear()
 
         //Search for all firebase users
         GetAllFirebaseUsers()
-
-        searchEmailText!!.addTextChangedListener(object: TextWatcher
-        {
+        searchEmailText!!.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -63,18 +56,17 @@ class NotificationsFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 searchforUserEmail(s.toString().toLowerCase())
             }
-
         })
 
         return view
     }
 
     //@return Returns recycleView containing user emails that match input sequence
-    private fun searchforUserEmail(str:String)
-    {
-        var myFirebaseID=FirebaseAuth.getInstance().currentUser!!.uid
+    private fun searchforUserEmail(str: String) {
+        var myFirebaseID = FirebaseAuth.getInstance().currentUser!!.uid
 
-        val queryEmails= Firebase.firestore.collection("users").orderBy("email").startAt(str).endAt(str+"\uf8ff")
+        val queryEmails = Firebase.firestore.collection("users").orderBy("email").startAt(str)
+            .endAt(str + "\uf8ff")
 
         queryEmails.addSnapshotListener { querySnapshot, _ ->
             if (querySnapshot != null && !querySnapshot.isEmpty) {
@@ -87,25 +79,23 @@ class NotificationsFragment : Fragment() {
                         mUsers.add(eachuserObject)
                     }
                 }
-                searchadapter=SearchAdapter(context!!,mUsers)
-                recyclerView.adapter =searchadapter
+                searchadapter = SearchAdapter(context!!, mUsers)
+                recyclerView.adapter = searchadapter
             }
 
         }
     }
 
     //@return Returns recycleView containing all users
-    private fun GetAllFirebaseUsers(){
+    private fun GetAllFirebaseUsers() {
 
-        var myFirebaseID=FirebaseAuth.getInstance().currentUser!!.uid
+        var myFirebaseID = FirebaseAuth.getInstance().currentUser!!.uid
 
         //var allUsersFirebaseEmails=FirebaseDatabase.getInstance().reference.child("users")
 
         snapshotListener = usersRef.addSnapshotListener { querySnapshot, _ ->
-            if (querySnapshot != null && !querySnapshot.isEmpty)
-            {
-                if (searchEmailText!!.text.toString()=="")
-                {
+            if (querySnapshot != null && !querySnapshot.isEmpty) {
+                if (searchEmailText!!.text.toString() == "") {
 
                     mUsers.clear()
 
@@ -116,8 +106,8 @@ class NotificationsFragment : Fragment() {
                             mUsers.add(eachuserObject)
                         }
                     }
-                    searchadapter=SearchAdapter(context!!,mUsers!!)
-                    recyclerView.adapter =searchadapter
+                    searchadapter = SearchAdapter(context!!, mUsers)
+                    recyclerView.adapter = searchadapter
                 }
             }
         }
