@@ -20,8 +20,9 @@ import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.adapter.chat.SearchAdapter
 import edu.bu.metcs673.project.model.chat.UserEmailModel
 
-
-//@brief Class to search for all Users registered to Inner Circle Application
+/**
+ * @brief Class to search for all Users registered to Inner Circle Application
+ */
 class NotificationsFragment : Fragment() {
     private lateinit var notificationsViewModel: NotificationsViewModel
     private lateinit var recyclerView: RecyclerView
@@ -44,7 +45,7 @@ class NotificationsFragment : Fragment() {
         mUsers.clear()
 
         //Search for all firebase users
-        GetAllFirebaseUsers()
+        getAllFirebaseUsers()
         searchEmailText!!.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
@@ -61,7 +62,9 @@ class NotificationsFragment : Fragment() {
         return view
     }
 
-    //@return Returns recycleView containing user emails that match input sequence
+    /**
+     * Returns recycleView containing user emails that match input sequence.
+     */
     private fun searchforUserEmail(str: String) {
         var myFirebaseID = FirebaseAuth.getInstance().currentUser!!.uid
 
@@ -86,8 +89,10 @@ class NotificationsFragment : Fragment() {
         }
     }
 
-    //@return Returns recycleView containing all users
-    private fun GetAllFirebaseUsers() {
+    /**
+     * returns recycleView containing all users.
+     */
+    private fun getAllFirebaseUsers() {
 
         var myFirebaseID = FirebaseAuth.getInstance().currentUser!!.uid
 
