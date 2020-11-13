@@ -19,6 +19,8 @@ public class User {
   @JsonProperty("devices")
   private List<UserDevice> devices;
 
+  public User() { }
+
   public User(Map<String, Object> userNode) {
     this.createdAt = (Timestamp) userNode.get("createdAt");
     this.updatedAt = (Timestamp) userNode.get("updatedAt");
@@ -66,6 +68,15 @@ public class User {
     userData.put("profile_picture", this.pictureUrl);
     userData.put("createdAt", this.createdAt);
     userData.put("updatedAt", this.updatedAt);
+    return userData;
+  }
+
+  public Map<String, Object> toMapDataForChatRoom() {
+    HashMap<String, Object> userData = new HashMap<>();
+    userData.put("uid", this.getUid());
+    userData.put("name", this.name);
+    userData.put("email", this.email);
+    userData.put("profile_picture", this.pictureUrl);
     return userData;
   }
 }

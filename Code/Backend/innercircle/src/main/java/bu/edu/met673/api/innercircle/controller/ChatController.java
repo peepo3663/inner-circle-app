@@ -13,7 +13,6 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,14 +30,17 @@ public class ChatController {
   public ChatRoom createChatRoom(@RequestBody ChatRoom room)
       throws ExecutionException, InterruptedException, ChatRoomAlreadyExistedException {
     // check that the two user already have chat room
-    Query chatQuery = null;
-    List<String> users = new ArrayList<>();
-    for (User user : room.getAllUsers()) {
-      chatQuery = chatsRef.whereArrayContains("users", user.getUid());
-      users.add(user.getUid());
-    }
-    if (users.size() == 0) {
+    User[] users = room.getAllUsers();
+    if (users.length == 0) {
       throw new NullPointerException();
+    }
+    Query chatQuery = null;
+    ArrayList<Map<String, Object>> usersForChatRoom = new ArrayList<>();
+    ArrayList<String> userIds = new ArrayList<>();
+    for (User user : users) {
+      chatQuery = chatsRef.whereArrayContains("users", user.getUid());
+      usersForChatRoom.add(user.toMapDataForChatRoom());
+      userIds.add(user.getUid());
     }
     ApiFuture<QuerySnapshot> result = chatQuery.get();
     if (!result.get().isEmpty()) {
@@ -48,8 +50,9 @@ public class ChatController {
     DocumentReference chatDocument = chatsRef.document();
     Map<String, Object> chatRoom = new HashMap<>();
     chatRoom.put("createdAt", Timestamp.now());
-    chatRoom.put("users", users);
-    chatRoom.put("users_count", users.size());
+    chatRoom.put("userIds", userIds);
+    chatRoom.put("users", usersForChatRoom);
+    chatRoom.put("users_count", userIds.size());
 
     ApiFuture<WriteResult> writeResult = chatDocument.set(chatRoom);
     if (writeResult.get() != null) {

@@ -19,6 +19,7 @@ import edu.bu.metcs673.project.MainActivity
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.adapter.chat.MessageAdapter
 import edu.bu.metcs673.project.model.chat.MessageModel
+import edu.bu.metcs673.project.util.UIUtil
 import java.net.URL
 import kotlin.math.max
 
@@ -78,19 +79,10 @@ class ChatFragment : Fragment() {
         // notify observers data has changed
         mMessageAdapter.notifyDataSetChanged()
         // add scrollable effect
-        if (!isTextVisible()) {
+        if (!UIUtil.isTextVisible(recyclerView, mMessageAdapter.itemCount)) {
             recyclerView.smoothScrollToPosition(max(0, mMessageAdapter.itemCount - 1))
         }
         // clear the user input
         userInput.setText("")
-    }
-
-    /** Helper method to view the chat messages.
-     * Scrolls to the bottom of the screen every time the user types  */
-    private fun isTextVisible(): Boolean {
-        val linearLayoutManager = recyclerView.layoutManager as LinearLayoutManager
-        val positionOfLastVisibleItem = linearLayoutManager.findLastCompletelyVisibleItemPosition()
-        val itemCount = mMessageAdapter.itemCount
-        return positionOfLastVisibleItem >= itemCount
     }
 }

@@ -5,15 +5,14 @@ import bu.edu.met673.api.innercircle.model.User;
 import bu.edu.met673.api.innercircle.model.UserDevice;
 import bu.edu.met673.api.innercircle.service.FCMService;
 import com.google.api.core.ApiFuture;
-import com.google.api.core.ApiFutureCallback;
-import com.google.api.core.ApiFutures;
+import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.MoreExecutors;
+import com.google.cloud.firestore.SetOptions;
 import com.google.firebase.cloud.FirestoreClient;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -46,21 +45,13 @@ public class MessageController {
       throw new NullPointerException();
     }
     ApiFuture<DocumentReference> result = chatsRef.document(chatRoomId).collection(messageNodeName).add(message.toData());
-//    ApiFutures.addCallback(result, new ApiFutureCallback<DocumentReference>() {
-//      @Override
-//      public void onFailure(Throwable throwable) {
-//        logger.error("Can not write a message.", throwable);
-//      }
-//
-//      @Override
-//      public void onSuccess(DocumentReference documentReference) {
-//        message.setMessageId(documentReference.getId());
-//        sendNotifications(message);
-//      }
-//    }, MoreExecutors.directExecutor());
     DocumentReference documentReference = result.get();
     if (documentReference != null) {
       message.setMessageId(documentReference.getId());
+      Map<String, Object> latestText = new HashMap<>();
+      latestText.put("latestText", message.getText());
+      latestText.put("updatedAt", Timestamp.now());
+      chatsRef.document(chatRoomId).set(latestText, SetOptions.merge());
       sendNotifications(message);
       return message;
     } else {
@@ -73,7 +64,7 @@ public class MessageController {
     List<String> deviceTokens = new ArrayList<>();
     try {
       DocumentSnapshot chatSnapshot = chatsRef.document(message.getChatRoomId()).get().get();
-      List<String> users = (List<String>) chatSnapshot.get("users");
+      List<String> users = (List<String>) chatSnapshot.get("userIds");
       if (users == null) {
         return;
       }
