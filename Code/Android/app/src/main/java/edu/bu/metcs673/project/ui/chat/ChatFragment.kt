@@ -1,7 +1,6 @@
 
 package edu.bu.metcs673.project.ui.chat
 
-//import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +9,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -25,7 +23,7 @@ import edu.bu.metcs673.project.util.UIUtil
 import java.net.URL
 import kotlin.math.max
 
-class ChatFragment : androidx.fragment.app.Fragment() {
+class ChatFragment : Fragment() {
     companion object {
         private const val TAG = "ChatFragment"
     }
