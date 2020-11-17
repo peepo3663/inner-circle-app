@@ -38,7 +38,7 @@ public class ChatController {
     ArrayList<Map<String, Object>> usersForChatRoom = new ArrayList<>();
     ArrayList<String> userIds = new ArrayList<>();
     for (User user : users) {
-      chatQuery = chatsRef.whereArrayContains("users", user.getUid());
+      chatQuery = chatsRef.whereArrayContains("userIds", user.getUid());
       usersForChatRoom.add(user.toMapDataForChatRoom());
       userIds.add(user.getUid());
     }
