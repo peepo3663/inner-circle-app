@@ -28,6 +28,7 @@ import com.microsoft.appcenter.crashes.Crashes
 // @class MainActivity
 // @brief Class to handle log in page for UI.
 //      Instantiated upon application login.
+//      Implement Google Login
 
 class LogInActivity : AppCompatActivity() {
 
@@ -149,7 +150,7 @@ class LogInActivity : AppCompatActivity() {
 
 
     // @function firebaseAuthWithGoogle
-    // @brief Assess if firebase authentication was sucessful. If so, update UI
+    // @brief Assess if firebase authentication was successful. If so, update UI
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
