@@ -22,6 +22,7 @@ public class User {
   public User() { }
 
   public User(Map<String, Object> userNode) {
+    this.uid = (String) userNode.get("uid");
     this.createdAt = (Timestamp) userNode.get("createdAt");
     this.updatedAt = (Timestamp) userNode.get("updatedAt");
     this.name = (String) userNode.get("name");
@@ -78,5 +79,9 @@ public class User {
     userData.put("email", this.email);
     userData.put("profile_picture", this.pictureUrl);
     return userData;
+  }
+
+  public String getPictureUrl() {
+    return pictureUrl;
   }
 }
