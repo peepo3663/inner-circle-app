@@ -17,16 +17,24 @@ import com.google.cloud.firestore.Query;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.SetOptions;
 import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.Bucket;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.cloud.FirestoreClient;
+import com.google.firebase.cloud.StorageClient;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import org.apache.commons.io.FilenameUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 public class FirestoreUtil {
   private static final FirestoreUtil instance = new FirestoreUtil();
   private Firestore firestore;
+  private Bucket bucket;
   private CollectionReference chatsRef;
   private CollectionReference usersRef;
   private final String messageNodeName = "messages";
@@ -35,6 +43,7 @@ public class FirestoreUtil {
     firestore = FirestoreClient.getFirestore();
     this.chatsRef = firestore.collection("chats");
     this.usersRef = firestore.collection("users");
+    this.bucket = StorageClient.getInstance().bucket();
   }
 
   public static FirestoreUtil getInstance() {
@@ -47,6 +56,10 @@ public class FirestoreUtil {
 
   public CollectionReference getUsersRef() {
     return usersRef;
+  }
+
+  public Bucket getBucket() {
+    return bucket;
   }
 
   public ChatRoom createChatRoom(ChatRoom room)
@@ -152,5 +165,11 @@ public class FirestoreUtil {
       deviceTokens.add(userDevice.getDeviceToken());
     }
     return deviceTokens;
+  }
+
+  public String uploadPictureProfileFor(String userId, MultipartFile file) throws IOException {
+    String blobName = String.format("%s/profile_picture.%s", userId, FilenameUtils.getExtension(file.getOriginalFilename()));
+    Blob blob = bucket.create(blobName, file.getBytes(), file.getContentType());
+    return blob.getMediaLink();
   }
 }

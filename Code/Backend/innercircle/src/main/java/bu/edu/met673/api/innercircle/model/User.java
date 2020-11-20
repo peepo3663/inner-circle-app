@@ -84,4 +84,8 @@ public class User {
   public String getPictureUrl() {
     return pictureUrl;
   }
+
+  public void setPictureUrl(String pictureUrl) {
+    this.pictureUrl = pictureUrl;
+  }
 }

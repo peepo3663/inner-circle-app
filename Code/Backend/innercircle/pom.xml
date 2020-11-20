@@ -15,9 +15,10 @@
 	<description>Project for CS673</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 		<firebase.admin.version>7.0.1</firebase.admin.version>
 		<log4j.version>1.2.17</log4j.version>
+		<apache.commons.io.version>2.8.0</apache.commons.io.version>
 	</properties>
 
 	<dependencies>
@@ -69,6 +70,17 @@
 			<artifactId>mockito-junit-jupiter</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${apache.commons.io.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -78,6 +90,11 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
 	</build>
 
 </project>
