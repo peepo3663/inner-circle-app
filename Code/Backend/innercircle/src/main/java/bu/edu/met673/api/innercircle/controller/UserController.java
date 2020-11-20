@@ -2,6 +2,7 @@ package bu.edu.met673.api.innercircle.controller;
 
 import bu.edu.met673.api.innercircle.model.User;
 import bu.edu.met673.api.innercircle.util.FirestoreUtil;
+import com.google.cloud.storage.Blob;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class UserController {
     if (userId == null || userId.isEmpty()) {
       return null;
     }
-    String resultFromUpload = null;
+    Blob resultFromUpload = null;
     try {
       resultFromUpload = FirestoreUtil.getInstance().uploadPictureProfileFor(userId, file);
     } catch (IOException e) {
@@ -41,7 +42,7 @@ public class UserController {
     if (resultFromUpload == null) {
       throw new NullPointerException();
     }
-    response.put("profile_picture", resultFromUpload);
+    response.put("profile_picture", resultFromUpload.getMediaLink());
     return response;
   }
 }

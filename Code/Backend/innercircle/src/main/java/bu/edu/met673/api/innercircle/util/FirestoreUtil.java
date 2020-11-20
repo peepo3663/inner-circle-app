@@ -167,9 +167,8 @@ public class FirestoreUtil {
     return deviceTokens;
   }
 
-  public String uploadPictureProfileFor(String userId, MultipartFile file) throws IOException {
+  public Blob uploadPictureProfileFor(String userId, MultipartFile file) throws IOException {
     String blobName = String.format("%s/profile_picture.%s", userId, FilenameUtils.getExtension(file.getOriginalFilename()));
-    Blob blob = bucket.create(blobName, file.getBytes(), file.getContentType());
-    return blob.getMediaLink();
+    return bucket.create(blobName, file.getBytes(), file.getContentType());
   }
 }
