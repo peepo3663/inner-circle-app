@@ -6,6 +6,7 @@ import com.google.cloud.storage.Blob;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,16 +33,19 @@ public class UserController {
     if (userId == null || userId.isEmpty()) {
       return null;
     }
-    Blob resultFromUpload = null;
+    String resultURL = null;
+    FirestoreUtil firestoreUtil = FirestoreUtil.getInstance();
     try {
-      resultFromUpload = FirestoreUtil.getInstance().uploadPictureProfileFor(userId, file);
-    } catch (IOException e) {
+      Blob resultFromUpload = firestoreUtil.uploadPictureProfileFor(userId, file);
+      resultURL = resultFromUpload.getMediaLink();
+      firestoreUtil.updateProfilePicture(userId, resultURL);
+    } catch (IOException | ExecutionException | InterruptedException e) {
       e.printStackTrace();
     }
-    if (resultFromUpload == null) {
+    if (resultURL == null) {
       throw new NullPointerException();
     }
-    response.put("profile_picture", resultFromUpload.getMediaLink());
+    response.put("profile_picture", resultURL);
     return response;
   }
 }

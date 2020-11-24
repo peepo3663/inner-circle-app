@@ -157,6 +157,14 @@ public class FirestoreUtil {
     }
   }
 
+  public void updateProfilePicture(String userId, String pictureURL)
+      throws ExecutionException, InterruptedException {
+    DocumentReference userDocument = usersRef.document(userId);
+    Map<String, String> profileProject = new HashMap<>();
+    profileProject.put("profile_picture", pictureURL);
+    userDocument.set(profileProject, SetOptions.merge());
+  }
+
   private List<String> getUserDeviceTokens(User user) {
     List<String> deviceTokens = new ArrayList<>();
     int deviceTokensSize = user.getDevices().size();
