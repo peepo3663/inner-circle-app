@@ -33,11 +33,11 @@ public class ICFCMConfig {
     }
     InputStream inputStream;
     try {
-      inputStream = new ClassPathResource("/inner-circle-firebase-adminsdk.json").getInputStream();
+      inputStream = new ClassPathResource(Constants.googleServiceJSON).getInputStream();
       FirebaseOptions firebaseOptions =
           FirebaseOptions.builder().setCredentials(GoogleCredentials.fromStream(inputStream))
-              .setDatabaseUrl("https://inner-circle-fdd5f.firebaseio.com")
-              .setStorageBucket("inner-circle-fdd5f.appspot.com").build();
+              .setDatabaseUrl(Constants.firebaseDatabaseURL)
+              .setStorageBucket(Constants.firebaseBucketURL).build();
       FirebaseApp.initializeApp(firebaseOptions);
     } catch (IOException e) {
       logger.error("Something wrong with firebase", e);
