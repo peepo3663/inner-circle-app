@@ -28,7 +28,6 @@ public class UserController {
 
   @PostMapping("update/profile/{userId}")
   public Map<String, String> updatePictureProfile(@RequestParam("file") MultipartFile file, @PathVariable("userId") String userId) {
-    // TODO: return new url json response.
     Map<String, String> response = new HashMap<>();
     if (userId == null || userId.isEmpty()) {
       return null;
