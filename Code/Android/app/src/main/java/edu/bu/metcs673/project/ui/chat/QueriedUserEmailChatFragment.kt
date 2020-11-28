@@ -22,11 +22,14 @@ import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.adapter.chat.SearchAdapter
 import edu.bu.metcs673.project.model.chat.UserEmailModel
 import kotlinx.android.synthetic.main.fragment_chat.*
+import kotlinx.android.synthetic.main.fragment_chat.user_text_chatbox
+import kotlinx.android.synthetic.main.fragment_chat_query.*
 
 class QueriedUserEmailChatFragment : AppCompatActivity(){
 
     var sendButton: Button?=null
     var userIdVisit: String=""
+    var username: String=""
     var firebaseUser: FirebaseUser?=null
     private val chatsRef: CollectionReference = Firebase.firestore.collection("chats")
     private lateinit var currentChatId: String
@@ -34,13 +37,17 @@ class QueriedUserEmailChatFragment : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_chat)
+        setContentView(R.layout.fragment_chat_query)
 
         intent=intent
         userIdVisit= intent.getStringExtra("visit_id").toString()
+        username=intent.getStringExtra("username").toString()
         val firebaseUserId = FirebaseAuth.getInstance().currentUser?.uid
 
         sendButton = findViewById(R.id.button_chatbox_send)
+
+
+        ReceiverName.text=username
         sendButton?.setOnClickListener{
 
             val message=user_text_chatbox.text.toString()
@@ -52,8 +59,8 @@ class QueriedUserEmailChatFragment : AppCompatActivity(){
             else
             {
                 sendMessagetoUser(firebaseUserId,userIdVisit,message)
-                println("IT WORKS!!")
             }
+            user_text_chatbox.setText("")
 
         }
 
@@ -65,8 +72,6 @@ class QueriedUserEmailChatFragment : AppCompatActivity(){
         MessageHashMap["sender"]=senderId
         MessageHashMap["receiver"]=receiverId
         MessageHashMap["message"]=message
-
-        println("CurrentChatId")
 
         chatsRef.document("12MCY06Cac6jg5dkOkgJ").collection("messages").add(MessageHashMap)
 

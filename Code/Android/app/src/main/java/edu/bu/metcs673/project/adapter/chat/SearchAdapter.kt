@@ -49,6 +49,7 @@ class SearchAdapter(private val mContext: Context, private val mUsers: List<User
                     val intent = Intent(mContext, QueriedUserEmailChatFragment::class.java)
                     val userId = FirebaseAuth.getInstance().currentUser?.uid
                     intent.putExtra("visit_id",userprofile.uID)
+                    intent.putExtra("username", userprofile.name)
 
                     //Start activity
                     mContext.startActivity(intent)
