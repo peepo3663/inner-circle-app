@@ -136,7 +136,8 @@ class LogInActivity : AppCompatActivity() {
         val userToAdd = hashMapOf(
             "name" to user.displayName,
             "email" to user.email,
-            "updatedAt" to Timestamp.now()
+            "updatedAt" to Timestamp.now(),
+            "uID" to user.uid
         )
         if (isFirstTime) {
             userToAdd["createdAt"] = Timestamp.now()
