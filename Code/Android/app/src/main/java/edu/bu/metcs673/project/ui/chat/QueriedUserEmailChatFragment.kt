@@ -99,7 +99,8 @@ class QueriedUserEmailChatFragment : AppCompatActivity(){
                 {
                     val messageObject = message.toObject(IndividualChat::class.java)
                     if (messageObject != null) {
-                        if (messageObject.getSender().equals(senderId) && messageObject.getReceiver().equals(receiverId)) {
+                        if ((messageObject.getSender().equals(senderId) && messageObject.getReceiver().equals(receiverId)) ||
+                                (messageObject.getSender().equals(receiverId) && messageObject.getReceiver().equals(senderId))){
                             (mChatList as ArrayList<IndividualChat>).add(messageObject)
                         }
                     }
