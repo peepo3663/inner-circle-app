@@ -34,7 +34,7 @@ class ChatsAdapter(mContext: Context, mChatList: List<IndividualChat>) : Recycle
         }
         else
         {
-            val view: View = LayoutInflater.from(mContext).inflate(R.layout.message_item_left, parent, false)
+            val view: View = LayoutInflater.from(mContext).inflate(R.layout.message_item_right, parent, false)
             ViewHolder(view)
         }
     }
