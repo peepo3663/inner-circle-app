@@ -1,7 +1,6 @@
 package edu.bu.metcs673.project
 
 import org.junit.Test
-//import org.junit.jupiter.api.assertAll
 import org.junit.Assert.*
 
 /**
@@ -14,7 +13,8 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
-//    @Test
-//    fun updateUserDataToFirestore(){
-// assertAll()
+    @Test
+    fun updateUserDataToFirestore(){
+
+    }
 }
