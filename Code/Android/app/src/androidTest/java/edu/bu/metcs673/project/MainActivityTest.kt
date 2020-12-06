@@ -35,6 +35,4 @@ class MainActivityTest {
         onView(withId(R.id.nav_view))
             .check(matches(isDisplayed()))
     }
-
-    //Test view change on click of notifications
 }
