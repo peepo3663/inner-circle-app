@@ -7,19 +7,19 @@ class IndividualChat
 
     private var sender:String=""
     private var receiver:String=""
-    private var text:String=""
+    private var message:String=""
 
     constructor()
 
     constructor(
             sender:String,
             receiver: String,
-            text: String
+            message: String
     )
     {
         this.sender=sender
         this.receiver=receiver
-        this.text=text
+        this.message=message
 
     }
 
@@ -45,6 +45,6 @@ class IndividualChat
 
     fun getMessage():String
     {
-        return text
+        return message
     }
 }

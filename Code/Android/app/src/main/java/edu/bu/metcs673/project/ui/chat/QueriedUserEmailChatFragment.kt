@@ -89,7 +89,7 @@ class QueriedUserEmailChatFragment : AppCompatActivity(){
     private fun retrieveMessages(senderId: String?, receiverId: String)
     {
         mChatList=ArrayList()
-        val reference= chatsRef.document("4112T5vcMEnnu7ltmX96").collection("messages")
+        val reference= chatsRef.document("12MCY06Cac6jg5dkOkgJ").collection("messages")
 
         reference.addSnapshotListener{ messages, _ ->
             (mChatList as ArrayList<IndividualChat>).clear()
@@ -117,9 +117,9 @@ class QueriedUserEmailChatFragment : AppCompatActivity(){
         val MessageHashMap = HashMap<String, Any?>()
         MessageHashMap["sender"]=senderId
         MessageHashMap["receiver"]=receiverId
-        MessageHashMap["text"]=message
+        MessageHashMap["message"]=message
 
-        chatsRef.document("4112T5vcMEnnu7ltmX96").collection("messages").add(MessageHashMap)
+        chatsRef.document("12MCY06Cac6jg5dkOkgJ").collection("messages").add(MessageHashMap)
 
     }
 

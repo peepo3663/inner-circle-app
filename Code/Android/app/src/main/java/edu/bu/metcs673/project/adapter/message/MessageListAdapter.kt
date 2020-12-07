@@ -22,8 +22,6 @@ class MessageListAdapter(val itemClickListener: OnItemClickListener): RecyclerVi
     override fun onBindViewHolder(holder: MessageListViewHolder, position: Int) {
         val chatRoom = allChatRooms[position]
         holder.bind(chatRoom, itemClickListener)
-
-        
     }
 
     override fun getItemViewType(position: Int): Int {
