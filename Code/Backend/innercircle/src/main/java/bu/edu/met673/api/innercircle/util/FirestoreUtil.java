@@ -19,7 +19,6 @@ import com.google.cloud.firestore.SetOptions;
 import com.google.cloud.firestore.WriteResult;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Bucket;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.cloud.FirestoreClient;
 import com.google.firebase.cloud.StorageClient;
 import java.io.IOException;
@@ -81,8 +80,9 @@ public class FirestoreUtil {
       userIds.add(user.getUid());
     }
     ApiFuture<QuerySnapshot> result = chatQuery.get();
-    if (!result.get().isEmpty()) {
-      throw new ChatRoomAlreadyExistedException();
+    QuerySnapshot chatRoomQuery = result.get();
+    if (!chatRoomQuery.isEmpty()) {
+      throw new ChatRoomAlreadyExistedException(chatRoomQuery.getDocuments().get(0).getId());
     }
     // add new chat room if need
     DocumentReference chatDocument = chatsRef.document();
