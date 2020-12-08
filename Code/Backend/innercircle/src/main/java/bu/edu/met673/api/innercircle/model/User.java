@@ -11,7 +11,10 @@ public class User {
   private String uid;
   private String name;
   private String email;
+
+  @JsonProperty("profile_picture")
   private String pictureUrl;
+
   private Timestamp createdAt;
   private Timestamp updatedAt;
   private boolean isUserOnline = false;

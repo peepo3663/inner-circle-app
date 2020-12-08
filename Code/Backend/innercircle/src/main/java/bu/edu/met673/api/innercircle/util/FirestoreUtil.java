@@ -72,7 +72,11 @@ public class FirestoreUtil {
     ArrayList<Map<String, Object>> usersForChatRoom = new ArrayList<>();
     ArrayList<String> userIds = new ArrayList<>();
     for (User user : users) {
-      chatQuery = chatsRef.whereArrayContains("userIds", user.getUid());
+      if (chatQuery == null) {
+        chatQuery = chatsRef.whereArrayContains("userIds", user.getUid());
+      } else {
+        chatQuery.whereArrayContains("userIds", user.getUid());
+      }
       usersForChatRoom.add(user.toMapDataForChatRoom());
       userIds.add(user.getUid());
     }
