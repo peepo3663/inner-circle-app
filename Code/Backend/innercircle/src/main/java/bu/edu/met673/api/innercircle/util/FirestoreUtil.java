@@ -19,7 +19,6 @@ import com.google.cloud.firestore.SetOptions;
 import com.google.cloud.firestore.WriteResult;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Bucket;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.cloud.FirestoreClient;
 import com.google.firebase.cloud.StorageClient;
 import java.io.IOException;
@@ -72,13 +71,18 @@ public class FirestoreUtil {
     ArrayList<Map<String, Object>> usersForChatRoom = new ArrayList<>();
     ArrayList<String> userIds = new ArrayList<>();
     for (User user : users) {
-      chatQuery = chatsRef.whereArrayContains("userIds", user.getUid());
+      if (chatQuery == null) {
+        chatQuery = chatsRef.whereArrayContains("userIds", user.getUid());
+      } else {
+        chatQuery.whereArrayContains("userIds", user.getUid());
+      }
       usersForChatRoom.add(user.toMapDataForChatRoom());
       userIds.add(user.getUid());
     }
     ApiFuture<QuerySnapshot> result = chatQuery.get();
-    if (!result.get().isEmpty()) {
-      throw new ChatRoomAlreadyExistedException();
+    QuerySnapshot chatRoomQuery = result.get();
+    if (!chatRoomQuery.isEmpty()) {
+      throw new ChatRoomAlreadyExistedException(chatRoomQuery.getDocuments().get(0).getId());
     }
     // add new chat room if need
     DocumentReference chatDocument = chatsRef.document();
@@ -155,6 +159,14 @@ public class FirestoreUtil {
     } else {
       throw new UserNotFoundException(user);
     }
+  }
+
+  public void updateProfilePicture(String userId, String pictureURL)
+      throws ExecutionException, InterruptedException {
+    DocumentReference userDocument = usersRef.document(userId);
+    Map<String, String> profileProject = new HashMap<>();
+    profileProject.put("profile_picture", pictureURL);
+    userDocument.set(profileProject, SetOptions.merge());
   }
 
   private List<String> getUserDeviceTokens(User user) {
