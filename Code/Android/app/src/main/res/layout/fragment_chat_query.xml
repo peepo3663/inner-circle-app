@@ -13,8 +13,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewMessageList"
-            android:layout_width="411dp"
-            android:layout_height="682dp"
+            android:layout_width="407dp"
+            android:layout_height="619dp"
             app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -67,5 +67,30 @@
                 android:focusable="true" />
 
         </LinearLayout>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ReceiverName"
+            android:layout_width="347dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="4dp"
+            android:text="TextView"
+            android:textSize="30sp"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
