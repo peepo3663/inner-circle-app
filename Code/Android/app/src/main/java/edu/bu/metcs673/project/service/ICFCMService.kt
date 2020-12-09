@@ -84,7 +84,7 @@ class ICFCMService : FirebaseMessagingService() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 channelId,
-                "Channel human readable title",
+                "Inner Circle Notifcation",
                 NotificationManager.IMPORTANCE_DEFAULT
             )
             notificationManager.createNotificationChannel(channel)
