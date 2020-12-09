@@ -42,12 +42,13 @@ class MainActivity : BaseActivity(), ChatRoomClickListener {
     }
 
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var mNavigationView: BottomNavigationView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val navigationView = findViewById<BottomNavigationView>(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
@@ -56,12 +57,13 @@ class MainActivity : BaseActivity(), ChatRoomClickListener {
             setOf(
                 R.id.navigation_home,
                 R.id.navigation_chat,
-                R.id.navigation_notifications
+                R.id.navigation_friends
             )
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        navigationView.setupWithNavController(navController)
+        mNavigationView = navigationView
 
         retrieveToken()
     }
@@ -137,6 +139,8 @@ class MainActivity : BaseActivity(), ChatRoomClickListener {
             }
         }
         startActivity(chatActivityIntent)
+        // select second tab navbar
+        mNavigationView?.selectedItemId = R.id.navigation_chat
     }
 
 }

@@ -12,6 +12,7 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import edu.bu.metcs673.project.R
+import edu.bu.metcs673.project.api.ChatApi
 import edu.bu.metcs673.project.api.MessageAPI
 import edu.bu.metcs673.project.api.UserApi
 import edu.bu.metcs673.project.core.ICApp
@@ -20,13 +21,12 @@ import javax.inject.Inject
 
 open class BaseActivity: AppCompatActivity() {
 
-//    @Inject lateinit var androidInjector : DispatchingAndroidInjector<Any>
-
     @Inject lateinit var retrofit: Retrofit
 
     private var dialog: Dialog? = null
     lateinit var userApi: UserApi
     lateinit var messageAPI: MessageAPI
+    lateinit var chatApi: ChatApi
 
     val currentUserId: String? = FirebaseAuth.getInstance().uid
 
@@ -37,6 +37,7 @@ open class BaseActivity: AppCompatActivity() {
 
         userApi = retrofit.create(UserApi::class.java)
         messageAPI = retrofit.create(MessageAPI::class.java)
+        chatApi = retrofit.create(ChatApi::class.java)
     }
 
     fun showPopupProgressSpinner(isShowing: Boolean) {

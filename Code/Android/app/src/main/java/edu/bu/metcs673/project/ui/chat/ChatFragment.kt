@@ -64,7 +64,7 @@ class ChatFragment : BaseFragment() {
             this,
             ChatViewModelFactory(parentActivity.application, chatRoomId)
         ).get(ChatViewModel::class.java)
-        viewModel.getAllMessages()?.observe(this, Observer {
+        viewModel.getAllMessages()?.observe(viewLifecycleOwner, Observer {
             mMessageAdapter.setMessages(it)
 
             // Update cycle view based on allMessages array

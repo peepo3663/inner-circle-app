@@ -15,6 +15,7 @@ import edu.bu.metcs673.project.model.message.ChatRoomModel
 import edu.bu.metcs673.project.ui.base.BaseFragment
 import edu.bu.metcs673.project.ui.listener.ChatRoomClickListener
 import edu.bu.metcs673.project.ui.listener.OnItemClickListener
+import edu.bu.metcs673.project.util.UIUtil
 import java.lang.ClassCastException
 import kotlin.math.max
 
@@ -41,10 +42,11 @@ class MessageListFragment: BaseFragment(),
 
         mMessageAdapter = MessageListAdapter(this)
         viewModel = ViewModelProviders.of(this).get(MessageListViewModel::class.java)
-        viewModel.getAllChatrooms().observe(this, Observer {
+        showLoader(true)
+        viewModel.getAllChatrooms().observe(viewLifecycleOwner, Observer {
+            showLoader(false)
             mMessageAdapter.setChatRoom(it)
             mMessageAdapter.notifyDataSetChanged()
-            recyclerView.scrollToPosition(max(it.size - 1, 0))
         })
         recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         recyclerView.adapter = mMessageAdapter

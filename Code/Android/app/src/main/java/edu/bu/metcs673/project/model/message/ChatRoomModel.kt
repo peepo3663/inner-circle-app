@@ -3,8 +3,8 @@ package edu.bu.metcs673.project.model.message
 import com.google.firebase.Timestamp
 import edu.bu.metcs673.project.model.user.User
 
-class ChatRoomModel(val chatRoomId: String, data: Map<String, Any?>?) {
-    val userCount = data?.get("users_count") as Long
+class ChatRoomModel(val chatRoomId: String?, data: Map<String, Any?>?) {
+    val userCount = data?.get("users_count") as Long?
     val createdAt: Timestamp? = data?.get("createdAt") as Timestamp?
     var users: ArrayList<User>? = null
     val userIds: ArrayList<String>? = data?.get("userIds") as ArrayList<String>?

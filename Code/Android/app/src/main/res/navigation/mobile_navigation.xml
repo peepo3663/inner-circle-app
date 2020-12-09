@@ -18,8 +18,8 @@
         tools:layout="@layout/fragment_message_list" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_friends"
         android:name="edu.bu.metcs673.project.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/friend_tab"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

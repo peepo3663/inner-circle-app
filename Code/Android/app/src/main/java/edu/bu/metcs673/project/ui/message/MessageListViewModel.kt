@@ -12,7 +12,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.bu.metcs673.project.model.message.ChatRoomModel
 
-class MessageListViewModel(application: Application): AndroidViewModel(application) {
+class MessageListViewModel(application: Application) : AndroidViewModel(application) {
     companion object {
         private const val TAG = "MessageListViewModel"
     }
@@ -22,25 +22,31 @@ class MessageListViewModel(application: Application): AndroidViewModel(applicati
 
     private var snapshotListener: ListenerRegistration? = null
     private var chatRooms = mutableListOf<ChatRoomModel>()
+
     init {
         fetchChatrooms()
     }
 
     private fun fetchChatrooms() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
-        snapshotListener = chatsRef.whereArrayContains("userIds", userId).orderBy("createdAt", Query.Direction.DESCENDING).addSnapshotListener { querySnapshot, e ->
-            if (e != null) {
-                Log.e(TAG, e.message, e)
-                return@addSnapshotListener
-            }
-            chatRooms.clear()
-            if (querySnapshot != null && querySnapshot.isEmpty.not()) {
-                querySnapshot.documents.forEach { documentSnapshot ->
-                    val chatRoomModel = ChatRoomModel(documentSnapshot.id, documentSnapshot.data)
-                    chatRooms.add(chatRoomModel)
+        if (snapshotListener == null) {
+            snapshotListener = chatsRef.whereArrayContains("userIds", userId)
+                .orderBy("createdAt", Query.Direction.DESCENDING)
+                .addSnapshotListener { querySnapshot, e ->
+                    if (e != null) {
+                        Log.e(TAG, e.message, e)
+                        return@addSnapshotListener
+                    }
+                    chatRooms.clear()
+                    if (querySnapshot != null && querySnapshot.isEmpty.not()) {
+                        querySnapshot.documents.forEach { documentSnapshot ->
+                            val chatRoomModel =
+                                ChatRoomModel(documentSnapshot.id, documentSnapshot.data)
+                            chatRooms.add(chatRoomModel)
+                        }
+                        allMessageList.value = chatRooms
+                    }
                 }
-                allMessageList.value = chatRooms
-            }
         }
     }
 

@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName
 import java.net.MalformedURLException
 import java.net.URL
 import java.util.*
+import kotlin.collections.HashMap
 
 class User(userId: String, map: Map<String, Any?>?) {
 
@@ -43,4 +44,14 @@ class User(userId: String, map: Map<String, Any?>?) {
     }
 
     constructor(documentSnapshot: DocumentSnapshot): this(documentSnapshot.id, documentSnapshot.data)
+
+    fun toMap(): MutableMap<String, Any?> {
+        val map = mutableMapOf<String, Any?>(
+            "name" to this.name,
+            "uid" to this.userId,
+            "email" to this.email,
+            "profile_picture" to this.profilePicture?.toString()
+        )
+        return map
+    }
 }
