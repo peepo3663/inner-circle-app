@@ -17,10 +17,14 @@ class TCResponseError(errorBody: ResponseBody?) {
             if (errorBody == null) {
                 return@run
             }
-            val jsonObject = try { JSONObject(errorBody.string()) } catch (e: JSONException) { null }
-                ?: return@run
-            errorMsg = jsonObject.getString("errorMsg")
-            httpStatus = jsonObject.getInt("status")
+            try {
+                val jsonObject = JSONObject(errorBody.string())
+                errorMsg = jsonObject.getString("errorMsg")
+                httpStatus = jsonObject.getInt("status")
+            }
+            catch (e: JSONException) {
+                return@run
+            }
         }
     }
 }

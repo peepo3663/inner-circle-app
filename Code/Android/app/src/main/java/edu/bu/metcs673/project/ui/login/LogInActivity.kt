@@ -144,7 +144,7 @@ class LogInActivity : BaseActivity() {
                     processToMainActivity(response.body())
                 } else {
                     val error = TCResponseError(response.errorBody())
-                    Toast.makeText(this@LogInActivity, error.errorMsg, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@LogInActivity, error.errorMsg ?: "Error", Toast.LENGTH_LONG).show()
                 }
             }
         })
