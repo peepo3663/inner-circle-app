@@ -34,7 +34,8 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", 'SERVER_URL', '"http://192.168.0.3:8080"'
+//            buildConfigField "String", 'SERVER_URL', '"http://192.168.0.3:8080"'
+            buildConfigField "String", 'SERVER_URL', '"http://ec2-3-131-141-53.us-east-2.compute.amazonaws.com:8080"'
         }
         release {
             buildConfigField "String", 'SERVER_URL', '"http://ec2-3-131-141-53.us-east-2.compute.amazonaws.com:8080"'
