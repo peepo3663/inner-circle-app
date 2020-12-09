@@ -9,17 +9,19 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.core.ICApp
+import edu.bu.metcs673.project.model.message.ChatRoomModel
 import edu.bu.metcs673.project.model.user.User
 import edu.bu.metcs673.project.ui.base.BaseActivity
+import edu.bu.metcs673.project.ui.chat.ChatActivity
+import edu.bu.metcs673.project.ui.chat.ChatFragment
+import edu.bu.metcs673.project.ui.listener.ChatRoomClickListener
 import edu.bu.metcs673.project.ui.login.LogInActivity
 
 
@@ -27,12 +29,11 @@ import edu.bu.metcs673.project.ui.login.LogInActivity
 // @brief Class to handle main configurations for chat application.
 //      Instantiated upon application login.
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), ChatRoomClickListener {
 
     // Global variable namespace
     companion object {
         private const val TAG = "MainActivity"
-        lateinit var currentUser: User
     }
 
     lateinit var auth: FirebaseAuth
@@ -56,14 +57,6 @@ class MainActivity : BaseActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        auth = FirebaseAuth.getInstance()
-        val userId = auth.uid
-        userId?.let { currentUserId ->
-            Firebase.firestore.collection("users").document(currentUserId).get().addOnSuccessListener {
-                currentUser = User(it)
-            }
-        }
     }
 
     // @function OnCreateOptionsMenu
@@ -84,7 +77,9 @@ class MainActivity : BaseActivity() {
             // Log out the user
             auth.signOut()
             // sign out from google too
-            (application as ICApp).getGoogleSignInClient().signOut()
+            val myApp = (application as ICApp)
+            myApp.getGoogleSignInClient().signOut()
+            myApp.currentUser = null
 
             //Navigate Back to Sign In Screen
             val logoutIntent = Intent(this, LogInActivity::class.java)
@@ -92,6 +87,21 @@ class MainActivity : BaseActivity() {
             startActivity(logoutIntent)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun chatRoomClick(chatRoomModel: ChatRoomModel) {
+        val chatActivityIntent = Intent(this, ChatActivity::class.java)
+        chatActivityIntent.putExtra("CHATROOM_ID", chatRoomModel.chatRoomId)
+        if (chatRoomModel.users != null) {
+            val users = chatRoomModel.users as ArrayList<User>
+            for (user in users) {
+                if (user.userId != FirebaseAuth.getInstance().currentUser?.uid) {
+                    chatActivityIntent.putExtra("CHATROOM_NAME", user.name)
+                    break
+                }
+            }
+        }
+        startActivity(chatActivityIntent)
     }
 
 }

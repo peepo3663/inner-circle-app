@@ -1,4 +1,3 @@
-
 package edu.bu.metcs673.project.ui.chat
 
 import android.content.Context
@@ -9,21 +8,26 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
-import androidx.fragment.app.Fragment
+import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
-import edu.bu.metcs673.project.ui.MainActivity
+import com.google.firebase.Timestamp
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.adapter.chat.MessageAdapter
+import edu.bu.metcs673.project.core.ICApp
+import edu.bu.metcs673.project.factory.ChatViewModelFactory
 import edu.bu.metcs673.project.model.chat.MessageModel
+import edu.bu.metcs673.project.model.user.User
+import edu.bu.metcs673.project.ui.base.BaseFragment
 import edu.bu.metcs673.project.util.UIUtil
-import java.net.URL
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import kotlin.math.max
 
-class ChatFragment : Fragment() {
+class ChatFragment : BaseFragment() {
     companion object {
         private const val TAG = "ChatFragment"
     }
@@ -32,8 +36,16 @@ class ChatFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: ChatViewModel
 
-    private val userId = FirebaseAuth.getInstance().currentUser?.uid
-    
+    lateinit var chatRoomId: String
+        private set
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val chatRoomId = arguments?.getString("CHATROOM_ID") ?: return
+        this.chatRoomId = chatRoomId
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,7 +59,11 @@ class ChatFragment : Fragment() {
 
         //Every time user taps "Message" tab on controller, it will initiate the view
         //Pass view, return viewModel
-        viewModel = ViewModelProviders.of(this).get(ChatViewModel::class.java)
+        val parentActivity = activity ?: return null
+        viewModel = ViewModelProvider(
+            this,
+            ChatViewModelFactory(parentActivity.application, chatRoomId)
+        ).get(ChatViewModel::class.java)
         viewModel.getAllMessages()?.observe(this, Observer {
             mMessageAdapter.setMessages(it)
 
@@ -58,7 +74,8 @@ class ChatFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         recyclerView.adapter = mMessageAdapter
         recyclerView.setOnTouchListener { view, event ->
-            val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+            val inputManager =
+                activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
             inputManager?.hideSoftInputFromWindow(view.windowToken, 0)
             false
         }
@@ -67,7 +84,8 @@ class ChatFragment : Fragment() {
         val sendButton = view.findViewById<Button>(R.id.button_chatbox_send)
         val userInput = view.findViewById<EditText>(R.id.user_text_chatbox)
         sendButton.setOnClickListener {
-            sendMessage(userInput.text.toString(), viewModel, userId as String, MainActivity.currentUser.profilePicture, userInput)
+            val myApp = activity?.application as ICApp
+            sendMessage(userInput.text.toString(), viewModel, myApp.currentUser as User, userInput)
         }
 
         return view
@@ -75,13 +93,49 @@ class ChatFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // viewModel.unobserve()
+        viewModel.unobserve()
     }
 
-    private fun sendMessage(text: String, viewModel: ChatViewModel, userId: String, profilePicture: URL?, userInput: EditText) {
+    private fun sendMessage(
+        text: String,
+        viewModel: ChatViewModel,
+        currentUser: User,
+        userInput: EditText
+    ) {
         // generate the user message
-        val userMessage = MessageModel(text, true, userId, profilePicture?.toString())
+        val data = mutableMapOf(
+            "text" to text,
+            "userId" to currentUser.userId,
+            "profile_picture" to currentUser.profilePicture?.toString(),
+            "userName" to currentUser.name,
+            "createdAt" to Timestamp.now(),
+            "chatRoomId" to chatRoomId
+        )
+        val userMessage = MessageModel(null, data)
+        userMessage.isOwnMessage = true
         viewModel.insert(userMessage)
+        val chatActivity = (activity as ChatActivity)
+        chatActivity.showPopupProgressSpinner(true)
+        messageAPI.sendMessage(userMessage).enqueue(object : Callback<MessageModel> {
+            override fun onFailure(call: Call<MessageModel>, t: Throwable) {
+                chatActivity.showPopupProgressSpinner(false)
+                Toast.makeText(context, t.localizedMessage, Toast.LENGTH_LONG).show()
+                viewModel.remove(userMessage)
+            }
+
+            override fun onResponse(call: Call<MessageModel>, response: Response<MessageModel>) {
+                chatActivity.showPopupProgressSpinner(false)
+                if (response.isSuccessful) {
+                    sendMessageSuccessfully(userInput)
+                } else {
+                    Toast.makeText(context, response.errorBody()?.string() ?: "Error", Toast.LENGTH_LONG).show()
+                    viewModel.remove(userMessage)
+                }
+            }
+        })
+    }
+
+    private fun sendMessageSuccessfully(userInput: EditText) {
         // notify observers data has changed
         mMessageAdapter.notifyDataSetChanged()
         // add scrollable effect

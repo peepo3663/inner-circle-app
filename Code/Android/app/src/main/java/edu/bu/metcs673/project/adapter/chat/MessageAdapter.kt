@@ -35,13 +35,13 @@ class MessageAdapter : RecyclerView.Adapter<MessageViewHolder>() {
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val message = responseMessages[position]
         holder.mTextView.text = message.text
-        val createdDate = message.createdAt?.toDate()
+        val createdDate = message.createdAt
         createdDate?.let {
             val simpleDateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
             holder.mTextTime.text = simpleDateFormat.format(it)
         }
         if (holder.mPictureView != null && message.isOwnMessage == false) {
-            Glide.with(holder.itemView).load(message.profile_picture).circleCrop().into(holder.mPictureView)
+            Glide.with(holder.itemView).load(message.profilePicture).circleCrop().into(holder.mPictureView)
         }
     }
 

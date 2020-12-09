@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.model.message.ChatRoomModel
-import edu.bu.metcs673.project.util.OnItemClickListener
+import edu.bu.metcs673.project.ui.listener.OnItemClickListener
 
 class MessageListAdapter(val itemClickListener: OnItemClickListener): RecyclerView.Adapter<MessageListViewHolder>() {
 

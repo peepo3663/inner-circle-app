@@ -4,6 +4,7 @@ import android.app.Application
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseUser
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
@@ -11,6 +12,7 @@ import edu.bu.metcs673.project.BuildConfig
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.dagger.AppComponent
 import edu.bu.metcs673.project.dagger.DaggerAppComponent
+import edu.bu.metcs673.project.model.user.User
 import edu.bu.metcs673.project.module.AppModule
 import edu.bu.metcs673.project.module.NetworkModule
 
@@ -18,6 +20,8 @@ class ICApp: Application() {
 
     private lateinit var appComponent: AppComponent
     private lateinit var googleSignInClient: GoogleSignInClient
+
+    var currentUser: User? = null
 
     override fun onCreate() {
         super.onCreate()

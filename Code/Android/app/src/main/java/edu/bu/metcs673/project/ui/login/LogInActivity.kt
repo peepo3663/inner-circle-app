@@ -103,7 +103,10 @@ class LogInActivity : BaseActivity() {
         updateUserDataToFirestore(user, isFirstTime)
     }
 
-    private fun processToMainActivity() {
+    private fun processToMainActivity(user: User?) {
+        user?.let { currentUser ->
+            (application as ICApp).currentUser = currentUser
+        }
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
@@ -126,22 +129,24 @@ class LogInActivity : BaseActivity() {
             userToAdd["profile_picture"] =
                 if (user.photoUrl != null) user.photoUrl.toString() else ""
         }
+        showPopupProgressSpinner(true)
         userApi.loginUser(User(user.uid, userToAdd)).enqueue(object : Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
+                showPopupProgressSpinner(false)
                 // show error
                 Log.e(TAG, t.message, t)
                 Toast.makeText(this@LogInActivity, t.localizedMessage, Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
+                showPopupProgressSpinner(false)
                 if (response.isSuccessful) {
-                    processToMainActivity()
+                    processToMainActivity(response.body())
                 } else {
                     val error = TCResponseError(response.errorBody())
                     Toast.makeText(this@LogInActivity, error.errorMsg, Toast.LENGTH_LONG).show()
                 }
             }
-
         })
     }
 
