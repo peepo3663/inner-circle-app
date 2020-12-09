@@ -1,11 +1,10 @@
-package edu.bu.metcs673.project
+package edu.bu.metcs673.project.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -13,14 +12,14 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.tasks.Tasks
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.model.user.User
 import edu.bu.metcs673.project.ui.base.BaseActivity
+import edu.bu.metcs673.project.ui.login.LogInActivity
 
 
 // @class MainActivity
@@ -37,13 +36,6 @@ class MainActivity : BaseActivity() {
 
     lateinit var googleSignInClient: GoogleSignInClient
     lateinit var auth: FirebaseAuth
-
-    // @function OnCreate
-    // @brief Default function called when class is instantiated.
-    //      Set up following instances:
-    //      1) navigation controller
-    //      2) google signin
-    //      3) firebase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +56,9 @@ class MainActivity : BaseActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_chat, R.id.navigation_notifications
+                R.id.navigation_home,
+                R.id.navigation_chat,
+                R.id.navigation_notifications
             )
         )
 

@@ -6,23 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import edu.bu.metcs673.project.MainActivity
 import edu.bu.metcs673.project.R
-import edu.bu.metcs673.project.adapter.chat.MessageAdapter
 import edu.bu.metcs673.project.adapter.message.MessageListAdapter
-import edu.bu.metcs673.project.model.chat.MessageModel
 import edu.bu.metcs673.project.model.message.ChatRoomModel
-import edu.bu.metcs673.project.ui.chat.ChatViewModel
 import edu.bu.metcs673.project.util.OnItemClickListener
-import java.net.URL
 import kotlin.math.max
 
 class MessageListFragment: Fragment(), OnItemClickListener {

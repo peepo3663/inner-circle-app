@@ -1,14 +1,12 @@
-package edu.bu.metcs673.project
+package edu.bu.metcs673.project.ui.login
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
@@ -16,29 +14,19 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.SetOptions
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.microsoft.appcenter.AppCenter
-import com.microsoft.appcenter.analytics.Analytics
-import com.microsoft.appcenter.crashes.Crashes
+import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.core.ICApp
+import edu.bu.metcs673.project.model.TCResponseError
 import edu.bu.metcs673.project.model.user.User
+import edu.bu.metcs673.project.ui.MainActivity
 import edu.bu.metcs673.project.ui.base.BaseActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import java.util.logging.Logger
-import javax.inject.Inject
 
-
-// @class MainActivity
-// @brief Class to handle log in page for UI.
-//      Instantiated upon application login.
-//      Implement Google Login
-
+/**
+ * Login Activity class is the class handle user before logged in.
+ */
 class LogInActivity : BaseActivity() {
 
     // Global Variable namespace
@@ -90,7 +78,7 @@ class LogInActivity : BaseActivity() {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
-                task.addOnSuccessListener {account ->
+                task.addOnSuccessListener { account ->
                     Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
                     firebaseAuthWithGoogle(account.idToken!!)
                 }.addOnFailureListener {
@@ -134,16 +122,23 @@ class LogInActivity : BaseActivity() {
         )
         if (isFirstTime) {
             userToAdd["createdAt"] = Timestamp.now()
-            userToAdd["profile_picture"] = if (user.photoUrl != null) user.photoUrl.toString() else ""
+            userToAdd["profile_picture"] =
+                if (user.photoUrl != null) user.photoUrl.toString() else ""
         }
-        userApi.loginUser(User(user.uid, userToAdd)).enqueue(object: Callback<User> {
+        userApi.loginUser(User(user.uid, userToAdd)).enqueue(object : Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
                 // show error
                 Log.e(TAG, t.message, t)
+                Toast.makeText(this@LogInActivity, t.localizedMessage, Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
-                processToMainActivity()
+                if (response.isSuccessful) {
+                    processToMainActivity()
+                } else {
+                    val error = TCResponseError(response.errorBody())
+                    Toast.makeText(this@LogInActivity, error.errorMsg, Toast.LENGTH_LONG).show()
+                }
             }
 
         })

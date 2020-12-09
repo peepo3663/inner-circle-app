@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import edu.bu.metcs673.project.MainActivity
+import edu.bu.metcs673.project.ui.MainActivity
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.adapter.chat.MessageAdapter
 import edu.bu.metcs673.project.model.chat.MessageModel
