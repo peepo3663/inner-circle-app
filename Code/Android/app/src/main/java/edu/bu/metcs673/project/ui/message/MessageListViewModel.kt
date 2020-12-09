@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.bu.metcs673.project.model.message.ChatRoomModel
@@ -27,7 +28,7 @@ class MessageListViewModel(application: Application): AndroidViewModel(applicati
 
     private fun fetchChatrooms() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
-        snapshotListener = chatsRef.whereArrayContains("userIds", userId).addSnapshotListener { querySnapshot, e ->
+        snapshotListener = chatsRef.whereArrayContains("userIds", userId).orderBy("createdAt", Query.Direction.DESCENDING).addSnapshotListener { querySnapshot, e ->
             if (e != null) {
                 Log.e(TAG, e.message, e)
                 return@addSnapshotListener
