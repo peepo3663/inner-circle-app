@@ -2,6 +2,7 @@ package edu.bu.metcs673.project.ui.base
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import dagger.android.HasAndroidInjector
 import edu.bu.metcs673.project.api.MessageAPI
 import edu.bu.metcs673.project.api.UserApi
 import edu.bu.metcs673.project.core.ICApp
@@ -10,6 +11,7 @@ import javax.inject.Inject
 
 open class BaseFragment: Fragment() {
 
+//    @Inject lateinit var androidInjector : DispatchingAndroidInjector<Any>
     @Inject lateinit var retrofit: Retrofit
     lateinit var userApi: UserApi
     lateinit var messageAPI: MessageAPI

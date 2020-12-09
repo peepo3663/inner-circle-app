@@ -25,9 +25,6 @@ public class User {
 
   private boolean isUserOnline = false;
 
-  @JsonProperty("devices")
-  private List<UserDevice> devices;
-
   public User() { }
 
   public User(Map<String, Object> userNode) {
@@ -43,7 +40,6 @@ public class User {
     this.name = (String) userNode.get("name");
     this.email = (String) userNode.get("email");
     this.pictureUrl = (String) userNode.get("profile_picture");
-    this.devices = (List<UserDevice>) userNode.get("devices");
   }
 
   public User(QueryDocumentSnapshot querySnapshot) {
@@ -59,7 +55,6 @@ public class User {
     this.name = querySnapshot.get("name", String.class);
     this.email = querySnapshot.get("email", String.class);
     this.pictureUrl = querySnapshot.get("profile_picture", String.class);
-    this.devices = (List<UserDevice>) querySnapshot.get("devices");
   }
 
   public String getName() {
@@ -76,11 +71,6 @@ public class User {
 
   public void setUid(String uid) {
     this.uid = uid;
-  }
-
-  @JsonProperty("devices")
-  public List<UserDevice> getDevices() {
-    return devices;
   }
 
   public Map<String, Object> toMapData() {

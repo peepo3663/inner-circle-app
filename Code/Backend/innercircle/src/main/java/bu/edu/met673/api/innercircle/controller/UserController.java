@@ -1,6 +1,7 @@
 package bu.edu.met673.api.innercircle.controller;
 
 import bu.edu.met673.api.innercircle.model.User;
+import bu.edu.met673.api.innercircle.model.UserDevice;
 import bu.edu.met673.api.innercircle.util.FirestoreUtil;
 import com.google.cloud.storage.Blob;
 import java.io.IOException;
@@ -46,6 +47,19 @@ public class UserController {
       throw new NullPointerException();
     }
     response.put("profile_picture", resultURL);
+    return response;
+  }
+
+  @PostMapping("update/{userId}/deviceToken")
+  public Map<String, String> updateDeviceToken(@PathVariable("userId") String userId, @RequestBody
+                                               UserDevice userDevice) {
+    Map<String, String> response = new HashMap<>();
+    try {
+      FirestoreUtil.getInstance().updateUserDeviceToken(userId, userDevice);
+      response.put("message", "add device successfully.");
+    } catch (Exception e) {
+      response.put("errorMsg", "can't this add device");
+    }
     return response;
   }
 }
