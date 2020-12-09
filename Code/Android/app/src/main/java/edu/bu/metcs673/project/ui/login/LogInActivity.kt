@@ -23,6 +23,7 @@ import edu.bu.metcs673.project.ui.base.BaseActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 /**
  * Login Activity class is the class handle user before logged in.
@@ -114,7 +115,7 @@ class LogInActivity : BaseActivity() {
         if (user == null || user.displayName == null) {
             return
         }
-        val userToAdd = mutableMapOf<String, Any?>(
+        val userToAdd = mutableMapOf(
             "name" to user.displayName,
             "email" to user.email,
             "updatedAt" to Timestamp.now(),

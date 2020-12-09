@@ -22,6 +22,7 @@ import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Bucket;
 import com.google.firebase.cloud.FirestoreClient;
 import com.google.firebase.cloud.StorageClient;
+import com.google.firebase.database.core.operation.Merge;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -150,7 +151,9 @@ public class FirestoreUtil {
     if (!querySnapshot.isEmpty()) {
       // user exist
       QueryDocumentSnapshot queryDocumentSnapshot = querySnapshot.getDocuments().get(0);
-      return new User(queryDocumentSnapshot);
+      User returnUser = new User(queryDocumentSnapshot);
+      returnUser = updateUserIsOnline(returnUser);
+      return returnUser;
     }
     // new user
     DocumentReference userDocument = usersRef.document();
@@ -161,6 +164,18 @@ public class FirestoreUtil {
     } else {
       throw new UserNotFoundException(user);
     }
+  }
+
+  private User updateUserIsOnline(User returnUser) {
+    Map<String, Object> fieldsToUpdate = new HashMap<>();
+    fieldsToUpdate.put("isUserOnline", true);
+    try {
+      usersRef.document(returnUser.getUid()).set(fieldsToUpdate, SetOptions.merge()).get();
+      returnUser.setUserOnline(true);
+    } catch (InterruptedException | ExecutionException e) {
+      e.printStackTrace();
+    }
+    return returnUser;
   }
 
   public void updateProfilePicture(String userId, String pictureURL)

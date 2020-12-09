@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.bu.metcs673.project.R
+import edu.bu.metcs673.project.core.ICApp
 import edu.bu.metcs673.project.model.user.User
 import edu.bu.metcs673.project.ui.base.BaseActivity
 import edu.bu.metcs673.project.ui.login.LogInActivity
@@ -34,20 +35,11 @@ class MainActivity : BaseActivity() {
         lateinit var currentUser: User
     }
 
-    lateinit var googleSignInClient: GoogleSignInClient
     lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        // Configure Google Sign In
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
@@ -92,7 +84,7 @@ class MainActivity : BaseActivity() {
             // Log out the user
             auth.signOut()
             // sign out from google too
-            googleSignInClient.signOut()
+            (application as ICApp).getGoogleSignInClient().signOut()
 
             //Navigate Back to Sign In Screen
             val logoutIntent = Intent(this, LogInActivity::class.java)
