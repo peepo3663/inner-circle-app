@@ -8,6 +8,9 @@ import android.view.Window
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.api.MessageAPI
 import edu.bu.metcs673.project.api.UserApi
@@ -17,13 +20,15 @@ import javax.inject.Inject
 
 open class BaseActivity: AppCompatActivity() {
 
+//    @Inject lateinit var androidInjector : DispatchingAndroidInjector<Any>
+
     @Inject lateinit var retrofit: Retrofit
 
     private var dialog: Dialog? = null
     lateinit var userApi: UserApi
     lateinit var messageAPI: MessageAPI
 
-    val currentUser: String? = FirebaseAuth.getInstance().uid
+    val currentUserId: String? = FirebaseAuth.getInstance().uid
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,4 +59,6 @@ open class BaseActivity: AppCompatActivity() {
         super.onPause()
         dialog?.dismiss()
     }
+
+//    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 }

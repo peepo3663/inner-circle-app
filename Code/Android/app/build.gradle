@@ -25,8 +25,8 @@ android {
         applicationId "edu.bu.metcs673.project"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "1.0"
+        versionCode 4
+        versionName "1.0.2"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -34,7 +34,8 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", 'SERVER_URL', '"http://192.168.0.3:8080"'
+//            buildConfigField "String", 'SERVER_URL', '"http://192.168.0.3:8080"'
+            buildConfigField "String", 'SERVER_URL', '"http://ec2-3-131-141-53.us-east-2.compute.amazonaws.com:8080"'
         }
         release {
             buildConfigField "String", 'SERVER_URL', '"http://ec2-3-131-141-53.us-east-2.compute.amazonaws.com:8080"'
@@ -69,7 +70,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
     implementation 'com.google.firebase:firebase-database-ktx:19.5.0'
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    // testImplementation 'org.junit.jupiter:junit-jupiter'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test:rules:1.1.1'
@@ -93,8 +94,11 @@ dependencies {
     // Also declare the dependency for the Google Play services library and specify its version
     implementation "com.google.android.gms:play-services-auth:$rootProject.ext.firebaseAuthVersion"
 
+    // firebase notification
+    implementation "com.google.firebase:firebase-messaging:$rootProject.ext.firebaseMessagingVersion"
+
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
-    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$rootProject.ext.glideVersion"
 
     implementation "com.microsoft.appcenter:appcenter-analytics:$rootProject.ext.appCenterSdkVersion"
     implementation "com.microsoft.appcenter:appcenter-crashes:$rootProject.ext.appCenterSdkVersion"

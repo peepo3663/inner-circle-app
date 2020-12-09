@@ -4,7 +4,6 @@ import android.app.Application
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.firebase.auth.FirebaseUser
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
@@ -18,7 +17,9 @@ import edu.bu.metcs673.project.module.NetworkModule
 
 class ICApp: Application() {
 
+//    @Inject lateinit var androidInjector: DispatchingAndroidInjector<Any>
     private lateinit var appComponent: AppComponent
+//    private lateinit var serviceComponent: ServiceComponent
     private lateinit var googleSignInClient: GoogleSignInClient
 
     var currentUser: User? = null
@@ -28,6 +29,7 @@ class ICApp: Application() {
 
         appComponent = DaggerAppComponent.builder().appModule(AppModule(this)).networkModule(
             NetworkModule(BuildConfig.SERVER_URL)).build()
+//        serviceComponent = DaggerServiceComponent.builder().serviceModule(ServiceModule())
 
         AppCenter.start(this, "b9dec75a-1701-4887-aa32-fde1d91eb744", Analytics::class.java, Crashes::class.java)
 
@@ -45,4 +47,6 @@ class ICApp: Application() {
     }
 
     fun getGoogleSignInClient(): GoogleSignInClient = googleSignInClient
+
+//    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 }

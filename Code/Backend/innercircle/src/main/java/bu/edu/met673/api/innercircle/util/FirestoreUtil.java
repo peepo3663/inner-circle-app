@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,6 +40,7 @@ public class FirestoreUtil {
   private CollectionReference chatsRef;
   private CollectionReference usersRef;
   private final String messageNodeName = "messages";
+  private final String deviceTokensNodeName = "deviceTokens";
 
   private FirestoreUtil() {
     firestore = FirestoreClient.getFirestore();
@@ -129,12 +131,15 @@ public class FirestoreUtil {
       return null;
     }
     ArrayList<String> deviceTokens = new ArrayList<>();
-    users.remove(message.getUserId());
     for (String userId: users) {
+      if (userId.equals(message.getUserId())) {
+        continue;
+      }
       Map<String, Object> userNode = usersRef.document(userId).get().get().getData();
       if (userNode == null) {
         continue;
       }
+      userNode.put("uid", userId);
       User user = new User(userNode);
       List<String> userDevices = getUserDeviceTokens(user);
       deviceTokens.addAll(userDevices);
@@ -152,7 +157,7 @@ public class FirestoreUtil {
       // user exist
       QueryDocumentSnapshot queryDocumentSnapshot = querySnapshot.getDocuments().get(0);
       User returnUser = new User(queryDocumentSnapshot);
-      returnUser = updateUserIsOnline(returnUser);
+      updateUserIsOnline(returnUser);
       return returnUser;
     }
     // new user
@@ -183,17 +188,38 @@ public class FirestoreUtil {
     DocumentReference userDocument = usersRef.document(userId);
     Map<String, String> profileProject = new HashMap<>();
     profileProject.put("profile_picture", pictureURL);
-    userDocument.set(profileProject, SetOptions.merge());
+    userDocument.set(profileProject, SetOptions.merge()).get();
   }
 
-  private List<String> getUserDeviceTokens(User user) {
+  private List<String> getUserDeviceTokens(User user)
+      throws ExecutionException, InterruptedException {
     List<String> deviceTokens = new ArrayList<>();
-    int deviceTokensSize = user.getDevices().size();
-    for (int i = 0; i < deviceTokensSize; i++) {
-      UserDevice userDevice = user.getDevices().get(i);
+    CollectionReference userDevicesCollectionReference = usersRef.document(user.getUid()).collection(deviceTokensNodeName);
+    QuerySnapshot userDevicesQuerySnapshot = userDevicesCollectionReference.get().get();
+    List<QueryDocumentSnapshot> userDevicesDocuments = userDevicesQuerySnapshot.getDocuments();
+    int devicesSize = userDevicesQuerySnapshot.size();
+    for (int i = 0; i < devicesSize; i++) {
+      QueryDocumentSnapshot device = userDevicesDocuments.get(i);
+      UserDevice userDevice = new UserDevice(device);
       deviceTokens.add(userDevice.getDeviceToken());
     }
     return deviceTokens;
+  }
+
+  public void updateUserDeviceToken(String userId, UserDevice userDevice)
+      throws Exception {
+    CollectionReference userDevicesCollectionReference = usersRef.document(userId).collection(deviceTokensNodeName);
+    // check the existing
+    Query checkExistingDevice = userDevicesCollectionReference.whereEqualTo("deviceToken", userDevice.getDeviceToken());
+
+    QuerySnapshot userDevicesQuerySnapshot = checkExistingDevice.get().get();
+    // is not exist
+    if (userDevicesQuerySnapshot == null || userDevicesQuerySnapshot.isEmpty()) {
+      // create node
+      userDevicesCollectionReference.document().set(userDevice, SetOptions.merge());
+    } else {
+      throw new Exception("This device already registered to the system.");
+    }
   }
 
   public Blob uploadPictureProfileFor(String userId, MultipartFile file) throws IOException {

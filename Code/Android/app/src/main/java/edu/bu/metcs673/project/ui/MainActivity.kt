@@ -14,15 +14,20 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.core.ICApp
 import edu.bu.metcs673.project.model.message.ChatRoomModel
 import edu.bu.metcs673.project.model.user.User
+import edu.bu.metcs673.project.model.user.UserDevice
 import edu.bu.metcs673.project.ui.base.BaseActivity
 import edu.bu.metcs673.project.ui.chat.ChatActivity
 import edu.bu.metcs673.project.ui.chat.ChatFragment
 import edu.bu.metcs673.project.ui.listener.ChatRoomClickListener
 import edu.bu.metcs673.project.ui.login.LogInActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 // @class MainActivity
@@ -36,7 +41,7 @@ class MainActivity : BaseActivity(), ChatRoomClickListener {
         private const val TAG = "MainActivity"
     }
 
-    lateinit var auth: FirebaseAuth
+    val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +62,36 @@ class MainActivity : BaseActivity(), ChatRoomClickListener {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        retrieveToken()
+    }
+
+    private fun retrieveToken() {
+        val task = FirebaseMessaging.getInstance().token
+        task.addOnCompleteListener { finishedTask ->
+            if (!finishedTask.isSuccessful) {
+                return@addOnCompleteListener
+            }
+
+            val token = finishedTask.result
+            val userDevice = UserDevice(null, mapOf("deviceToken" to token, "osVersion" to android.os.Build.VERSION.RELEASE, "model" to android.os.Build.MODEL))
+            saveTheDeviceToken(userDevice)
+        }
+    }
+
+    private fun saveTheDeviceToken(userDevice: UserDevice) {
+        userApi.updateTheDeviceToken(currentUserId as String, userDevice).enqueue(object: Callback<Map<String, String>> {
+            override fun onFailure(call: Call<Map<String, String>>, t: Throwable) {
+                Log.e(TAG, t.localizedMessage, t)
+            }
+
+            override fun onResponse(
+                call: Call<Map<String, String>>,
+                response: Response<Map<String, String>>
+            ) {
+                Log.i(TAG, response.message())
+            }
+        })
     }
 
     // @function OnCreateOptionsMenu

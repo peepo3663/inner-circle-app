@@ -16,7 +16,6 @@ class NetworkModule(val baseUrl: String) {
     @Provides
     @Singleton
     fun provideGson(): Gson {
-//        2020-12-09T06:14:48.660+00:00
         val gsonBuilder = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX")
         return gsonBuilder.create()
     }
@@ -29,4 +28,6 @@ class NetworkModule(val baseUrl: String) {
         return Retrofit.Builder().baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(gson)).client(okHttpClient).build()
     }
+
+
 }
