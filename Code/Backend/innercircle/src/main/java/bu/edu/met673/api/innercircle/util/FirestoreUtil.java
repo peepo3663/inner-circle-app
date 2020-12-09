@@ -14,6 +14,7 @@ import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.Query;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.SetOptions;
 import com.google.cloud.firestore.WriteResult;
@@ -148,7 +149,8 @@ public class FirestoreUtil {
     QuerySnapshot querySnapshot = query.get();
     if (!querySnapshot.isEmpty()) {
       // user exist
-      throw new UserAlreadyExistedException(user);
+      QueryDocumentSnapshot queryDocumentSnapshot = querySnapshot.getDocuments().get(0);
+      return new User(queryDocumentSnapshot);
     }
     // new user
     DocumentReference userDocument = usersRef.document();

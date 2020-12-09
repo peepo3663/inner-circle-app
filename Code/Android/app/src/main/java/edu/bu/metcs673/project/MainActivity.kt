@@ -20,13 +20,14 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.bu.metcs673.project.model.user.User
+import edu.bu.metcs673.project.ui.base.BaseActivity
 
 
 // @class MainActivity
 // @brief Class to handle main configurations for chat application.
 //      Instantiated upon application login.
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     // Global variable namespace
     companion object {

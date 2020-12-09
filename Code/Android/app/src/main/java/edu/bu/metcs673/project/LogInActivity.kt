@@ -23,6 +23,15 @@ import com.google.firebase.ktx.Firebase
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
+import edu.bu.metcs673.project.core.ICApp
+import edu.bu.metcs673.project.model.user.User
+import edu.bu.metcs673.project.ui.base.BaseActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import java.util.logging.Logger
+import javax.inject.Inject
 
 
 // @class MainActivity
@@ -30,7 +39,7 @@ import com.microsoft.appcenter.crashes.Crashes
 //      Instantiated upon application login.
 //      Implement Google Login
 
-class LogInActivity : AppCompatActivity() {
+class LogInActivity : BaseActivity() {
 
     // Global Variable namespace
     companion object {
@@ -39,17 +48,9 @@ class LogInActivity : AppCompatActivity() {
 
     lateinit var signIn: SignInButton
 
-    lateinit var googleSignInClient: GoogleSignInClient
-
-    lateinit var mGoogleSignInOptions: GoogleSignInOptions
-
-    var RC_SIGN_IN = 1
+    private val RC_SIGN_IN = 1
 
     lateinit var auth: FirebaseAuth
-
-    lateinit var mAuthListener: FirebaseAuth.AuthStateListener
-
-    val userDocumentRef = Firebase.firestore.collection("users")
 
     // @function OnCreate
     // @brief Default function called when class is instantiated.
@@ -58,17 +59,7 @@ class LogInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
 
-        AppCenter.start(application, "b9dec75a-1701-4887-aa32-fde1d91eb744", Analytics::class.java, Crashes::class.java)
-
-        // Configure Google Sign In
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
         signIn = findViewById<View>(R.id.googleBtn) as SignInButton
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
@@ -83,7 +74,7 @@ class LogInActivity : AppCompatActivity() {
     // @function signIn
     // @brief Create intent that signs in user
     private fun signIn() {
-        val signInIntent = googleSignInClient.signInIntent
+        val signInIntent = (application as ICApp).getGoogleSignInClient().signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
@@ -121,10 +112,12 @@ class LogInActivity : AppCompatActivity() {
             return
         }
         updateUserDataToFirestore(user, isFirstTime)
+    }
+
+    private fun processToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
-        //finish()
     }
 
     // @function updateUserDataToFirestore
@@ -133,20 +126,27 @@ class LogInActivity : AppCompatActivity() {
         if (user == null || user.displayName == null) {
             return
         }
-        val userToAdd = hashMapOf(
+        val userToAdd = mutableMapOf<String, Any?>(
             "name" to user.displayName,
             "email" to user.email,
             "updatedAt" to Timestamp.now(),
-            "uID" to user.uid
+            "uid" to user.uid
         )
         if (isFirstTime) {
             userToAdd["createdAt"] = Timestamp.now()
             userToAdd["profile_picture"] = if (user.photoUrl != null) user.photoUrl.toString() else ""
         }
-        userDocumentRef.document(user.uid).set(userToAdd, SetOptions.merge()).addOnSuccessListener {
-        }.addOnFailureListener {
-            Log.e(TAG, "can not add this user", it)
-        }
+        userApi.loginUser(User(user.uid, userToAdd)).enqueue(object: Callback<User> {
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                // show error
+                Log.e(TAG, t.message, t)
+            }
+
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                processToMainActivity()
+            }
+
+        })
     }
 
 

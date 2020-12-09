@@ -5,7 +5,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import java.net.MalformedURLException
 import java.net.URL
 
-class User(userId: String, map: MutableMap<String, Any>?) {
+class User(userId: String, map: Map<String, Any?>?) {
     var userId: String
     var email: String
     var name: String
