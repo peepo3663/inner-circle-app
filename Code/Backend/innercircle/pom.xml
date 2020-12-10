@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>bu.edu.met673.api</groupId>
 	<artifactId>innercircle</artifactId>
-	<version>0.0.5-SNAPSHOT</version>
+	<version>0.0.6-SNAPSHOT</version>
 	<name>Inner Circle REST API</name>
 	<description>Project for CS673</description>
 
