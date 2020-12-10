@@ -18,4 +18,5 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run: pwd && ./Code/Android/gradlew build
+      working-directory: Code/Android
+      run: ./gradlew build
