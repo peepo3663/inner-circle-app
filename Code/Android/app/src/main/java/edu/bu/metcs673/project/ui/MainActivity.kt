@@ -99,18 +99,20 @@ class MainActivity : BaseActivity(), ChatRoomClickListener {
     }
 
     private fun saveTheDeviceToken(userDevice: UserDevice) {
-        userApi.updateTheDeviceToken(currentUserId as String, userDevice).enqueue(object: Callback<Map<String, String>> {
-            override fun onFailure(call: Call<Map<String, String>>, t: Throwable) {
-                Log.e(TAG, t.localizedMessage, t)
-            }
+        currentUserId?.let {
+            userApi.updateTheDeviceToken(it, userDevice).enqueue(object: Callback<Map<String, String>> {
+                override fun onFailure(call: Call<Map<String, String>>, t: Throwable) {
+                    Log.e(TAG, t.localizedMessage, t)
+                }
 
-            override fun onResponse(
-                call: Call<Map<String, String>>,
-                response: Response<Map<String, String>>
-            ) {
-                Log.i(TAG, response.message())
-            }
-        })
+                override fun onResponse(
+                    call: Call<Map<String, String>>,
+                    response: Response<Map<String, String>>
+                ) {
+                    Log.i(TAG, response.message())
+                }
+            })
+        }
     }
 
     // @function OnCreateOptionsMenu
