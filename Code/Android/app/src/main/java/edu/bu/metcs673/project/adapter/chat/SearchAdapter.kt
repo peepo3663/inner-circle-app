@@ -18,7 +18,7 @@ import edu.bu.metcs673.project.ui.listener.OnItemClickListener
 
 //@brief Class implementation of adaptor used for notification fragment
 //  By default, we must override three functions: getItemCount, onCreateViewHolder, onBindHolder
-class SearchAdapter(var mUsers: List<User>, val itemClickListener: OnFriendClickListener) :
+class SearchAdapter(var mUsers: List<User>, private val itemClickListener: OnFriendClickListener) :
     RecyclerView.Adapter<CustomViewHolder?>() {
 
     private lateinit var context: Context
