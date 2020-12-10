@@ -114,17 +114,13 @@ class ChatFragment : BaseFragment() {
         val userMessage = MessageModel(null, data)
         userMessage.isOwnMessage = true
         viewModel.insert(userMessage)
-        val chatActivity = (activity as ChatActivity)
-        chatActivity.showPopupProgressSpinner(true)
         messageAPI.sendMessage(userMessage).enqueue(object : Callback<MessageModel> {
             override fun onFailure(call: Call<MessageModel>, t: Throwable) {
-                chatActivity.showPopupProgressSpinner(false)
                 Toast.makeText(context, t.localizedMessage, Toast.LENGTH_LONG).show()
                 viewModel.remove(userMessage)
             }
 
             override fun onResponse(call: Call<MessageModel>, response: Response<MessageModel>) {
-                chatActivity.showPopupProgressSpinner(false)
                 if (response.isSuccessful) {
                     sendMessageSuccessfully(userInput)
                 } else {
