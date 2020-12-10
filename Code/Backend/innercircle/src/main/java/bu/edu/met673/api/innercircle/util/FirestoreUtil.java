@@ -216,7 +216,6 @@ public class FirestoreUtil {
         User user = users.get(j);
         if (user.getUid().equals(userId)) {
           user.setPictureUrl(pictureURL);
-          users.set(j, user);
         }
         usersToSave.add(user.toMapDataForChatRoom());
       }

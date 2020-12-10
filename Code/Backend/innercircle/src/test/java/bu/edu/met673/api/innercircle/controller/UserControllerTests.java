@@ -2,6 +2,7 @@ package bu.edu.met673.api.innercircle.controller;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -30,6 +31,18 @@ class UserControllerTests {
 
   @Autowired
   private MockMvc mockMvc;
+
+  @Test
+  void testLoginUser() throws Exception {
+    Map<String, Object> mockUserData = new HashMap<>();
+    mockUserData.put("createdAt", Timestamp.now());
+    mockUserData.put("updatedAt", Timestamp.now());
+    mockUserData.put("name", "Wasupol Tungsakultong");
+    mockUserData.put("uid", "LJOIboMJR9Y4mfDl9FDIbf43RVf2");
+    mockUserData.put("email", "peepo157@gmail.com");
+    User testUser = new User(mockUserData);
+    this.mockMvc.perform(post("/users/create", testUser)).andExpect(status().isOk());
+  }
 
   @Test
   void testEditUserPictureProfile() throws Exception {
