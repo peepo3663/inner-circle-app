@@ -13,11 +13,11 @@ android {
         releaseSigningConfig {
             storeFile rootProject.file("app/inner_circle.jks")
             storePassword System.getenv("APPCENTER_KEYSTORE_PASSWORD")
-            //storePassword "123451"
+//            storePassword "123451"
             keyAlias System.getenv("APPCENTER_KEY_ALIAS")
-            // keyAlias "inner_circle"
+//             keyAlias "inner_circle"
             keyPassword System.getenv("APPCENTER_KEY_PASSWORD")
-            // keyPassword "123451"
+//             keyPassword "123451"
         }
     }
 
@@ -25,8 +25,8 @@ android {
         applicationId "edu.bu.metcs673.project"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 6
-        versionName "1.0.4"
+        versionCode 7
+        versionName "1.0.5"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
