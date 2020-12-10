@@ -34,8 +34,8 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", 'SERVER_URL', '"http://192.168.0.3:8080"'
-//            buildConfigField "String", 'SERVER_URL', '"http://ec2-3-131-141-53.us-east-2.compute.amazonaws.com:8080"'
+//            buildConfigField "String", 'SERVER_URL', '"http://192.168.0.3:8080"'
+            buildConfigField "String", 'SERVER_URL', '"http://ec2-3-131-141-53.us-east-2.compute.amazonaws.com:8080"'
         }
         release {
             buildConfigField "String", 'SERVER_URL', '"http://ec2-3-131-141-53.us-east-2.compute.amazonaws.com:8080"'
@@ -52,6 +52,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    testOptions {
+        reportDir "$rootDir/test-reports"
+        resultsDir "$rootDir/test-results"
     }
 }
 
@@ -75,7 +80,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test:rules:1.1.1'
     androidTestImplementation 'androidx.test.ext:truth:1.1.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    // Optional -- UI testing with UI Automator
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
 
 
     implementation "com.google.firebase:firebase-core:$rootProject.ext.firebaseCoreVersion"

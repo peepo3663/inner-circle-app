@@ -6,6 +6,8 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.rule.ActivityTestRule
+import edu.bu.metcs673.project.ui.MainActivity
+import edu.bu.metcs673.project.ui.login.LogInActivity
 import org.junit.Rule
 import org.junit.Test
 
