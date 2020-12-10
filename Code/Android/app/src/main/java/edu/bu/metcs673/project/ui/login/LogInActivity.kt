@@ -145,6 +145,7 @@ class LogInActivity : BaseActivity() {
                 } else {
                     val error = TCResponseError(response.errorBody())
                     Toast.makeText(this@LogInActivity, error.errorMsg ?: "Error", Toast.LENGTH_LONG).show()
+                    signOut()
                 }
             }
         })

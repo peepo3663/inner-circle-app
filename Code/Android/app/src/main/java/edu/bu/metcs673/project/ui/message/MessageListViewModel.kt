@@ -31,7 +31,7 @@ class MessageListViewModel(application: Application) : AndroidViewModel(applicat
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
         if (snapshotListener == null) {
             snapshotListener = chatsRef.whereArrayContains("userIds", userId)
-                .orderBy("createdAt", Query.Direction.DESCENDING)
+                .orderBy("updatedAt", Query.Direction.DESCENDING)
                 .addSnapshotListener { querySnapshot, e ->
                     if (e != null) {
                         Log.e(TAG, e.message, e)

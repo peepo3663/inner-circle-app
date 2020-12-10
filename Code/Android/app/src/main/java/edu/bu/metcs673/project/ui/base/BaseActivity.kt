@@ -61,5 +61,14 @@ open class BaseActivity: AppCompatActivity() {
         dialog?.dismiss()
     }
 
+    protected fun signOut() {
+        // Log out the user
+        FirebaseAuth.getInstance().signOut()
+        // sign out from google too
+        val myApp = (application as ICApp)
+        myApp.getGoogleSignInClient().signOut()
+        myApp.currentUser = null
+    }
+
 //    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 }

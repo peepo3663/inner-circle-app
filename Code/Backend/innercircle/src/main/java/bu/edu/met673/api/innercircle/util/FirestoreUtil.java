@@ -25,6 +25,7 @@ import com.google.firebase.cloud.StorageClient;
 import com.google.firebase.database.core.operation.Merge;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,27 +68,36 @@ public class FirestoreUtil {
 
   public ChatRoom createChatRoom(ChatRoom room)
       throws ExecutionException, InterruptedException, ChatRoomAlreadyExistedException {
-    User[] users = room.getAllUsers();
-    if (users.length == 0) {
+    List<User> users = Arrays.asList(room.getAllUsers());
+    if (users.size() == 0) {
       throw new NullPointerException();
     }
-    Query chatQuery = null;
     ArrayList<Map<String, Object>> usersForChatRoom = new ArrayList<>();
     ArrayList<String> userIds = new ArrayList<>();
     for (User user : users) {
-      if (chatQuery == null) {
-        chatQuery = chatsRef.whereArrayContains("userIds", user.getUid());
-      } else {
-        chatQuery.whereArrayContains("userIds", user.getUid());
-      }
       usersForChatRoom.add(user.toMapDataForChatRoom());
       userIds.add(user.getUid());
     }
-    ApiFuture<QuerySnapshot> result = chatQuery.get();
+    ApiFuture<QuerySnapshot> result = chatsRef.whereArrayContains("userIds", userIds.get(0)).get();
     QuerySnapshot chatRoomQuery = result.get();
-    if (!chatRoomQuery.isEmpty()) {
-      throw new ChatRoomAlreadyExistedException(chatRoomQuery.getDocuments().get(0).getId());
+    if (chatRoomQuery.isEmpty()) {
+      return createNewChatroom(room, usersForChatRoom, userIds);
     }
+    int documentSize = chatRoomQuery.size();
+    List<QueryDocumentSnapshot> documentSnapshots = chatRoomQuery.getDocuments();
+    for (int i = 0; i < documentSize; i++) {
+      QueryDocumentSnapshot documentSnapshot = documentSnapshots.get(i);
+      ChatRoom chatRoom = new ChatRoom(documentSnapshot.getId(), documentSnapshot.getData());
+      if (chatRoom.getUserIds().containsAll(userIds)) {
+        return chatRoom;
+      }
+    }
+    return createNewChatroom(room, usersForChatRoom, userIds);
+  }
+
+  private ChatRoom createNewChatroom(ChatRoom room, ArrayList<Map<String, Object>> usersForChatRoom,
+                                     ArrayList<String> userIds)
+      throws InterruptedException, ExecutionException {
     // add new chat room if need
     DocumentReference chatDocument = chatsRef.document();
     Map<String, Object> chatRoom = new HashMap<>();

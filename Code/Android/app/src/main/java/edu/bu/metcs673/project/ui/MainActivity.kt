@@ -110,14 +110,7 @@ class MainActivity : BaseActivity(), ChatRoomClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.miSignOut) {
             Log.i(TAG, "Logout")
-
-            // Log out the user
-            auth.signOut()
-            // sign out from google too
-            val myApp = (application as ICApp)
-            myApp.getGoogleSignInClient().signOut()
-            myApp.currentUser = null
-
+            signOut()
             //Navigate Back to Sign In Screen
             val logoutIntent = Intent(this, LogInActivity::class.java)
             logoutIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
