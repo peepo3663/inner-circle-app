@@ -1,6 +1,5 @@
 package bu.edu.met673.api.innercircle.util;
 
-import bu.edu.met673.api.innercircle.exception.UserAlreadyExistedException;
 import bu.edu.met673.api.innercircle.exception.UserNotFoundException;
 import bu.edu.met673.api.innercircle.model.ChatRoom;
 import bu.edu.met673.api.innercircle.model.Message;
@@ -12,6 +11,7 @@ import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.Precondition;
 import com.google.cloud.firestore.Query;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
@@ -19,28 +19,35 @@ import com.google.cloud.firestore.SetOptions;
 import com.google.cloud.firestore.WriteResult;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Bucket;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.cloud.FirestoreClient;
 import com.google.firebase.cloud.StorageClient;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * Name: Wasupol Tungsakultong
+ * Date 11/29/2020
+ * Course: CS-673
+ * Assignment: Final Project
+ * Description: This is the FirestoreUtil class that is the interface class that handle all firebase
+ * operations.
+ */
 public class FirestoreUtil {
-  private static final FirestoreUtil instance = new FirestoreUtil();
-  private Firestore firestore;
-  private Bucket bucket;
-  private CollectionReference chatsRef;
-  private CollectionReference usersRef;
+  private static FirestoreUtil instance = null;
   private final String messageNodeName = "messages";
   private final String deviceTokensNodeName = "deviceTokens";
+  private final Firestore firestore;
+  private final Bucket bucket;
+  private final CollectionReference chatsRef;
+  private final CollectionReference usersRef;
 
   private FirestoreUtil() {
     firestore = FirestoreClient.getFirestore();
@@ -49,7 +56,10 @@ public class FirestoreUtil {
     this.bucket = StorageClient.getInstance().bucket();
   }
 
-  public static FirestoreUtil getInstance() {
+  public static synchronized FirestoreUtil getInstance() {
+    if (instance == null) {
+      instance = new FirestoreUtil();
+    }
     return instance;
   }
 
@@ -118,7 +128,8 @@ public class FirestoreUtil {
     if (chatRoomId == null) {
       throw new NullPointerException();
     }
-    ApiFuture<DocumentReference> result = chatsRef.document(chatRoomId).collection(messageNodeName).add(message.toData());
+    ApiFuture<DocumentReference> result =
+        chatsRef.document(chatRoomId).collection(messageNodeName).add(message.toData());
     DocumentReference documentReference = result.get();
     if (documentReference != null) {
       message.setMessageId(documentReference.getId());
@@ -132,6 +143,38 @@ public class FirestoreUtil {
     }
   }
 
+  public Map<String, Object> logout(String userId, String deviceToken)
+      throws ExecutionException, InterruptedException {
+    /*
+      Remove device token
+     */
+    HashMap<String, Object> response = new HashMap<>();
+    if (userId == null) {
+      response.put("message", "User Id have to be present.");
+      return response;
+    }
+    /*
+    Flag offine
+     */
+    DocumentReference userRef = usersRef.document(userId);
+    userRef.update(new HashMap<String, Object>() {{
+      put("isUserOnline", false);
+    }});
+    CollectionReference deviceCollectionRef = userRef.collection(deviceTokensNodeName);
+    QuerySnapshot deviceQuery =
+        deviceCollectionRef.whereEqualTo("deviceToken", deviceToken).get()
+            .get();
+    if (!deviceQuery.isEmpty()) {
+      Iterator<QueryDocumentSnapshot> iterator = deviceQuery.getDocuments().iterator();
+      while (iterator.hasNext()) {
+        QueryDocumentSnapshot deviceShapshot = iterator.next();
+        deviceCollectionRef.document(deviceShapshot.getId()).delete();
+      }
+    }
+    response.put("message", "User logged out successfully");
+    return response;
+  }
+
   public List<String> queryForUserDeviceTokens(Message message)
       throws ExecutionException, InterruptedException {
     DocumentSnapshot chatSnapshot = chatsRef.document(message.getChatRoomId()).get().get();
@@ -140,7 +183,7 @@ public class FirestoreUtil {
       return null;
     }
     ArrayList<String> deviceTokens = new ArrayList<>();
-    for (String userId: users) {
+    for (String userId : users) {
       if (userId.equals(message.getUserId())) {
         continue;
       }
@@ -209,7 +252,8 @@ public class FirestoreUtil {
     List<QueryDocumentSnapshot> chatQueryDocumentSnapshots = chatSnapshot.getDocuments();
     for (int i = 0; i < chatQueryDocumentSnapshotSize; i++) {
       QueryDocumentSnapshot chatQueryDocumentSnapshot = chatQueryDocumentSnapshots.get(i);
-      ChatRoom chatRoom = new ChatRoom(chatQueryDocumentSnapshot.getId(), chatQueryDocumentSnapshot.getData());
+      ChatRoom chatRoom =
+          new ChatRoom(chatQueryDocumentSnapshot.getId(), chatQueryDocumentSnapshot.getData());
       List<User> users = Arrays.asList(chatRoom.getAllUsers());
       List<Map<String, Object>> usersToSave = new ArrayList<>();
       for (int j = 0; j < users.size(); j++) {
@@ -243,7 +287,8 @@ public class FirestoreUtil {
   private List<String> getUserDeviceTokens(User user)
       throws ExecutionException, InterruptedException {
     List<String> deviceTokens = new ArrayList<>();
-    CollectionReference userDevicesCollectionReference = usersRef.document(user.getUid()).collection(deviceTokensNodeName);
+    CollectionReference userDevicesCollectionReference =
+        usersRef.document(user.getUid()).collection(deviceTokensNodeName);
     QuerySnapshot userDevicesQuerySnapshot = userDevicesCollectionReference.get().get();
     List<QueryDocumentSnapshot> userDevicesDocuments = userDevicesQuerySnapshot.getDocuments();
     int devicesSize = userDevicesQuerySnapshot.size();
@@ -257,9 +302,11 @@ public class FirestoreUtil {
 
   public void updateUserDeviceToken(String userId, UserDevice userDevice)
       throws Exception {
-    CollectionReference userDevicesCollectionReference = usersRef.document(userId).collection(deviceTokensNodeName);
+    CollectionReference userDevicesCollectionReference =
+        usersRef.document(userId).collection(deviceTokensNodeName);
     // check the existing
-    Query checkExistingDevice = userDevicesCollectionReference.whereEqualTo("deviceToken", userDevice.getDeviceToken());
+    Query checkExistingDevice =
+        userDevicesCollectionReference.whereEqualTo("deviceToken", userDevice.getDeviceToken());
 
     QuerySnapshot userDevicesQuerySnapshot = checkExistingDevice.get().get();
     // is not exist
@@ -272,7 +319,8 @@ public class FirestoreUtil {
   }
 
   public Blob uploadPictureProfileFor(String userId, MultipartFile file) throws IOException {
-    String blobName = String.format("%s/profile_picture.%s", userId, FilenameUtils.getExtension(file.getOriginalFilename()));
+    String blobName = String.format("%s/profile_picture.%s", userId,
+        FilenameUtils.getExtension(file.getOriginalFilename()));
     return bucket.create(blobName, file.getBytes(), file.getContentType());
   }
 }

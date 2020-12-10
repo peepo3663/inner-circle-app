@@ -9,6 +9,7 @@ class UserDevice(var userDeviceId: String?, map: Map<String, Any?>?) {
     var osVersion: String? = null
 
     constructor(documentSnapshot: DocumentSnapshot): this(documentSnapshot.id, documentSnapshot.data)
+    constructor(deviceToken: String): this(null, mapOf("deviceToken" to deviceToken))
 
     init {
         if (userDeviceId == null) {

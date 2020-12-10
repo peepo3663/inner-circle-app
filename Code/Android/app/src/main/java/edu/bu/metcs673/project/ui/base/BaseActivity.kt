@@ -16,6 +16,8 @@ import edu.bu.metcs673.project.api.ChatApi
 import edu.bu.metcs673.project.api.MessageAPI
 import edu.bu.metcs673.project.api.UserApi
 import edu.bu.metcs673.project.core.ICApp
+import edu.bu.metcs673.project.model.user.UserDevice
+import edu.bu.metcs673.project.util.SharedPreferencesUtils
 import retrofit2.Retrofit
 import javax.inject.Inject
 
@@ -63,6 +65,11 @@ open class BaseActivity: AppCompatActivity() {
 
     protected fun signOut() {
         // Log out the user
+        currentUserId?.let {
+            val userDevice = UserDevice(SharedPreferencesUtils.getString(this, SharedPreferencesUtils.FIREBASE_TOKEN))
+            userApi.logoutUser(userDevice, it).execute()
+        }
+
         FirebaseAuth.getInstance().signOut()
         // sign out from google too
         val myApp = (application as ICApp)

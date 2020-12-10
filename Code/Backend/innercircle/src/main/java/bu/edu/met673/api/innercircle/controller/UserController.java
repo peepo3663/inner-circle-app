@@ -29,6 +29,12 @@ public class UserController {
     return FirestoreUtil.getInstance().queryForUser(user);
   }
 
+  @PostMapping("/logout/{userId}")
+  public Map<String, Object> logoutUser(@RequestBody UserDevice device, @PathVariable("userId") String userId)
+      throws ExecutionException, InterruptedException {
+    return FirestoreUtil.getInstance().logout(userId, device.getDeviceToken());
+  }
+
   @PostMapping("update/profile/{userId}")
   public Map<String, String> updatePictureProfile(@RequestParam("file") MultipartFile file, @PathVariable("userId") String userId) {
     Map<String, String> response = new HashMap<>();

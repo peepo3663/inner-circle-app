@@ -12,6 +12,9 @@ interface UserApi {
     @POST("/users/create")
     fun loginUser(@Body userData: User): Call<User>
 
+    @POST("/users/logout/{userId}")
+    fun logoutUser(@Body userDevice: UserDevice, @Path("userId") userId: String): Call<Void>
+
     @POST("/users/update/{userId}/deviceToken")
     fun updateTheDeviceToken(@Path("userId") userId: String, @Body userDevice: UserDevice): Call<Map<String, String>>
 }

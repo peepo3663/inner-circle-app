@@ -1,6 +1,7 @@
 package edu.bu.metcs673.project.ui
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -9,22 +10,18 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
 import edu.bu.metcs673.project.R
-import edu.bu.metcs673.project.core.ICApp
 import edu.bu.metcs673.project.model.message.ChatRoomModel
 import edu.bu.metcs673.project.model.user.User
 import edu.bu.metcs673.project.model.user.UserDevice
 import edu.bu.metcs673.project.ui.base.BaseActivity
 import edu.bu.metcs673.project.ui.chat.ChatActivity
-import edu.bu.metcs673.project.ui.chat.ChatFragment
 import edu.bu.metcs673.project.ui.listener.ChatRoomClickListener
 import edu.bu.metcs673.project.ui.login.LogInActivity
+import edu.bu.metcs673.project.util.SharedPreferencesUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -76,9 +73,27 @@ class MainActivity : BaseActivity(), ChatRoomClickListener {
             }
 
             val token = finishedTask.result
-            val userDevice = UserDevice(null, mapOf("deviceToken" to token, "osVersion" to android.os.Build.VERSION.RELEASE, "model" to android.os.Build.MODEL))
-            saveTheDeviceToken(userDevice)
+            token?.let {
+                checkFirebaseToken(it)
+            }
         }
+    }
+
+    private fun checkFirebaseToken(token: String) {
+        val currentSaveToken = SharedPreferencesUtils.getString(this, SharedPreferencesUtils.FIREBASE_TOKEN)
+        if (currentSaveToken == token) {
+            return
+        }
+        SharedPreferencesUtils.setString(
+            this,
+            SharedPreferencesUtils.FIREBASE_TOKEN,
+            token
+        )
+        val userDevice = UserDevice(
+            null,
+            mapOf("deviceToken" to token, "osVersion" to Build.VERSION.RELEASE, "model" to Build.MODEL)
+        )
+        saveTheDeviceToken(userDevice)
     }
 
     private fun saveTheDeviceToken(userDevice: UserDevice) {
