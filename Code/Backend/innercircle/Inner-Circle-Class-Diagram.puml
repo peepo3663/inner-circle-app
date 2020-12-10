@@ -1,0 +1,66 @@
+@startuml
+
+abstract class Constants
+class ICFCMConfig
+package "Facade Pattern" {
+class FCMService
+class FirestoreUtil
+    package Firebase {
+    class FirestoreClient
+    class StorageClient
+    class FirebaseMessaging
+    }
+}
+
+package MVC {
+    interface RestController
+    class ChatController
+    class MessageController
+    class UserController
+    class ChatRoom
+    class Message
+    class User
+    class UserDevice
+    package SpringBoot {
+        interface SpringBootApplication
+        class SpringApplication
+    }
+}
+
+package "Strategy Pattern" <<Rectangle>> {
+    interface Exception
+    class ChatRoomAlreadyExistedException
+    class UserAlreadyExistedException
+    class UserNotFoundException
+}
+
+class ResponseUtil
+class RestExceptionHandler
+class InnercircleApplication
+
+FirestoreUtil --> StorageClient
+FirestoreUtil --> FirestoreClient
+InnercircleApplication ..|> SpringBootApplication
+SpringBootApplication --> SpringApplication: run
+InnercircleApplication --> RestController : "client"
+InnercircleApplication --> ICFCMConfig : configuration
+RestController --> Exception
+RestController --> FirestoreUtil
+SpringBoot --> RestExceptionHandler : use
+RestExceptionHandler --> Exception : create
+MessageController "1" --> "*.." Message
+UserController "1" --> "*.." User: login and search
+UserController "1" --> "*.." UserDevice : add and search
+ChatController "1" --> "*.." Message : "create or query"
+ChatController "1" --> "*.." ChatRoom : "create or query"
+MessageController --> FCMService : "send notification"
+RestController --> ResponseUtil : use
+Exception <|-- ChatRoomAlreadyExistedException
+Exception <|-- UserAlreadyExistedException
+Exception <|-- UserNotFoundException
+RestController <|.. ChatController
+RestController <|.. MessageController
+RestController <|.. UserController
+FCMService --> FirebaseMessaging
+
+@enduml
