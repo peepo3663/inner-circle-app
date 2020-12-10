@@ -10,6 +10,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.Timestamp;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
 
@@ -33,12 +34,15 @@ class FirestoreUtilTest {
         userData.put("updatedAt", Timestamp.MAX_VALUE);
 
         //Actual
-        InputStream inputStream = new ClassPathResource(Constants.googleServiceJSON).getInputStream();
-        FirebaseOptions firebaseOptions =
+        if (!checkFirebaseApp()) {
+            InputStream inputStream = new ClassPathResource(Constants.googleServiceJSON).getInputStream();
+            FirebaseOptions firebaseOptions =
                 FirebaseOptions.builder().setCredentials(GoogleCredentials.fromStream(inputStream))
-                        .setDatabaseUrl(Constants.firebaseDatabaseURL)
-                        .setStorageBucket(Constants.firebaseBucketURL).build();
-        FirebaseApp.initializeApp(firebaseOptions);
+                    .setDatabaseUrl(Constants.firebaseDatabaseURL)
+                    .setStorageBucket(Constants.firebaseBucketURL).build();
+            FirebaseApp.initializeApp(firebaseOptions);
+        }
+
         User addedUser = FirestoreUtil.getInstance().queryForUser(new User(userData));
         assertEquals(addedUser.getEmail(),userData.get("email"));
         //TEst case when firebsae is not working
@@ -58,17 +62,33 @@ class FirestoreUtilTest {
         userData.put("updatedAt", Timestamp.MAX_VALUE);
 
         //Actual
-        InputStream inputStream = new ClassPathResource(Constants.googleServiceJSON).getInputStream();
-        FirebaseOptions firebaseOptions =
+        if (!checkFirebaseApp()) {
+            InputStream inputStream = new ClassPathResource(Constants.googleServiceJSON).getInputStream();
+            FirebaseOptions firebaseOptions =
                 FirebaseOptions.builder().setCredentials(GoogleCredentials.fromStream(inputStream))
-                        .setDatabaseUrl(Constants.firebaseDatabaseURL)
-                        .setStorageBucket(Constants.firebaseBucketURL).build();
-        FirebaseApp.initializeApp(firebaseOptions);
+                    .setDatabaseUrl(Constants.firebaseDatabaseURL)
+                    .setStorageBucket(Constants.firebaseBucketURL).build();
+            FirebaseApp.initializeApp(firebaseOptions);
+        }
 
         //TEst case when firebsae is not working
         //assertThrows(ExceptionInInitializerError.class, () -> FirestoreUtil.getInstance().queryForUser(new User(userData)));
         //Test case when firebase is working, but usernotfound
         //assertThrows(UserNotFoundException.class, () -> FirestoreUtil.getInstance().queryForUser(new User(userData)));
-        assertThrows(UserAlreadyExistedException.class, () -> FirestoreUtil.getInstance().queryForUser(new User(userData)));
+        assertNotNull(FirestoreUtil.getInstance().queryForUser(new User(userData)));
+        // assertThrows(UserAlreadyExistedException.class, () -> FirestoreUtil.getInstance().queryForUser(new User(userData)));
+    }
+
+    private boolean checkFirebaseApp() {
+        boolean hasBeenInitialized = false;
+        List<FirebaseApp> firebaseApps = FirebaseApp.getApps();
+        int appSize = firebaseApps.size();
+        for (int i = 0; i < appSize; i++) {
+            FirebaseApp currentApp = firebaseApps.get(i);
+            if (currentApp.getName().equals(FirebaseApp.DEFAULT_APP_NAME)) {
+                hasBeenInitialized = true;
+            }
+        }
+        return hasBeenInitialized;
     }
 }
