@@ -227,16 +227,15 @@ public class FirestoreUtil {
       // update message's node
       CollectionReference messagesRef = userChatRef.collection(messageNodeName);
       QuerySnapshot messageQuery = messagesRef.whereEqualTo("userId", userId).get().get();
-      if (messageQuery.isEmpty()) {
-        return;
-      }
-      int messageSize = messageQuery.size();
-      List<QueryDocumentSnapshot> messageQueryDocuments = messageQuery.getDocuments();
-      for (int k = 0; k < messageSize; k++) {
-        Map<String, Object> updatePicture = new HashMap<String, Object>() {{
-          put("profile_picture", pictureURL);
-        }};
-        messagesRef.document(messageQueryDocuments.get(k).getId()).update(updatePicture).get();
+      if (!messageQuery.isEmpty()) {
+        int messageSize = messageQuery.size();
+        List<QueryDocumentSnapshot> messageQueryDocuments = messageQuery.getDocuments();
+        for (int k = 0; k < messageSize; k++) {
+          Map<String, Object> updatePicture = new HashMap<String, Object>() {{
+            put("profile_picture", pictureURL);
+          }};
+          messagesRef.document(messageQueryDocuments.get(k).getId()).update(updatePicture).get();
+        }
       }
     }
   }
