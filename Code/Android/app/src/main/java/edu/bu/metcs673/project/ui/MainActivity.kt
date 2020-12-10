@@ -21,6 +21,8 @@ import edu.bu.metcs673.project.ui.base.BaseActivity
 import edu.bu.metcs673.project.ui.chat.ChatActivity
 import edu.bu.metcs673.project.ui.listener.ChatRoomClickListener
 import edu.bu.metcs673.project.ui.login.LogInActivity
+import edu.bu.metcs673.project.ui.profile.ViewProfileActivity
+import edu.bu.metcs673.project.util.BundleExtraKeys
 import edu.bu.metcs673.project.util.SharedPreferencesUtils
 import retrofit2.Call
 import retrofit2.Callback
@@ -136,12 +138,12 @@ class MainActivity : BaseActivity(), ChatRoomClickListener {
 
     override fun chatRoomClick(chatRoomModel: ChatRoomModel) {
         val chatActivityIntent = Intent(this, ChatActivity::class.java)
-        chatActivityIntent.putExtra("CHATROOM_ID", chatRoomModel.chatRoomId)
+        chatActivityIntent.putExtra(BundleExtraKeys.CHATROOM_ID, chatRoomModel.chatRoomId)
         if (chatRoomModel.users != null) {
             val users = chatRoomModel.users as ArrayList<User>
             for (user in users) {
                 if (user.userId != FirebaseAuth.getInstance().currentUser?.uid) {
-                    chatActivityIntent.putExtra("CHATROOM_NAME", user.name)
+                    chatActivityIntent.putExtra(BundleExtraKeys.CHATROOM_NAME, user.name)
                     break
                 }
             }
@@ -149,6 +151,12 @@ class MainActivity : BaseActivity(), ChatRoomClickListener {
         startActivity(chatActivityIntent)
         // select second tab navbar
         mNavigationView?.selectedItemId = R.id.navigation_chat
+    }
+
+    override fun onProfileClick(friend: User) {
+        val profileActivity = Intent(this, ViewProfileActivity::class.java)
+        profileActivity.putExtra(BundleExtraKeys.USER_ID, friend.userId)
+        startActivity(profileActivity)
     }
 
 }

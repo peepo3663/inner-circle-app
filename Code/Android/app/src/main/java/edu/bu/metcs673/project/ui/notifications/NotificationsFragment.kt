@@ -159,7 +159,8 @@ class NotificationsFragment : BaseFragment(), OnFriendClickListener {
 
     override fun onItemClicked(friend: User) {
         val options = arrayOf(
-            "Send Message"
+            "Send Message",
+            "View Profile"
         )
 
         val builder: AlertDialog.Builder = AlertDialog.Builder(context)
@@ -167,10 +168,16 @@ class NotificationsFragment : BaseFragment(), OnFriendClickListener {
         builder.setItems(options) { dialog, position ->
             if (position == 0) {
                 checkTheChatroom(friend)
+            } else {
+                viewProfile(friend)
             }
             dialog.dismiss()
         }
         builder.show()
+    }
+
+    private fun viewProfile(friend: User) {
+        chatRoomClickListener?.onProfileClick(friend)
     }
 
     private fun checkTheChatroom(friend: User) {
@@ -203,7 +210,7 @@ class NotificationsFragment : BaseFragment(), OnFriendClickListener {
     }
 
     private fun createChatRoomError(response: Response<ChatRoomModel>) {
-
+        Toast.makeText(context, "Error, can not create chatroom", Toast.LENGTH_LONG).show()
     }
 
     private fun filterOutWhoHaveChatRoomWith(friend: User) {

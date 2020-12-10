@@ -3,6 +3,7 @@ package edu.bu.metcs673.project.ui.chat
 import android.os.Bundle
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.ui.base.BaseActivity
+import edu.bu.metcs673.project.util.BundleExtraKeys
 import kotlinx.android.synthetic.main.activity_chat.*
 
 class ChatActivity: BaseActivity() {
@@ -11,8 +12,8 @@ class ChatActivity: BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        val chatRoomId = intent.getStringExtra("CHATROOM_ID")
-        val chatRoomName = intent.getStringExtra("CHATROOM_NAME")
+        val chatRoomId = intent.getStringExtra(BundleExtraKeys.CHATROOM_ID)
+        val chatRoomName = intent.getStringExtra(BundleExtraKeys.CHATROOM_NAME)
         if (chatRoomId == null) {
             onBackPressed()
             return

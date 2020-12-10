@@ -18,6 +18,9 @@ import edu.bu.metcs673.project.api.UserApi
 import edu.bu.metcs673.project.core.ICApp
 import edu.bu.metcs673.project.model.user.UserDevice
 import edu.bu.metcs673.project.util.SharedPreferencesUtils
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import javax.inject.Inject
 
@@ -67,7 +70,17 @@ open class BaseActivity: AppCompatActivity() {
         // Log out the user
         currentUserId?.let {
             val userDevice = UserDevice(SharedPreferencesUtils.getString(this, SharedPreferencesUtils.FIREBASE_TOKEN))
-            userApi.logoutUser(userDevice, it).execute()
+            userApi.logoutUser(userDevice, it).enqueue(object: Callback<Void> {
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                }
+
+                override fun onResponse(
+                    call: Call<Void>,
+                    response: Response<Void>
+                ) {
+                    SharedPreferencesUtils.remove(this@BaseActivity, SharedPreferencesUtils.FIREBASE_TOKEN)
+                }
+            })
         }
 
         FirebaseAuth.getInstance().signOut()
