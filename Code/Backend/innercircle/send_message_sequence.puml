@@ -1,0 +1,17 @@
+@startuml
+Android -> Backend: Authentication Request.
+Backend --> Android: Authentication Response.
+
+Android -> Backend: Send Message Request.
+alt success case
+Backend -> Firebase: query for duplication messages.
+Firebase -> Firebase: add new message collection.
+Firebase --> Android: Listen for new messages.
+else fail
+Firebase --> Backend: Fail.
+Backend --> Android: Response Fail case.
+end
+
+'Firebase -> Android: Another authentication Request
+'Firebase <-- Android: another authentication Response
+@enduml

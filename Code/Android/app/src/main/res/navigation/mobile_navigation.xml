@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_friends"
-        android:name="edu.bu.metcs673.project.ui.notifications.NotificationsFragment"
+        android:name="edu.bu.metcs673.project.ui.notifications.FriendListFragment"
         android:label="@string/friend_tab"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

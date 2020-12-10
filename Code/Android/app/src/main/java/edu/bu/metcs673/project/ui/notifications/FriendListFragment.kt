@@ -34,8 +34,7 @@ import kotlin.collections.ArrayList
 /**
  * @brief Class to search for all Users registered to Inner Circle Application
  */
-class NotificationsFragment : BaseFragment(), OnFriendClickListener {
-    private lateinit var notificationsViewModel: NotificationsViewModel
+class FriendListFragment : BaseFragment(), OnFriendClickListener {
     private lateinit var recyclerView: RecyclerView
     private var searchadapter: SearchAdapter? = null
     private val mUsers = mutableListOf<User>()
