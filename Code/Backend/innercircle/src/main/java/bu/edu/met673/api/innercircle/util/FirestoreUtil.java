@@ -157,7 +157,7 @@ public class FirestoreUtil {
   }
 
   public User queryForUser(User user)
-      throws ExecutionException, InterruptedException, UserAlreadyExistedException,
+      throws ExecutionException, InterruptedException,
       UserNotFoundException {
     // check that the user email already exist.
     ApiFuture<QuerySnapshot> query = usersRef.whereEqualTo("email", user.getEmail().trim()).get();

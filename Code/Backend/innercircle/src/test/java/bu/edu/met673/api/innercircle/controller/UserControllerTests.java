@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
+import bu.edu.met673.api.innercircle.InnercircleApplicationTests;
 import bu.edu.met673.api.innercircle.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.cloud.Timestamp;
@@ -41,7 +42,11 @@ class UserControllerTests {
     mockUserData.put("uid", "LJOIboMJR9Y4mfDl9FDIbf43RVf2");
     mockUserData.put("email", "peepo157@gmail.com");
     User testUser = new User(mockUserData);
-    this.mockMvc.perform(post("/users/create", testUser)).andExpect(status().isOk());
+
+    this.mockMvc.perform(
+        post("/users/create").contentType(InnercircleApplicationTests.APPLICATION_JSON_UTF8)
+            .content(InnercircleApplicationTests.writeObjectToJSONString(testUser)))
+        .andExpect(status().isOk());
   }
 
   @Test
@@ -60,7 +65,8 @@ class UserControllerTests {
     ObjectMapper mapper = new ObjectMapper();
     this.mockMvc.perform(multipart("/users/update/profile/" + testUser.getUid()).file(testFile))
         .andDo(mvcResult -> {
-          Map<String, Object> response = mapper.readValue(mvcResult.getResponse().getContentAsByteArray(), Map.class);
+          Map<String, Object> response =
+              mapper.readValue(mvcResult.getResponse().getContentAsByteArray(), Map.class);
           testUser.setPictureUrl((String) response.get("profile_picture"));
         })
         .andExpect(status().isOk())
