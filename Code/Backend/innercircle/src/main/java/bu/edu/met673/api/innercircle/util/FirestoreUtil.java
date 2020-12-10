@@ -211,16 +211,17 @@ public class FirestoreUtil {
       QueryDocumentSnapshot chatQueryDocumentSnapshot = chatQueryDocumentSnapshots.get(i);
       ChatRoom chatRoom = new ChatRoom(chatQueryDocumentSnapshot.getId(), chatQueryDocumentSnapshot.getData());
       List<User> users = Arrays.asList(chatRoom.getAllUsers());
+      List<Map<String, Object>> usersToSave = new ArrayList<>();
       for (int j = 0; j < users.size(); j++) {
         User user = users.get(j);
         if (user.getUid().equals(userId)) {
           user.setPictureUrl(pictureURL);
           users.set(j, user);
-          break;
         }
+        usersToSave.add(user.toMapDataForChatRoom());
       }
       Map<String, Object> updateImages = new HashMap<>();
-      updateImages.put("users", users);
+      updateImages.put("users", usersToSave);
       DocumentReference userChatRef = chatsRef.document(chatRoom.getChatRoomId());
       userChatRef.update(updateImages).get();
 
