@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +39,7 @@ public class UserController {
     FirestoreUtil firestoreUtil = FirestoreUtil.getInstance();
     try {
       Blob resultFromUpload = firestoreUtil.uploadPictureProfileFor(userId, file);
-      resultURL = resultFromUpload.getMediaLink();
+      resultURL = resultFromUpload.signUrl(365, TimeUnit.DAYS).toString();
       firestoreUtil.updateProfilePicture(userId, resultURL);
     } catch (IOException | ExecutionException | InterruptedException e) {
       e.printStackTrace();

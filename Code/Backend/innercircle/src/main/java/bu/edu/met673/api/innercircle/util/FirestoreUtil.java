@@ -1,6 +1,5 @@
 package bu.edu.met673.api.innercircle.util;
 
-import bu.edu.met673.api.innercircle.exception.ChatRoomAlreadyExistedException;
 import bu.edu.met673.api.innercircle.exception.UserAlreadyExistedException;
 import bu.edu.met673.api.innercircle.exception.UserNotFoundException;
 import bu.edu.met673.api.innercircle.model.ChatRoom;
@@ -20,16 +19,16 @@ import com.google.cloud.firestore.SetOptions;
 import com.google.cloud.firestore.WriteResult;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Bucket;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.cloud.FirestoreClient;
 import com.google.firebase.cloud.StorageClient;
-import com.google.firebase.database.core.operation.Merge;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -67,7 +66,7 @@ public class FirestoreUtil {
   }
 
   public ChatRoom createChatRoom(ChatRoom room)
-      throws ExecutionException, InterruptedException, ChatRoomAlreadyExistedException {
+      throws ExecutionException, InterruptedException {
     List<User> users = Arrays.asList(room.getAllUsers());
     if (users.size() == 0) {
       throw new NullPointerException();
@@ -195,10 +194,51 @@ public class FirestoreUtil {
 
   public void updateProfilePicture(String userId, String pictureURL)
       throws ExecutionException, InterruptedException {
+    // update users' node
     DocumentReference userDocument = usersRef.document(userId);
-    Map<String, String> profileProject = new HashMap<>();
+    Map<String, Object> profileProject = new HashMap<>();
     profileProject.put("profile_picture", pictureURL);
-    userDocument.set(profileProject, SetOptions.merge()).get();
+    userDocument.update(profileProject).get();
+
+    // update chat's node
+    QuerySnapshot chatSnapshot = chatsRef.whereArrayContains("userIds", userId).get().get();
+    if (chatSnapshot == null || chatSnapshot.isEmpty()) {
+      return;
+    }
+    int chatQueryDocumentSnapshotSize = chatSnapshot.size();
+    List<QueryDocumentSnapshot> chatQueryDocumentSnapshots = chatSnapshot.getDocuments();
+    for (int i = 0; i < chatQueryDocumentSnapshotSize; i++) {
+      QueryDocumentSnapshot chatQueryDocumentSnapshot = chatQueryDocumentSnapshots.get(i);
+      ChatRoom chatRoom = new ChatRoom(chatQueryDocumentSnapshot.getId(), chatQueryDocumentSnapshot.getData());
+      List<User> users = Arrays.asList(chatRoom.getAllUsers());
+      for (int j = 0; j < users.size(); j++) {
+        User user = users.get(j);
+        if (user.getUid().equals(userId)) {
+          user.setPictureUrl(pictureURL);
+          users.set(j, user);
+          break;
+        }
+      }
+      Map<String, Object> updateImages = new HashMap<>();
+      updateImages.put("users", users);
+      DocumentReference userChatRef = chatsRef.document(chatRoom.getChatRoomId());
+      userChatRef.update(updateImages).get();
+
+      // update message's node
+      CollectionReference messagesRef = userChatRef.collection(messageNodeName);
+      QuerySnapshot messageQuery = messagesRef.whereEqualTo("userId", userId).get().get();
+      if (messageQuery.isEmpty()) {
+        return;
+      }
+      int messageSize = messageQuery.size();
+      List<QueryDocumentSnapshot> messageQueryDocuments = messageQuery.getDocuments();
+      for (int k = 0; k < messageSize; k++) {
+        Map<String, Object> updatePicture = new HashMap<String, Object>() {{
+          put("profile_picture", pictureURL);
+        }};
+        messagesRef.document(messageQueryDocuments.get(k).getId()).update(updatePicture).get();
+      }
+    }
   }
 
   private List<String> getUserDeviceTokens(User user)
