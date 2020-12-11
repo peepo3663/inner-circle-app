@@ -35,6 +35,10 @@ ext {
     firebaseFirestoreVersion = "21.7.1"
     glideVersion = "4.11.0"
     appCenterSdkVersion = "3.3.1"
+    daggerVersion = "2.30.1"
+    retrofitVersion = "2.7.2"
+    gsonConvertorVersion = "2.6.0"
+    firebaseMessagingVersion = "21.0.0"
 }
 
 task clean(type: Delete) {

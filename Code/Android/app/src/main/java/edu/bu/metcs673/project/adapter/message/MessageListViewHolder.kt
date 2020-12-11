@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import edu.bu.metcs673.project.R
 import edu.bu.metcs673.project.model.message.ChatRoomModel
 import edu.bu.metcs673.project.model.user.User
-import edu.bu.metcs673.project.util.OnItemClickListener
+import edu.bu.metcs673.project.ui.listener.OnItemClickListener
 
 class MessageListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     val profilePictureView = itemView.findViewById<ImageView>(R.id.icon)

@@ -1,0 +1,138 @@
+@startuml
+abstract class BaseActivity
+abstract class BaseFragment
+class MainActivity
+class LoginActivity
+class ChatActivity
+
+package MyFragment {
+    class ChatFragment
+    class MessageListFragment
+    class FriendListFragment
+}
+
+interface ChatRoomClickListener
+interface OnFriendClickListener
+interface OnItemClickListener
+
+class MessageListViewModel
+class ViewProfileActivity
+
+class ICApp
+
+package "Firebase SDK" {
+class FirebaseMessagingService
+}
+
+package Utilities {
+    class BundleExtraKeys
+    class UIUtil
+    class SharedPreferencesUtils
+}
+
+class ICFCMService
+
+package "Domain Classes" {
+    class MessageModel
+    class ChatRoomModel
+    class User
+    class UserDevice
+    class TCResponseError
+}
+
+package Android {
+    class Application
+    interface Factory
+    abstract class ViewModel
+    abstract class Adapter
+    class ViewHolder
+}
+
+package "Google API" {
+class GoogleSignInClient
+}
+
+package "Dagger 2 Dependency Injection" {
+class AppModule
+package AppComponent {
+    class NetworkModule
+}
+}
+
+package UtilsModule {
+    class GSon
+    class Retrofit
+}
+
+package "FactoryPattern" {
+    class ChatViewModelFactory
+    class ChatViewModel
+}
+
+package "Stratgy Pattern" {
+interface API
+class UserAPI
+class ChatAPI
+class MessageAPI
+}
+
+class MessageListAdapter
+class MessageListViewHolder
+class SearchAdapter
+class MessageViewHolder
+class MessageAdapter
+
+
+Application <|-- ICApp
+ICApp --> AppComponent : Build
+ICApp --> GoogleSignInClient
+
+AppComponent ..> BaseActivity: inject
+AppComponent ..> BaseFragment: inject
+
+"Dagger 2 Dependency Injection" <.. UtilsModule: provide
+
+BaseActivity <|-- MainActivity
+ChatRoomClickListener <|.. MainActivity
+BaseActivity <|-- LoginActivity
+BaseActivity <|-- ChatActivity
+BaseActivity <|-- ViewProfileActivity
+
+BaseFragment <|-- MyFragment
+
+API <|-- UserAPI
+API <|-- ChatAPI
+API <|-- MessageAPI
+
+Retrofit --> API: strategy
+Retrofit --> TCResponseError: use
+
+ChatRoomModel o-- User
+ChatRoomModel o-- MessageModel
+MessageModel --> User
+User o-- UserDevice
+
+Factory <|.. ChatViewModelFactory
+ViewModel <|-- ChatViewModel
+ViewModel <|-- MessageListViewModel
+ICApp --> Utilities: use
+ICApp --> FirebaseMessagingService: notification
+ChatViewModelFactory -> ChatViewModel : create
+FirebaseMessagingService <|-- ICFCMService
+
+OnFriendClickListener <|.. FriendListFragment
+OnItemClickListener <|.. MessageListFragment
+
+ChatRoomClickListener --> FriendListFragment: provide
+ChatRoomClickListener --> MessageListFragment: provide
+
+Adapter <|-- MessageAdapter
+Adapter <|-- MessageListAdapter
+Adapter <|-- SearchAdapter
+
+Adapter --> MyFragment : adapter
+
+ViewHolder <|-- MessageListViewHolder
+ViewHolder <|-- MessageViewHolder
+
+@enduml

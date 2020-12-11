@@ -1,0 +1,14 @@
+@startuml
+
+package "Client" {
+   [Android]
+}
+
+package "SpringBoot" {
+[SpringController] --> [JSON]
+}
+
+Android --> SpringController : "HTTP/GET/POST"
+JSON --> Android : "Reponse back to client"
+
+@enduml

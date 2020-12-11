@@ -2,10 +2,12 @@ package bu.edu.met673.api.innercircle.controller;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
+import bu.edu.met673.api.innercircle.InnercircleApplicationTests;
 import bu.edu.met673.api.innercircle.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.cloud.Timestamp;
@@ -32,6 +34,22 @@ class UserControllerTests {
   private MockMvc mockMvc;
 
   @Test
+  void testLoginUser() throws Exception {
+    Map<String, Object> mockUserData = new HashMap<>();
+    mockUserData.put("createdAt", Timestamp.now());
+    mockUserData.put("updatedAt", Timestamp.now());
+    mockUserData.put("name", "Wasupol Tungsakultong");
+    mockUserData.put("uid", "LJOIboMJR9Y4mfDl9FDIbf43RVf2");
+    mockUserData.put("email", "peepo157@gmail.com");
+    User testUser = new User(mockUserData);
+
+    this.mockMvc.perform(
+        post("/users/create").contentType(InnercircleApplicationTests.APPLICATION_JSON_UTF8)
+            .content(InnercircleApplicationTests.writeObjectToJSONString(testUser)))
+        .andExpect(status().isOk());
+  }
+
+  @Test
   void testEditUserPictureProfile() throws Exception {
     Map<String, Object> mockUserData = new HashMap<>();
     mockUserData.put("createdAt", Timestamp.now());
@@ -47,7 +65,8 @@ class UserControllerTests {
     ObjectMapper mapper = new ObjectMapper();
     this.mockMvc.perform(multipart("/users/update/profile/" + testUser.getUid()).file(testFile))
         .andDo(mvcResult -> {
-          Map<String, Object> response = mapper.readValue(mvcResult.getResponse().getContentAsByteArray(), Map.class);
+          Map<String, Object> response =
+              mapper.readValue(mvcResult.getResponse().getContentAsByteArray(), Map.class);
           testUser.setPictureUrl((String) response.get("profile_picture"));
         })
         .andExpect(status().isOk())

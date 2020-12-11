@@ -15,14 +15,13 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import edu.bu.metcs673.project.model.chat.MessageModel
 
-class ChatViewModel(application: Application) : AndroidViewModel(application) {
+class ChatViewModel(application: Application, val currentChatId: String) : AndroidViewModel(application) {
     companion object {
         private const val TAG = "ChatViewModel"
     }
 
     private val chatsRef: CollectionReference = Firebase.firestore.collection("chats")
-    private var allMessages: MutableLiveData<List<MessageModel>> = MutableLiveData()
-    private lateinit var currentChatId: String
+    private var allMessages: MutableLiveData<MutableList<MessageModel>> = MutableLiveData()
 
     private var messageListener: ListenerRegistration? = null
     private val messagesList = mutableListOf<MessageModel>()
@@ -39,30 +38,28 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
                     messagesList.clear()
                     if (messages != null && !messages.isEmpty) {
                         for (message in messages.documents) {
-                            val messageObject = message.toObject(MessageModel::class.java)
-                            messageObject?.isOwnMessage = currentUserId == messageObject?.userId
-                            if (messageObject != null) {
-                                messagesList.add(messageObject)
-                            }
+                            val messageObject = MessageModel(message)
+                            messageObject.isOwnMessage = currentUserId == messageObject.userId
+                            messagesList.add(messageObject)
                         }
                         allMessages.value = messagesList
                     }
                 }
     }
 
-    fun getAllMessages(): LiveData<List<MessageModel>>? {
+    fun getAllMessages(): LiveData<MutableList<MessageModel>>? {
         return allMessages
     }
 
     //hashmap
     fun insert(userMessage: MessageModel) {
-        val messageInChat = hashMapOf(
-            "text" to userMessage.text,
-            "profile_picture" to userMessage.profile_picture,
-            "userId" to userMessage.userId,
-            "createdAt" to FieldValue.serverTimestamp()
-        )
-        chatsRef.document(currentChatId).collection("messages").add(messageInChat)
+        messagesList.add(userMessage)
+        allMessages.value = messagesList
+    }
+
+    fun remove(userMessage: MessageModel) {
+        messagesList.remove(userMessage)
+        allMessages.value = messagesList
     }
 
     fun unobserve() {

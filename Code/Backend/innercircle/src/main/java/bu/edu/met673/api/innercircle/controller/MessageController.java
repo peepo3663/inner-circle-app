@@ -38,7 +38,9 @@ public class MessageController {
     // query all device token in the chat room
     try {
       List<String> deviceTokens = FirestoreUtil.getInstance().queryForUserDeviceTokens(message);
-      this.fcmService.sendMessage(deviceTokens, message.getUserName(), message.getText());
+      if (deviceTokens.size() > 0) {
+        this.fcmService.sendMessage(deviceTokens, message.getUserName(), message.getText());
+      }
     } catch (ExecutionException | InterruptedException e) {
       logger.error("Something wrong with notification feature.", e);
     }

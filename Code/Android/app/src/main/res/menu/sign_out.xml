@@ -4,5 +4,6 @@
 
     <item
         android:id="@+id/miSignOut"
-        android:title="Sign-Out" />
+        android:contentDescription="@string/more_options"
+        android:title="@string/sign_out" />
 </menu>
