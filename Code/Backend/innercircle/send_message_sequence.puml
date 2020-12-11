@@ -1,4 +1,5 @@
 @startuml
+Android -> Android: On device Authentication
 Android -> Backend: Authentication Request.
 Backend --> Android: Authentication Response.
 

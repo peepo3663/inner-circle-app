@@ -9,8 +9,11 @@
     <string name="logo">Inner Circle Logo</string>
     <string name="default_notification_channel_id" translatable="false">fcm_inner_circle_default_channel</string>
     <string name="friend_tab">Friends</string>
-    <string name="seach_users_here">Seach users here...</string>
+    <string name="seach_users_here">Search users here…</string>
     <string name="user_email_placeholder">User Email</string>
     <string name="sign_out">Sign-Out</string>
     <string name="more_options">More options</string>
+    <string name="send_message">Send Message</string>
+    <string name="view_profile">View Profile</string>
+    <string name="question">What would you like to do?</string>
 </resources>

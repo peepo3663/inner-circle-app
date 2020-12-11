@@ -157,21 +157,16 @@ class FriendListFragment : BaseFragment(), OnFriendClickListener {
     }
 
     override fun onItemClicked(friend: User) {
-        val options = arrayOf(
-            "Send Message",
-            "View Profile"
-        )
-
         val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-        builder.setTitle("What do you want to do?")
-        builder.setItems(options) { dialog, position ->
-            if (position == 0) {
+        builder.setItems(R.array.user_profile_menu) { dialog, which ->
+            if (which == 0) {
                 checkTheChatroom(friend)
             } else {
                 viewProfile(friend)
             }
             dialog.dismiss()
         }
+        builder.setTitle(R.string.question)
         builder.show()
     }
 

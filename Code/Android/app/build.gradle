@@ -25,8 +25,8 @@ android {
         applicationId "edu.bu.metcs673.project"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 9
-        versionName "1.0.7"
+        versionCode 10
+        versionName "1.0.8"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -34,8 +34,8 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", 'SERVER_URL', '"http://192.168.0.3:8080"'
-//            buildConfigField "String", 'SERVER_URL', '"http://ec2-3-131-141-53.us-east-2.compute.amazonaws.com:8080"'
+//            buildConfigField "String", 'SERVER_URL', '"http://192.168.0.3:8080"'
+            buildConfigField "String", 'SERVER_URL', '"http://ec2-3-131-141-53.us-east-2.compute.amazonaws.com:8080"'
         }
         release {
             buildConfigField "String", 'SERVER_URL', '"http://ec2-3-131-141-53.us-east-2.compute.amazonaws.com:8080"'
