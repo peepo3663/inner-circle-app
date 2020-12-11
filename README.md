@@ -64,6 +64,10 @@ mvn clean package spring-boot:repackage
 java -jar target/innerCircle-0.0.1-SNAPSHOT.jar
 ```
 
+### API Spec
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ea75d44e19a87debfefe)
+
 #### Distribute the APKs for the application
 1. Install [bundler](https://bundler.io/) and [fastlane](https://fastlane.tools/) build tools.
 2. install all bundler dependencies by execute the command.
