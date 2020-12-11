@@ -28,7 +28,7 @@ Social and relationship have never been overemphasized. The Internet is supposed
 - IntelliJ: IDE used for project's back end.
 - Fastlane: Automatic script and building for Android application.
 - CircleCi: Automated Build Tools on cloud.
-- Appium: UI Testing for Android.
+- Espresso: UI Testing for Android.
 - JUnit: Testing Framework for Android and Backend.
 - Git(Github): Source control version repository.
 - Firebase Cloud Message: Support Notification feature.
