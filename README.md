@@ -9,6 +9,16 @@ Social and relationship have never been overemphasized. The Internet is supposed
 - Implementation Kotiln base on standards by [JetBrain Kotlin Code Standard](https://kotlinlang.org/docs/reference/coding-conventions.html)
 - Implementation Java base on standards by [Oracle](https://www.oracle.com/java/technologies/javase/codeconventions-contents.html)
 
+### Building
+
+#### Android Building Status
+
+[![Actions Status](https://github.com/BUMETCS673/CS673F20T1/workflows/Android%20CI/badge.svg)](https://github.com/BUMETCS673/CS673F20T1/actions)
+
+#### Backend Building Status
+
+[![Actions Status](https://github.com/BUMETCS673/CS673F20T1/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/BUMETCS673/CS673F20T1/actions)
+
 ### Feature
 
 - As a user, I want to send a message to others, so that I can have a private chat with my friend.
@@ -28,7 +38,7 @@ Social and relationship have never been overemphasized. The Internet is supposed
 - IntelliJ: IDE used for project's back end.
 - Fastlane: Automatic script and building for Android application.
 - CircleCi: Automated Build Tools on cloud.
-- Appium: UI Testing for Android.
+- Espresso: UI Testing for Android.
 - JUnit: Testing Framework for Android and Backend.
 - Git(Github): Source control version repository.
 - Firebase Cloud Message: Support Notification feature.
@@ -61,8 +71,12 @@ mvn spring-boot:run
 6. If you would like to build as executable JAR file.
 ```sh
 mvn clean package spring-boot:repackage
-java -jar target/innerCircle-0.0.1-SNAPSHOT.jar
+java -jar target/innerCircle-0.1.0-SNAPSHOT.jar
 ```
+
+#### Running and Testing on Postman
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ea75d44e19a87debfefe)
 
 #### Distribute the APKs for the application
 1. Install [bundler](https://bundler.io/) and [fastlane](https://fastlane.tools/) build tools.
