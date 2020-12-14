@@ -1,0 +1,18 @@
+@startuml
+(*)  --> "check user existed"
+If login
+--> [Yes] "process to the main screen"
+--> "HTTP/POST users/create"
+else
+--> "stay in to login screen"
+if user login
+--> [successfully] "HTTP/POST users/create"
+--> "stay in to login screen"
+else
+--> "stay in to login screen"
+Endif
+Endif
+
+"HTTP/POST users/create" --> "Main Screen"
+
+@enduml

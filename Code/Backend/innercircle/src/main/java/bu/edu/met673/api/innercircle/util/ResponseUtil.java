@@ -6,8 +6,14 @@ import org.springframework.http.ResponseEntity;
 
 public class ResponseUtil {
   public static ResponseEntity<Object> buildErrorResponseEntity(String message,
-                                                                HttpStatus httpStatus) {
-    HashMap<String, Object> response = new HashMap<>();
+                                                                HttpStatus httpStatus,
+                                                                HashMap<String, Object> additionalParams) {
+    HashMap<String, Object> response;
+    if (additionalParams == null) {
+      response = new HashMap<>();
+    } else {
+      response = new HashMap<>(additionalParams);
+    }
     response.put("errorMsg", message);
     response.put("status", httpStatus.value());
     return new ResponseEntity<>(response, httpStatus);

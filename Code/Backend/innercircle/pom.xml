@@ -10,14 +10,15 @@
 	</parent>
 	<groupId>bu.edu.met673.api</groupId>
 	<artifactId>innercircle</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>innercircle</name>
+	<version>0.1.0-SNAPSHOT</version>
+	<name>Inner Circle REST API</name>
 	<description>Project for CS673</description>
 
 	<properties>
 		<java.version>1.8</java.version>
 		<firebase.admin.version>7.0.1</firebase.admin.version>
 		<log4j.version>1.2.17</log4j.version>
+		<apache.commons.io.version>2.8.0</apache.commons.io.version>
 	</properties>
 
 	<dependencies>
@@ -48,6 +49,38 @@
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<version>1.3.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${apache.commons.io.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -57,6 +90,11 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
 	</build>
 
 </project>
