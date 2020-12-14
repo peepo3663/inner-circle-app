@@ -15,6 +15,10 @@ Social and relationship have never been overemphasized. The Internet is supposed
 
 [![Actions Status](https://github.com/BUMETCS673/CS673F20T1/workflows/Android%20CI/badge.svg)](https://github.com/BUMETCS673/CS673F20T1/actions)
 
+#### Backend Building Status
+
+[![Actions Status](https://github.com/BUMETCS673/CS673F20T1/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/BUMETCS673/CS673F20T1/actions)
+
 ### Feature
 
 - As a user, I want to send a message to others, so that I can have a private chat with my friend.
